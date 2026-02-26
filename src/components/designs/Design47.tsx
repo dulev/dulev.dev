@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { Link } from '@tanstack/react-router'
 import { siteContent } from '~/data/content'
 
@@ -20,6 +20,36 @@ export function Design47() {
     return () => {
       document.head.removeChild(linkEl)
     }
+  }, [])
+
+  const [activeSection, setActiveSection] = useState<string>('projects')
+  const heroRef = useRef<HTMLElement>(null)
+  const projectsRef = useRef<HTMLElement>(null)
+  const interestsRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    function handleMouseMove(e: MouseEvent) {
+      const refs = [
+        { id: 'projects', ref: projectsRef },
+        { id: 'interests', ref: interestsRef },
+      ]
+      let closest = 'projects'
+      let minDist = Infinity
+      for (const s of refs) {
+        const el = s.ref.current
+        if (!el) continue
+        const rect = el.getBoundingClientRect()
+        const centerY = rect.top + rect.height / 2
+        const dist = Math.abs(e.clientY - centerY)
+        if (dist < minDist) {
+          minDist = dist
+          closest = s.id
+        }
+      }
+      setActiveSection(closest)
+    }
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
 
   const { intro, projects, personal } = siteContent
@@ -58,9 +88,8 @@ export function Design47() {
 
         /* ===== NAVIGATION ===== */
         .d47-nav {
-          border-bottom: 3px solid #111111;
           padding: 18px 0;
-          margin-bottom: 52px;
+          margin-bottom: 16px;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -77,7 +106,7 @@ export function Design47() {
           padding: 6px 16px;
           border: 3px solid #111111;
           background: #C8FF00;
-          transition: all 0.15s ease;
+          transition: none;
         }
 
         .d47-nav-brand:hover {
@@ -101,7 +130,7 @@ export function Design47() {
           border: 2px solid #111111;
           background: #fff;
           box-shadow: 2px 2px 0 #111111;
-          transition: all 0.15s ease;
+          transition: none;
         }
 
         .d47-nav-link:hover {
@@ -123,6 +152,22 @@ export function Design47() {
           margin: 60px 0 0;
         }
 
+        /* ===== BLINKING CURSOR ===== */
+        @keyframes d47-blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
+        }
+
+        .d47-cursor {
+          display: inline-block;
+          width: 3px;
+          height: 0.85em;
+          background: #FF6B00;
+          margin-left: 3px;
+          vertical-align: middle;
+          animation: d47-blink 1s step-end infinite;
+        }
+
         /* ===== SECTION HEADERS ===== */
         .d47-section-title {
           font-family: 'IBM Plex Mono', 'Courier New', monospace;
@@ -130,7 +175,7 @@ export function Design47() {
           font-size: clamp(1.4rem, 3.5vw, 1.8rem);
           color: #111111;
           text-transform: uppercase;
-          margin: 20px 0 28px;
+          margin: 56px 0 28px;
           display: flex;
           align-items: center;
           gap: 12px;
@@ -148,70 +193,18 @@ export function Design47() {
 
         /* ===== HERO ===== */
         .d47-hero {
-          margin-bottom: 16px;
+          margin-bottom: 56px;
           position: relative;
-        }
-
-        /* Postmark circle decoration */
-        .d47-postmark-circle {
-          position: absolute;
-          top: -8px;
-          right: 20px;
-          width: 100px;
-          height: 100px;
-          pointer-events: none;
-          z-index: 0;
-        }
-
-        .d47-postmark-circle-ring {
-          width: 100px;
-          height: 100px;
-          border: 1.5px solid #111111;
-          border-radius: 50%;
-          opacity: 0.08;
-          position: absolute;
-          top: 0;
-          left: 0;
-        }
-
-        .d47-postmark-circle-text {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          font-family: 'IBM Plex Mono', 'Courier New', monospace;
-          font-weight: 700;
-          font-size: 0.5rem;
-          text-transform: uppercase;
-          letter-spacing: 1.5px;
-          color: #111111;
-          opacity: 0.08;
-          white-space: nowrap;
-        }
-
-        .d47-postmark-circle-lines {
-          position: absolute;
-          top: 50%;
-          left: -12px;
-          right: -12px;
-          transform: translateY(-50%);
-          display: flex;
-          flex-direction: column;
-          gap: 4px;
-          pointer-events: none;
-          opacity: 0.06;
-        }
-
-        .d47-postmark-circle-lines span {
-          display: block;
-          height: 1px;
-          background: #111111;
+          background: #FFFFFF;
+          border: 3px solid #111111;
+          box-shadow: 4px 4px 0 #111111;
+          padding: 36px 32px 32px;
         }
 
         .d47-name {
           font-family: 'IBM Plex Mono', 'Courier New', monospace;
           font-weight: 700;
-          font-size: clamp(3.2rem, 9vw, 5.5rem);
+          font-size: clamp(2.8rem, 7.5vw, 4.5rem);
           color: #111111;
           line-height: 1.05;
           margin: 0 0 24px;
@@ -219,34 +212,23 @@ export function Design47() {
           text-transform: uppercase;
           position: relative;
           z-index: 1;
-          display: inline;
-          background-image: linear-gradient(#C8FF00, #C8FF00);
-          background-repeat: no-repeat;
-          background-position: 0 85%;
-          background-size: 100% 0.5em;
-          padding-bottom: 4px;
-          -webkit-box-decoration-break: clone;
-          box-decoration-break: clone;
+          text-decoration: underline dashed #C8FF00;
+          text-underline-offset: 8px;
+          text-decoration-thickness: 6px;
         }
 
         /* Tagline postmark box */
-        .d47-tagline-box {
-          display: inline-block;
-          border: 2px solid #111111;
-          padding: 10px 20px;
-          margin-top: 20px;
-          margin-bottom: 28px;
-          background: #FAFAF8;
-        }
-
         .d47-tagline-text {
           font-family: 'IBM Plex Mono', 'Courier New', monospace;
           font-weight: 700;
-          font-size: 0.78rem;
+          font-size: 1.15rem;
           text-transform: uppercase;
           letter-spacing: 2px;
-          color: #111111;
+          color: #FF6B00;
           line-height: 1.4;
+          display: block;
+          margin-top: 20px;
+          margin-bottom: 28px;
         }
 
         .d47-bio {
@@ -275,7 +257,7 @@ export function Design47() {
           border: 3px solid #111111;
           background: #C8FF00;
           box-shadow: 4px 4px 0 #111111;
-          transition: all 0.15s ease;
+          transition: none;
         }
 
         .d47-hero-link:hover {
@@ -300,7 +282,7 @@ export function Design47() {
           padding: 28px 28px 24px;
           margin-bottom: 24px;
           position: relative;
-          transition: all 0.15s ease;
+          transition: none;
         }
 
         .d47-card:hover {
@@ -375,7 +357,7 @@ export function Design47() {
           padding: 5px 14px;
           border: 2px solid #111111;
           background: #fff;
-          transition: all 0.15s ease;
+          transition: none;
         }
 
         .d47-card-link:hover {
@@ -423,7 +405,7 @@ export function Design47() {
           padding: 18px 22px 14px;
           text-align: center;
           position: relative;
-          transition: all 0.15s ease;
+          transition: none;
         }
 
         .d47-interest:nth-child(odd) .d47-interest-accent {
@@ -510,7 +492,7 @@ export function Design47() {
           border: 2px solid #C8FF00;
           background: transparent;
           box-shadow: 3px 3px 0 #C8FF00;
-          transition: all 0.15s ease;
+          transition: none;
         }
 
         .d47-footer-link:hover {
@@ -535,6 +517,10 @@ export function Design47() {
             flex-direction: column;
             gap: 12px;
             align-items: flex-start;
+          }
+
+          .d47-hero {
+            padding: 28px 18px 24px;
           }
 
           .d47-card {
@@ -598,13 +584,10 @@ export function Design47() {
           </nav>
 
           {/* ===== HERO ===== */}
-          <header className="d47-hero">
+          <header className="d47-hero" ref={heroRef}>
 <h1 className="d47-name">{intro.name}</h1>
 
-            {/* Tagline in postmark-style box */}
-            <div className="d47-tagline-box">
-              <span className="d47-tagline-text">{intro.tagline}</span>
-            </div>
+            <span className="d47-tagline-text">{intro.tagline}</span>
 
             <p className="d47-bio">{intro.bio}</p>
 
@@ -632,9 +615,11 @@ export function Design47() {
           </header>
 
           {/* ===== PROJECTS ===== */}
+          <section ref={projectsRef}>
           <h2 className="d47-section-title">
             <span className="d47-section-number">SEC.01</span>
             Projects
+            {activeSection === 'projects' && <span className="d47-cursor" />}
           </h2>
 
           {projects.map((project, idx) => (
@@ -673,10 +658,14 @@ export function Design47() {
             </div>
           ))}
 
+          </section>
+
           {/* ===== INTERESTS ===== */}
+          <section ref={interestsRef}>
           <h2 className="d47-section-title">
             <span className="d47-section-number">SEC.02</span>
             Interests
+            {activeSection === 'interests' && <span className="d47-cursor" />}
           </h2>
 
           <div className="d47-interests-wrap">
@@ -697,6 +686,7 @@ export function Design47() {
             ))}
           </div>
           </div>
+          </section>
 
         </div>
 

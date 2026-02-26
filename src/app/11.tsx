@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { Design11 } from '~/components/designs/Design11'
+import { Design47 } from '~/components/designs/Design47'
 
 export const Route = createFileRoute('/11')({
-  component: Design11,
+  component: Design47,
 })
