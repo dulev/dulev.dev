@@ -16,7 +16,17 @@ import { Route as R6RouteImport } from './app/6'
 import { Route as R5RouteImport } from './app/5'
 import { Route as R4RouteImport } from './app/4'
 import { Route as R3RouteImport } from './app/3'
+import { Route as R25RouteImport } from './app/25'
+import { Route as R24RouteImport } from './app/24'
+import { Route as R23RouteImport } from './app/23'
+import { Route as R22RouteImport } from './app/22'
+import { Route as R21RouteImport } from './app/21'
+import { Route as R20RouteImport } from './app/20'
 import { Route as R2RouteImport } from './app/2'
+import { Route as R19RouteImport } from './app/19'
+import { Route as R18RouteImport } from './app/18'
+import { Route as R17RouteImport } from './app/17'
+import { Route as R16RouteImport } from './app/16'
 import { Route as R15RouteImport } from './app/15'
 import { Route as R14RouteImport } from './app/14'
 import { Route as R13RouteImport } from './app/13'
@@ -61,9 +71,59 @@ const R3Route = R3RouteImport.update({
   path: '/3',
   getParentRoute: () => rootRouteImport,
 } as any)
+const R25Route = R25RouteImport.update({
+  id: '/25',
+  path: '/25',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R24Route = R24RouteImport.update({
+  id: '/24',
+  path: '/24',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R23Route = R23RouteImport.update({
+  id: '/23',
+  path: '/23',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R22Route = R22RouteImport.update({
+  id: '/22',
+  path: '/22',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R21Route = R21RouteImport.update({
+  id: '/21',
+  path: '/21',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R20Route = R20RouteImport.update({
+  id: '/20',
+  path: '/20',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const R2Route = R2RouteImport.update({
   id: '/2',
   path: '/2',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R19Route = R19RouteImport.update({
+  id: '/19',
+  path: '/19',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R18Route = R18RouteImport.update({
+  id: '/18',
+  path: '/18',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R17Route = R17RouteImport.update({
+  id: '/17',
+  path: '/17',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R16Route = R16RouteImport.update({
+  id: '/16',
+  path: '/16',
   getParentRoute: () => rootRouteImport,
 } as any)
 const R15Route = R15RouteImport.update({
@@ -116,7 +176,17 @@ export interface FileRoutesByFullPath {
   '/13': typeof R13Route
   '/14': typeof R14Route
   '/15': typeof R15Route
+  '/16': typeof R16Route
+  '/17': typeof R17Route
+  '/18': typeof R18Route
+  '/19': typeof R19Route
   '/2': typeof R2Route
+  '/20': typeof R20Route
+  '/21': typeof R21Route
+  '/22': typeof R22Route
+  '/23': typeof R23Route
+  '/24': typeof R24Route
+  '/25': typeof R25Route
   '/3': typeof R3Route
   '/4': typeof R4Route
   '/5': typeof R5Route
@@ -134,7 +204,17 @@ export interface FileRoutesByTo {
   '/13': typeof R13Route
   '/14': typeof R14Route
   '/15': typeof R15Route
+  '/16': typeof R16Route
+  '/17': typeof R17Route
+  '/18': typeof R18Route
+  '/19': typeof R19Route
   '/2': typeof R2Route
+  '/20': typeof R20Route
+  '/21': typeof R21Route
+  '/22': typeof R22Route
+  '/23': typeof R23Route
+  '/24': typeof R24Route
+  '/25': typeof R25Route
   '/3': typeof R3Route
   '/4': typeof R4Route
   '/5': typeof R5Route
@@ -153,7 +233,17 @@ export interface FileRoutesById {
   '/13': typeof R13Route
   '/14': typeof R14Route
   '/15': typeof R15Route
+  '/16': typeof R16Route
+  '/17': typeof R17Route
+  '/18': typeof R18Route
+  '/19': typeof R19Route
   '/2': typeof R2Route
+  '/20': typeof R20Route
+  '/21': typeof R21Route
+  '/22': typeof R22Route
+  '/23': typeof R23Route
+  '/24': typeof R24Route
+  '/25': typeof R25Route
   '/3': typeof R3Route
   '/4': typeof R4Route
   '/5': typeof R5Route
@@ -173,7 +263,17 @@ export interface FileRouteTypes {
     | '/13'
     | '/14'
     | '/15'
+    | '/16'
+    | '/17'
+    | '/18'
+    | '/19'
     | '/2'
+    | '/20'
+    | '/21'
+    | '/22'
+    | '/23'
+    | '/24'
+    | '/25'
     | '/3'
     | '/4'
     | '/5'
@@ -191,7 +291,17 @@ export interface FileRouteTypes {
     | '/13'
     | '/14'
     | '/15'
+    | '/16'
+    | '/17'
+    | '/18'
+    | '/19'
     | '/2'
+    | '/20'
+    | '/21'
+    | '/22'
+    | '/23'
+    | '/24'
+    | '/25'
     | '/3'
     | '/4'
     | '/5'
@@ -209,7 +319,17 @@ export interface FileRouteTypes {
     | '/13'
     | '/14'
     | '/15'
+    | '/16'
+    | '/17'
+    | '/18'
+    | '/19'
     | '/2'
+    | '/20'
+    | '/21'
+    | '/22'
+    | '/23'
+    | '/24'
+    | '/25'
     | '/3'
     | '/4'
     | '/5'
@@ -228,7 +348,17 @@ export interface RootRouteChildren {
   R13Route: typeof R13Route
   R14Route: typeof R14Route
   R15Route: typeof R15Route
+  R16Route: typeof R16Route
+  R17Route: typeof R17Route
+  R18Route: typeof R18Route
+  R19Route: typeof R19Route
   R2Route: typeof R2Route
+  R20Route: typeof R20Route
+  R21Route: typeof R21Route
+  R22Route: typeof R22Route
+  R23Route: typeof R23Route
+  R24Route: typeof R24Route
+  R25Route: typeof R25Route
   R3Route: typeof R3Route
   R4Route: typeof R4Route
   R5Route: typeof R5Route
@@ -289,11 +419,81 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof R3RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/25': {
+      id: '/25'
+      path: '/25'
+      fullPath: '/25'
+      preLoaderRoute: typeof R25RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/24': {
+      id: '/24'
+      path: '/24'
+      fullPath: '/24'
+      preLoaderRoute: typeof R24RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/23': {
+      id: '/23'
+      path: '/23'
+      fullPath: '/23'
+      preLoaderRoute: typeof R23RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/22': {
+      id: '/22'
+      path: '/22'
+      fullPath: '/22'
+      preLoaderRoute: typeof R22RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/21': {
+      id: '/21'
+      path: '/21'
+      fullPath: '/21'
+      preLoaderRoute: typeof R21RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/20': {
+      id: '/20'
+      path: '/20'
+      fullPath: '/20'
+      preLoaderRoute: typeof R20RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/2': {
       id: '/2'
       path: '/2'
       fullPath: '/2'
       preLoaderRoute: typeof R2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/19': {
+      id: '/19'
+      path: '/19'
+      fullPath: '/19'
+      preLoaderRoute: typeof R19RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/18': {
+      id: '/18'
+      path: '/18'
+      fullPath: '/18'
+      preLoaderRoute: typeof R18RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/17': {
+      id: '/17'
+      path: '/17'
+      fullPath: '/17'
+      preLoaderRoute: typeof R17RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/16': {
+      id: '/16'
+      path: '/16'
+      fullPath: '/16'
+      preLoaderRoute: typeof R16RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/15': {
@@ -364,7 +564,17 @@ const rootRouteChildren: RootRouteChildren = {
   R13Route: R13Route,
   R14Route: R14Route,
   R15Route: R15Route,
+  R16Route: R16Route,
+  R17Route: R17Route,
+  R18Route: R18Route,
+  R19Route: R19Route,
   R2Route: R2Route,
+  R20Route: R20Route,
+  R21Route: R21Route,
+  R22Route: R22Route,
+  R23Route: R23Route,
+  R24Route: R24Route,
+  R25Route: R25Route,
   R3Route: R3Route,
   R4Route: R4Route,
   R5Route: R5Route,

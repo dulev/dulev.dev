@@ -20,6 +20,16 @@ const designs = [
   { id: 13, name: 'Acid Memphis', desc: 'Neobrutalist 90s revival' },
   { id: 14, name: 'Stark Mono', desc: 'Neobrutalist monochrome' },
   { id: 15, name: 'Hot Dog Stand', desc: 'Neobrutalist neon clash' },
+  { id: 16, name: 'Darkroom', desc: 'Photography darkroom, red safelight' },
+  { id: 17, name: 'Dot Matrix', desc: 'Printer output, perforated paper' },
+  { id: 18, name: 'Concrete', desc: 'Architectural brutalism, raw forms' },
+  { id: 19, name: 'Typewriter Noir', desc: 'Ink & film noir atmosphere' },
+  { id: 20, name: 'Circuit Board', desc: 'PCB traces, solder mask green' },
+  { id: 21, name: 'Risograph', desc: 'Misregistered layers, spot colors' },
+  { id: 22, name: 'Cassette Tape', desc: 'Analog tape, VHS distortion' },
+  { id: 23, name: 'Stencil Punk', desc: 'DIY cut-and-paste zine' },
+  { id: 24, name: 'Graph Paper', desc: 'Science notebook, hand-plotted' },
+  { id: 25, name: 'Glitch', desc: 'RGB shift, data corruption art' },
 ]
 
 function HomePage() {
