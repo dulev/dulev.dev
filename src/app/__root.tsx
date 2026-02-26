@@ -1,13 +1,56 @@
 /// <reference types="vite/client" />
-import type { ReactNode } from 'react'
+import { useEffect, type ReactNode } from 'react'
 import {
   Outlet,
   createRootRoute,
   HeadContent,
   Scripts,
+  useRouter,
+  useMatches,
 } from '@tanstack/react-router'
 import { SoundProvider, SoundToggle } from '~/components/sound-provider'
 import appCss from '~/styles/app.css?url'
+
+const DESIGN_ROUTES = Array.from({ length: 47 }, (_, i) => `/${i + 1}`)
+
+function useArrowKeyNavigation() {
+  const router = useRouter()
+  const matches = useMatches()
+
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return
+
+      const currentPath = matches[matches.length - 1]?.fullPath ?? '/'
+      const currentIndex = DESIGN_ROUTES.indexOf(currentPath)
+
+      if (currentPath === '/') {
+        if (e.key === 'ArrowRight') {
+          router.navigate({ to: '/1' as '/' })
+        }
+        return
+      }
+
+      if (currentIndex === -1) return
+
+      if (e.key === 'ArrowLeft') {
+        if (currentIndex === 0) {
+          router.navigate({ to: '/' })
+        } else {
+          router.navigate({ to: DESIGN_ROUTES[currentIndex - 1] as '/' })
+        }
+      } else if (e.key === 'ArrowRight') {
+        if (currentIndex < DESIGN_ROUTES.length - 1) {
+          router.navigate({ to: DESIGN_ROUTES[currentIndex + 1] as '/' })
+        }
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [router, matches])
+}
 
 export const Route = createRootRoute({
   head: () => ({
@@ -38,6 +81,8 @@ export const Route = createRootRoute({
 })
 
 function RootComponent() {
+  useArrowKeyNavigation()
+
   return (
     <RootDocument>
       <Outlet />
