@@ -38,4 +38,9 @@ Personal portfolio site built with **React 19 + TypeScript + TanStack Start + Ni
 - **Sound system** is scaffolded (`SoundProvider`, `use-sound`) but playback is stubbed out
 - **Tailwind v4** uses `@theme` directive in app.css for custom colors, fonts, and shadows — not a tailwind.config file
 - **UI primitives:** Prefer Radix UI and shadcn/ui for components and primitives
+- **Icons:** Use Phosphor fill icons via `react-icons/pi`. Convention:
+  - Icon before text → navigational/back actions (e.g. `<PiArrowLeftFill /> dulev.dev`)
+  - Icon after text → external links (e.g. `GitHub <PiArrowUpRightFill />`)
+  - Icon only → toggles/controls (sound, theme)
+  - Icon above text → vertical card labels (interest stamps)
 - **Package manager:** Bun (note: global CLAUDE.md says prefer pnpm, but this project uses Bun per lockfile)

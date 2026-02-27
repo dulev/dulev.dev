@@ -1,4 +1,5 @@
 import { Link } from '@tanstack/react-router'
+import { PiArrowLeftFill } from 'react-icons/pi'
 import { cvData } from '~/data/cv'
 import type { Education, Experience, SideProject } from '~/data/cv'
 
@@ -165,7 +166,7 @@ export function CvPage() {
             to="/"
             className="font-mono text-xs font-bold text-card no-underline py-1.5 px-3 bg-text hover:opacity-70 inline-block"
           >
-            &larr; dulev.dev
+            <PiArrowLeftFill className="inline mr-1" /> dulev.dev
           </Link>
           <button
             type="button"
@@ -250,7 +251,7 @@ export function CvPage() {
             to="/"
             className="font-mono text-xs font-bold text-card no-underline py-1.5 px-3 bg-text hover:opacity-70 inline-block"
           >
-            &larr; dulev.dev
+            <PiArrowLeftFill className="inline mr-1" /> dulev.dev
           </Link>
           <button
             type="button"

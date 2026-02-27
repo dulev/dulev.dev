@@ -1,12 +1,20 @@
+import type { ReactNode } from 'react'
+import {
+  PiGuitarFill,
+  PiPersonSimpleRunFill,
+  PiBicycleFill,
+  PiMountainsFill,
+  PiTerminalWindowFill,
+} from 'react-icons/pi'
 import { ScanReveal } from '~/components/scan-reveal'
 import type { Interest } from '~/data/content'
 
-const interestIcons: Record<string, string> = {
-  guitar: '\u266A',
-  running: '\u2192',
-  bike: '\u25CB',
-  mountains: '\u25B2',
-  terminal: '>_',
+const interestIcons: Record<string, ReactNode> = {
+  guitar: <PiGuitarFill size={22} />,
+  running: <PiPersonSimpleRunFill size={22} />,
+  bike: <PiBicycleFill size={22} />,
+  mountains: <PiMountainsFill size={22} />,
+  terminal: <PiTerminalWindowFill size={22} />,
 }
 
 export function InterestStamp({

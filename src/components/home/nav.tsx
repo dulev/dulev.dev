@@ -22,16 +22,18 @@ export function Nav() {
             href={intro.links.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-[0.8rem] font-medium text-text no-underline py-1 px-3.5 border-[3px] border-text bg-card shadow-brutal transition-none hover:shadow-brutal-hover hover:-translate-x-0.5 hover:-translate-y-0.5"
+            className="relative font-mono text-[0.8rem] font-medium text-text no-underline py-1 px-3.5 border-[3px] border-text bg-card shadow-brutal transition-none hover:shadow-brutal-hover hover:-translate-x-0.5 hover:-translate-y-0.5"
           >
+            <span className="absolute top-1 right-1 w-[6px] h-[6px] bg-text" style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }} />
             GitHub
           </a>
           <a
             href={intro.links.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-[0.8rem] font-medium text-text no-underline py-1 px-3.5 border-[3px] border-text bg-card shadow-brutal transition-none hover:shadow-brutal-hover hover:-translate-x-0.5 hover:-translate-y-0.5"
+            className="relative font-mono text-[0.8rem] font-medium text-text no-underline py-1 px-3.5 border-[3px] border-text bg-card shadow-brutal transition-none hover:shadow-brutal-hover hover:-translate-x-0.5 hover:-translate-y-0.5"
           >
+            <span className="absolute top-1 right-1 w-[6px] h-[6px] bg-text" style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }} />
             LinkedIn
           </a>
           <a

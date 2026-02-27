@@ -17,6 +17,7 @@
     "nitro": "^3.0.1-alpha.2",
     "react": "^19",
     "react-dom": "^19",
+    "react-icons": "^5.5.0",
     "use-sound": "^4.0.3"
   },
   "devDependencies": {
