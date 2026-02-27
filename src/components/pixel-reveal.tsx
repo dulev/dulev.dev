@@ -63,31 +63,55 @@ function unobserve(el: Element) {
   getObserver()?.unobserve(el);
 }
 
-// Component — just wrap children, no props needed
-export function PixelReveal({ children }: { children: ReactNode }) {
+interface PixelRevealProps {
+  children: ReactNode;
+  /** When false, the reveal won't start until enabled becomes true. Defaults to true. */
+  enabled?: boolean;
+  /** Called when the reveal animation finishes. */
+  onComplete?: () => void;
+}
+
+export function PixelReveal({ children, enabled = true, onComplete }: PixelRevealProps) {
   const childRef = useRef<HTMLElement>(null);
   const sentinelRef = useRef<HTMLSpanElement>(null);
   const [activeRow, setActiveRow] = useState(-1);
   const [phase, setPhase] = useState<"hidden" | "animating" | "done">("hidden");
   const gridRef = useRef({ rows: 1 });
+  const onCompleteRef = useRef(onComplete);
+  onCompleteRef.current = onComplete;
+  // Track whether intersection has been observed (waiting for enabled)
+  const pendingRef = useRef(false);
 
   useEffect(() => {
     const sentinel = sentinelRef.current;
     const child = childRef.current;
     if (!sentinel || !child) return;
+    if (phase !== "hidden") return;
 
     if (typeof IntersectionObserver === "undefined") {
       setPhase("done");
+      onCompleteRef.current?.();
       return;
     }
 
+    // If not yet enabled, just mark as pending and wait
+    if (!enabled) {
+      // Still observe so we know when it's in view
+      observe(sentinel, () => {
+        pendingRef.current = true;
+      });
+      return () => {
+        unobserve(sentinel);
+      };
+    }
+
+    // If previously observed and waiting for enabled
     let delayTimer: ReturnType<typeof setTimeout>;
     let rafId: number;
 
-    // Observe the sentinel (no clip-path) instead of the clipped child,
-    // because clip-path causes IntersectionObserver to report zero intersection.
-    observe(sentinel, () => {
-      const delay = scheduleReveal();
+    const startReveal = () => {
+      const delay = pendingRef.current ? 0 : scheduleReveal();
+      pendingRef.current = false;
 
       const { height } = child.getBoundingClientRect();
       const rows = Math.max(1, Math.ceil(height / PIXEL_SIZE));
@@ -107,18 +131,26 @@ export function PixelReveal({ children }: { children: ReactNode }) {
             rafId = requestAnimationFrame(tick);
           } else {
             setPhase("done");
+            onCompleteRef.current?.();
           }
         };
         rafId = requestAnimationFrame(tick);
       }, delay);
-    });
+    };
+
+    if (pendingRef.current) {
+      // Already in view, start immediately
+      startReveal();
+    } else {
+      observe(sentinel, startReveal);
+    }
 
     return () => {
       unobserve(sentinel);
       clearTimeout(delayTimer);
       cancelAnimationFrame(rafId);
     };
-  }, []);
+  }, [enabled]);
 
   const { rows } = gridRef.current;
   const done = phase === "done";
