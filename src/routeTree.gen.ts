@@ -9,12 +9,24 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UsesRouteImport } from './routes/uses'
+import { Route as MyImageAssetsRouteImport } from './routes/my-image-assets'
 import { Route as CvRouteImport } from './routes/cv'
 import { Route as AnimationsRouteImport } from './routes/animations'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DesignsIndexRouteImport } from './routes/designs/index'
 import { Route as Designs12RouteImport } from './routes/designs/12'
 
+const UsesRoute = UsesRouteImport.update({
+  id: '/uses',
+  path: '/uses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MyImageAssetsRoute = MyImageAssetsRouteImport.update({
+  id: '/my-image-assets',
+  path: '/my-image-assets',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CvRoute = CvRouteImport.update({
   id: '/cv',
   path: '/cv',
@@ -45,6 +57,8 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/animations': typeof AnimationsRoute
   '/cv': typeof CvRoute
+  '/my-image-assets': typeof MyImageAssetsRoute
+  '/uses': typeof UsesRoute
   '/designs/12': typeof Designs12Route
   '/designs/': typeof DesignsIndexRoute
 }
@@ -52,6 +66,8 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/animations': typeof AnimationsRoute
   '/cv': typeof CvRoute
+  '/my-image-assets': typeof MyImageAssetsRoute
+  '/uses': typeof UsesRoute
   '/designs/12': typeof Designs12Route
   '/designs': typeof DesignsIndexRoute
 }
@@ -60,27 +76,67 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/animations': typeof AnimationsRoute
   '/cv': typeof CvRoute
+  '/my-image-assets': typeof MyImageAssetsRoute
+  '/uses': typeof UsesRoute
   '/designs/12': typeof Designs12Route
   '/designs/': typeof DesignsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/animations' | '/cv' | '/designs/12' | '/designs/'
+  fullPaths:
+    | '/'
+    | '/animations'
+    | '/cv'
+    | '/my-image-assets'
+    | '/uses'
+    | '/designs/12'
+    | '/designs/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/animations' | '/cv' | '/designs/12' | '/designs'
-  id: '__root__' | '/' | '/animations' | '/cv' | '/designs/12' | '/designs/'
+  to:
+    | '/'
+    | '/animations'
+    | '/cv'
+    | '/my-image-assets'
+    | '/uses'
+    | '/designs/12'
+    | '/designs'
+  id:
+    | '__root__'
+    | '/'
+    | '/animations'
+    | '/cv'
+    | '/my-image-assets'
+    | '/uses'
+    | '/designs/12'
+    | '/designs/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AnimationsRoute: typeof AnimationsRoute
   CvRoute: typeof CvRoute
+  MyImageAssetsRoute: typeof MyImageAssetsRoute
+  UsesRoute: typeof UsesRoute
   Designs12Route: typeof Designs12Route
   DesignsIndexRoute: typeof DesignsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/uses': {
+      id: '/uses'
+      path: '/uses'
+      fullPath: '/uses'
+      preLoaderRoute: typeof UsesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/my-image-assets': {
+      id: '/my-image-assets'
+      path: '/my-image-assets'
+      fullPath: '/my-image-assets'
+      preLoaderRoute: typeof MyImageAssetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cv': {
       id: '/cv'
       path: '/cv'
@@ -123,6 +179,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnimationsRoute: AnimationsRoute,
   CvRoute: CvRoute,
+  MyImageAssetsRoute: MyImageAssetsRoute,
+  UsesRoute: UsesRoute,
   Designs12Route: Designs12Route,
   DesignsIndexRoute: DesignsIndexRoute,
 }
