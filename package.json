@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "bun --bun vite dev",
+    "build": "bun --bun vite build",
     "start": "node .output/server/index.mjs"
   },
   "dependencies": {

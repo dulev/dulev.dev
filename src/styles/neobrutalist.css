@@ -1,0 +1,59 @@
+/* Grid background pattern */
+.neo-grid-bg {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Blinking cursor */
+@keyframes neo-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.neo-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.85em;
+  background: var(--color-orange);
+  margin-left: 3px;
+  vertical-align: middle;
+  animation: neo-blink 1s step-end infinite;
+}
+
+/* Container queries for interests grid */
+.neo-interests-wrap {
+  container-type: inline-size;
+}
+
+.neo-interests-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+
+@container (max-width: 500px) {
+  .neo-interests-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@container (max-width: 300px) {
+  .neo-interests-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Dashed divider */
+.neo-divider {
+  border: none;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    #111111 0px,
+    #111111 16px,
+    transparent 16px,
+    transparent 24px
+  );
+}

@@ -15,7 +15,7 @@ export default defineConfig({
     tanstackStart({
       srcDirectory: 'src',
       router: {
-        routesDirectory: 'app',
+        routesDirectory: 'routes',
       },
     }),
     nitro(),
