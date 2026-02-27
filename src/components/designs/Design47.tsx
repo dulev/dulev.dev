@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import { Link } from '@tanstack/react-router'
+import { motion } from 'motion/react'
 import { siteContent } from '~/data/content'
 
 const interestIcons: Record<string, string> = {
@@ -9,6 +10,8 @@ const interestIcons: Record<string, string> = {
   mountains: '\u25B2',
   terminal: '>_',
 }
+
+const steps = (n: number) => (t: number) => Math.floor(t * n) / n
 
 export function Design47() {
   useEffect(() => {
@@ -563,7 +566,12 @@ export function Design47() {
       <div className="d47-root">
         <div className="d47-container">
           {/* ===== NAVIGATION ===== */}
-          <nav className="d47-nav">
+          <motion.nav
+            className="d47-nav"
+            initial={{ clipPath: 'inset(0 100% 0 0)' }}
+            animate={{ clipPath: 'inset(-50px)' }}
+            transition={{ duration: 0.6, ease: steps(5) }}
+          >
             <Link to="/" className="d47-nav-brand">
               dulev.dev
             </Link>
@@ -588,10 +596,16 @@ export function Design47() {
                 /uses
               </a>
             </div>
-          </nav>
+          </motion.nav>
 
           {/* ===== HERO ===== */}
-          <header className="d47-hero" ref={heroRef}>
+          <motion.header
+            className="d47-hero"
+            ref={heroRef}
+            initial={{ clipPath: 'inset(0 100% 0 0)' }}
+            animate={{ clipPath: 'inset(-50px)' }}
+            transition={{ duration: 0.6, ease: steps(5), delay: 0.1 }}
+          >
 <h1 className="d47-name">{intro.name}</h1>
 
             <span className="d47-tagline-text">{intro.tagline}</span>
@@ -619,10 +633,16 @@ export function Design47() {
                 /uses
               </a>
             </div>
-          </header>
+          </motion.header>
 
           {/* ===== PROJECTS ===== */}
-          <section ref={projectsRef}>
+          <motion.section
+            ref={projectsRef}
+            initial={{ clipPath: 'inset(0 100% 0 0)' }}
+            whileInView={{ clipPath: 'inset(-50px)' }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: steps(5) }}
+          >
           <h2 className="d47-section-title">
             <span className="d47-section-number">SEC.01</span>
             Projects
@@ -665,10 +685,16 @@ export function Design47() {
             </div>
           ))}
 
-          </section>
+          </motion.section>
 
           {/* ===== INTERESTS ===== */}
-          <section ref={interestsRef}>
+          <motion.section
+            ref={interestsRef}
+            initial={{ clipPath: 'inset(0 100% 0 0)' }}
+            whileInView={{ clipPath: 'inset(-50px)' }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: steps(5) }}
+          >
           <h2 className="d47-section-title">
             <span className="d47-section-number">SEC.02</span>
             Interests
@@ -693,12 +719,18 @@ export function Design47() {
             ))}
           </div>
           </div>
-          </section>
+          </motion.section>
 
         </div>
 
         {/* ===== FOOTER ===== */}
-        <footer className="d47-footer">
+        <motion.footer
+          className="d47-footer"
+          initial={{ clipPath: 'inset(0 100% 0 0)' }}
+          whileInView={{ clipPath: 'inset(-50px)' }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: steps(5) }}
+        >
           <div className="d47-footer-inner">
             <div className="d47-footer-text">
               dulev.dev &middot; Sofia, Bulgaria
@@ -707,7 +739,7 @@ export function Design47() {
               Contact Me
             </a>
           </div>
-        </footer>
+        </motion.footer>
       </div>
     </>
   )
