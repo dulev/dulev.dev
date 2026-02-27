@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "~/styles/crt-intro.css";
 
 export function CrtIntro() {
+  return null;
   const [phase, setPhase] = useState<"idle" | "active" | "fading" | "done">(
     "idle",
   );

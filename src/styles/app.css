@@ -13,6 +13,8 @@
   --color-muted: #444;
   --color-muted-light: #555;
 
+  --border-width-3: 3px;
+
   --shadow-brutal: 4px 4px 0 #111;
   --shadow-brutal-hover: 6px 6px 0 #111;
   --shadow-brutal-sm: 3px 3px 0 #111;

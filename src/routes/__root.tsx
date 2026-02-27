@@ -7,7 +7,7 @@ import {
   Scripts,
   useRouter,
 } from "@tanstack/react-router";
-import { SoundProvider, SoundToggle } from "~/components/sound-provider";
+import { SoundProvider } from "~/components/sound-provider";
 import { CrtIntro } from "~/components/crt-intro";
 import appCss from "~/styles/app.css?url";
 
@@ -90,7 +90,6 @@ function RootDocument({ children }: { children: ReactNode }) {
       <body className="min-h-screen">
         <SoundProvider>
           {children}
-          <SoundToggle />
         </SoundProvider>
         <Scripts />
       </body>

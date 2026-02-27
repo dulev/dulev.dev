@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import { ScanReveal } from '~/components/scan-reveal'
+import { SoundToggle } from '~/components/sound-provider'
 import { siteContent } from '~/data/content'
 
 export function Nav() {
@@ -39,6 +40,7 @@ export function Nav() {
           >
             /uses
           </a>
+          <SoundToggle />
         </div>
       </ScanReveal>
     </nav>

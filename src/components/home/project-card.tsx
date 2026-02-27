@@ -33,20 +33,20 @@ export function ProjectCard({
           ))}
         </ul>
 
-        <div className="flex gap-2.5">
+        <div className="flex gap-2.5 justify-end">
+          <a
+            href={project.cvAnchor}
+            className="font-mono text-[0.78rem] font-medium text-text no-underline py-1.5 px-3.5 border-2 border-text bg-card shadow-brutal-sm transition-none hover:shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5"
+          >
+            CV Entry
+          </a>
           <a
             href={project.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-[0.78rem] font-bold text-text no-underline py-1.5 px-3.5 border-2 border-text bg-orange transition-none hover:bg-text hover:border-text hover:text-orange"
+            className="font-mono text-[0.78rem] font-bold text-text no-underline py-1.5 px-3.5 border-2 border-text bg-orange shadow-brutal-sm transition-none hover:shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5"
           >
             Visit
-          </a>
-          <a
-            href={project.cvAnchor}
-            className="font-mono text-[0.78rem] font-medium text-text no-underline py-1.5 px-3.5 border-2 border-text bg-card transition-none hover:bg-text hover:text-card"
-          >
-            CV Entry
           </a>
         </div>
       </div>

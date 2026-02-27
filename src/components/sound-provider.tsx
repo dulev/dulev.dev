@@ -56,7 +56,7 @@ export function SoundToggle() {
   return (
     <button
       onClick={toggleMute}
-      className="fixed bottom-4 right-4 z-50 rounded-full bg-black/10 p-2 backdrop-blur-sm transition-colors hover:bg-black/20"
+      className="font-mono text-[0.8rem] font-medium text-text py-1 px-2.5 border-[3px] border-text bg-card shadow-brutal transition-none hover:shadow-brutal-hover hover:-translate-x-0.5 hover:-translate-y-0.5 cursor-pointer"
       aria-label={muted ? 'Unmute sounds' : 'Mute sounds'}
     >
       {muted ? (

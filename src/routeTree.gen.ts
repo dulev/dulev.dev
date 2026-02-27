@@ -9,11 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as CvRouteImport } from './routes/cv'
 import { Route as AnimationsRouteImport } from './routes/animations'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DesignsIndexRouteImport } from './routes/designs/index'
 import { Route as Designs12RouteImport } from './routes/designs/12'
 
+const CvRoute = CvRouteImport.update({
+  id: '/cv',
+  path: '/cv',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AnimationsRoute = AnimationsRouteImport.update({
   id: '/animations',
   path: '/animations',
@@ -38,12 +44,14 @@ const Designs12Route = Designs12RouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/animations': typeof AnimationsRoute
+  '/cv': typeof CvRoute
   '/designs/12': typeof Designs12Route
   '/designs/': typeof DesignsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/animations': typeof AnimationsRoute
+  '/cv': typeof CvRoute
   '/designs/12': typeof Designs12Route
   '/designs': typeof DesignsIndexRoute
 }
@@ -51,26 +59,35 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/animations': typeof AnimationsRoute
+  '/cv': typeof CvRoute
   '/designs/12': typeof Designs12Route
   '/designs/': typeof DesignsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/animations' | '/designs/12' | '/designs/'
+  fullPaths: '/' | '/animations' | '/cv' | '/designs/12' | '/designs/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/animations' | '/designs/12' | '/designs'
-  id: '__root__' | '/' | '/animations' | '/designs/12' | '/designs/'
+  to: '/' | '/animations' | '/cv' | '/designs/12' | '/designs'
+  id: '__root__' | '/' | '/animations' | '/cv' | '/designs/12' | '/designs/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AnimationsRoute: typeof AnimationsRoute
+  CvRoute: typeof CvRoute
   Designs12Route: typeof Designs12Route
   DesignsIndexRoute: typeof DesignsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/cv': {
+      id: '/cv'
+      path: '/cv'
+      fullPath: '/cv'
+      preLoaderRoute: typeof CvRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/animations': {
       id: '/animations'
       path: '/animations'
@@ -105,6 +122,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnimationsRoute: AnimationsRoute,
+  CvRoute: CvRoute,
   Designs12Route: Designs12Route,
   DesignsIndexRoute: DesignsIndexRoute,
 }
