@@ -83,6 +83,8 @@ export function ScanReveal({
   enabled = true,
   onComplete,
 }: ScanRevealProps) {
+  // Temporarily disabled — render children immediately
+  return <Slot>{children}</Slot>;
   const childRef = useRef<HTMLElement>(null);
   const sentinelRef = useRef<HTMLSpanElement>(null);
   const [activeRow, setActiveRow] = useState(-1);

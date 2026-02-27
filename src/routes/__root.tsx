@@ -8,6 +8,7 @@ import {
   useRouter,
 } from "@tanstack/react-router";
 import { SoundProvider, SoundToggle } from "~/components/sound-provider";
+import { CrtIntro } from "~/components/crt-intro";
 import appCss from "~/styles/app.css?url";
 
 const MAIN_ROUTE = "/";
@@ -74,6 +75,7 @@ function RootComponent() {
 
   return (
     <RootDocument>
+      <CrtIntro />
       <Outlet />
     </RootDocument>
   );

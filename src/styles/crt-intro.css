@@ -1,0 +1,106 @@
+/* CRT TV Intro Animation */
+
+.crt-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.crt-overlay[data-phase="active"] {
+  opacity: 1;
+}
+
+.crt-overlay[data-phase="fading"] {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
+/* Full viewport screen area */
+.crt-screen {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: rgba(0, 20, 5, 0.4);
+  animation: crt-flicker 0.15s infinite;
+}
+
+/* Scanlines via pseudo-element — slowly drifting downward */
+.crt-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.3) 2px,
+    rgba(0, 0, 0, 0.3) 4px
+  );
+  background-size: 100% 4px;
+  animation: crt-scanlines-drift 0.3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes crt-scanlines-drift {
+  from { background-position: 0 0; }
+  to   { background-position: 0 4px; }
+}
+
+/* Rolling horizontal bar */
+.crt-rolling-bar {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 25%,
+    rgba(150, 255, 200, 0.08) 35%,
+    rgba(200, 255, 220, 0.15) 45%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(200, 255, 220, 0.15) 55%,
+    rgba(150, 255, 200, 0.08) 65%,
+    transparent 75%,
+    transparent 100%
+  );
+  background-size: 100% 300%;
+  animation: crt-roll 2s linear infinite;
+}
+
+/* CRT bezel frame — outer shadow fills rounded corners with black */
+.crt-bezel {
+  position: absolute;
+  inset: 0;
+  border: 14px solid #111;
+  border-radius: 32px;
+  box-shadow:
+    0 0 0 9999px #000,
+    inset 0 0 80px 30px rgba(0, 0, 0, 0.6),
+    inset 0 0 10px 4px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
+/* Rolling bar animation */
+@keyframes crt-roll {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+/* Subtle opacity flicker */
+@keyframes crt-flicker {
+  0% { opacity: 1; }
+  10% { opacity: 0.92; }
+  20% { opacity: 1; }
+  35% { opacity: 0.88; }
+  40% { opacity: 0.96; }
+  55% { opacity: 1; }
+  65% { opacity: 0.9; }
+  75% { opacity: 1; }
+  85% { opacity: 0.94; }
+  100% { opacity: 1; }
+}
