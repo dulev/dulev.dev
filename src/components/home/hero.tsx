@@ -21,7 +21,7 @@ const photoClip = `polygon(0% 0%, 100% 0%, 100% ${photoTrianglePct}%, 50% 100%, 
 
 function BookmarkPhoto() {
   return (
-    <div className="absolute bottom-0 right-8 translate-y-[35%] max-sm:right-4 z-10">
+    <div className="absolute bottom-0 right-12 translate-y-[35%] max-sm:right-4 z-10">
       <div className="relative w-[250px] max-sm:w-[190px]" style={{ height: TOTAL_H }}>
         {/* Shadow layer */}
         <div
