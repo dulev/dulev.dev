@@ -88,8 +88,8 @@ export function Design47() {
 
         /* ===== NAVIGATION ===== */
         .d47-nav {
-          padding: 18px 0;
-          margin-bottom: 16px;
+          padding: 36px 0 18px;
+          margin-bottom: 18px;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -98,20 +98,22 @@ export function Design47() {
         .d47-nav-brand {
           font-family: 'IBM Plex Mono', 'Courier New', monospace;
           font-weight: 700;
-          font-size: 0.9rem;
+          font-size: 1.15rem;
           letter-spacing: 1px;
-          text-transform: uppercase;
           color: #111111;
           text-decoration: none;
-          padding: 6px 16px;
+          padding: 0px 10px;
           border: 3px solid #111111;
           background: #C8FF00;
+          box-shadow: 4px 4px 0 #111111;
           transition: none;
         }
 
         .d47-nav-brand:hover {
           background: #111111;
           color: #C8FF00;
+          box-shadow: 6px 6px 0 #111111;
+          transform: translate(-2px, -2px);
         }
 
         .d47-nav-links {
@@ -126,16 +128,16 @@ export function Design47() {
           font-weight: 500;
           color: #111111;
           text-decoration: none;
-          padding: 6px 14px;
-          border: 2px solid #111111;
+          padding: 4px 14px;
+          border: 3px solid #111111;
           background: #fff;
-          box-shadow: 2px 2px 0 #111111;
+          box-shadow: 4px 4px 0 #111111;
           transition: none;
         }
 
         .d47-nav-link:hover {
-          box-shadow: 3px 3px 0 #111111;
-          transform: translate(-1px, -1px);
+          box-shadow: 6px 6px 0 #111111;
+          transform: translate(-2px, -2px);
         }
 
         /* ===== DASHED DIVIDER ===== */
@@ -209,7 +211,7 @@ export function Design47() {
           line-height: 1.05;
           margin: 0 0 24px;
           letter-spacing: -1px;
-          text-transform: uppercase;
+          text-transform: none;
           position: relative;
           z-index: 1;
           text-decoration: underline dashed #C8FF00;
@@ -367,6 +369,7 @@ export function Design47() {
 
         .d47-card-link--accent {
           background: #FF6B00;
+          font-weight: 700;
         }
 
         .d47-card-link--accent:hover {
@@ -406,6 +409,10 @@ export function Design47() {
           text-align: center;
           position: relative;
           transition: none;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
         }
 
         .d47-interest:nth-child(odd) .d47-interest-accent {
@@ -424,7 +431,7 @@ export function Design47() {
         .d47-interest-accent {
           display: block;
           width: 100%;
-          height: 3px;
+          height: 4px;
           position: absolute;
           top: 0;
           left: 0;
@@ -468,7 +475,7 @@ export function Design47() {
         .d47-footer {
           margin-top: 72px;
           background: #111111;
-          padding: 36px 32px;
+          padding: 36px 0;
         }
 
         .d47-footer-inner {
@@ -558,7 +565,7 @@ export function Design47() {
           {/* ===== NAVIGATION ===== */}
           <nav className="d47-nav">
             <Link to="/" className="d47-nav-brand">
-              DD
+              dulev.dev
             </Link>
             <div className="d47-nav-links">
               <a
@@ -694,7 +701,7 @@ export function Design47() {
         <footer className="d47-footer">
           <div className="d47-footer-inner">
             <div className="d47-footer-text">
-              Dimitar Dulev &middot; Design 47 &middot; Stamp Refined
+              dulev.dev &middot; Sofia, Bulgaria
             </div>
             <a href="mailto:dimitar@dulev.dev" className="d47-footer-link">
               Contact Me

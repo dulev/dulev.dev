@@ -1,8 +1,8 @@
 export const siteContent = {
   intro: {
     name: 'Dimitar Dulev',
-    tagline: 'senior fullstack dev. tinkerer. builder.',
-    bio: "7+ years building web apps. I like shipping side projects, breaking things, and learning by doing.",
+    tagline: 'fullstack dev & tinkerer.',
+    bio: "7+ years professional experience building software. I like shipping side projects, breaking things, and learning by doing.",
     links: {
       github: 'https://github.com/dulev',
       linkedin: 'https://linkedin.com/in/dulev',
