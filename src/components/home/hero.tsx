@@ -17,41 +17,45 @@ const bookmarkClip = `polygon(0% 0%, 100% 0%, 100% ${TRIANGLE_PCT}%, 50% 100%, 0
 // 230.2 / 272 = 84.632...% — exact same triangle angle as inner white area.
 const innerH = BOOKMARK_H - 2 * BORDER;
 const photoWrapperH = TOTAL_H - BORDER;
-const photoTrianglePct = (OVERFLOW + BORDER + innerH * TRIANGLE_PCT / 100) / photoWrapperH * 100;
+const photoTrianglePct =
+  ((OVERFLOW + BORDER + (innerH * TRIANGLE_PCT) / 100) / photoWrapperH) * 100;
 const photoClip = `polygon(0% 0%, 100% 0%, 100% ${photoTrianglePct}%, 50% 100%, 0% ${photoTrianglePct}%)`;
 
 function BookmarkPhoto({ enabled }: { enabled: boolean }) {
   return (
     <ScanReveal enabled={enabled}>
       <div className="absolute bottom-0 right-12 translate-y-[35%] max-sm:right-4 z-10">
-        <div className="relative w-[250px] max-sm:w-[190px]" style={{ height: TOTAL_H }}>
-        {/* Shadow layer */}
         <div
-          className="absolute bottom-[-4px] left-[4px] w-full bg-text"
-          style={{ height: BOOKMARK_H, clipPath: bookmarkClip }}
-        />
-        {/* Border layer */}
-        <div
-          className="absolute bottom-0 left-0 w-full bg-text"
-          style={{ height: BOOKMARK_H, clipPath: bookmarkClip }}
+          className="relative w-[250px] max-sm:w-[190px]"
+          style={{ height: TOTAL_H }}
         >
-          {/* White bg */}
+          {/* Shadow layer */}
           <div
-            className="absolute inset-[3px] bg-card"
-            style={{ clipPath: bookmarkClip }}
+            className="absolute bottom-[-4px] left-[4px] w-full bg-text"
+            style={{ height: BOOKMARK_H, clipPath: bookmarkClip }}
           />
-        </div>
-        {/* Photo — inset by BORDER on left/right/bottom, extends above at top */}
-        <div
-          className="absolute top-0 left-[3px] right-[3px] bottom-[3px]"
-          style={{ clipPath: photoClip }}
-        >
-          <img
-            src="/images/photoshoot_dulev.png"
-            alt="Photo of Dulev"
-            className="w-full h-full object-cover object-top"
-          />
-        </div>
+          {/* Border layer */}
+          <div
+            className="absolute bottom-0 left-0 w-full bg-text"
+            style={{ height: BOOKMARK_H, clipPath: bookmarkClip }}
+          >
+            {/* White bg */}
+            <div
+              className="absolute inset-[3px] bg-border"
+              style={{ clipPath: bookmarkClip }}
+            />
+          </div>
+          {/* Photo — inset by BORDER on left/right/bottom, extends above at top */}
+          <div
+            className="absolute top-0 left-[3px] right-[3px] bottom-[3px]"
+            style={{ clipPath: photoClip }}
+          >
+            <img
+              src="/images/photoshoot_dulev.png"
+              alt="Photo of Dulev"
+              className="w-full h-full object-cover object-top"
+            />
+          </div>
         </div>
       </div>
     </ScanReveal>

@@ -1,4 +1,10 @@
-import { useEffect, useState, useRef, type ReactNode } from "react";
+import {
+  useEffect,
+  useState,
+  useRef,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { Portal } from "@radix-ui/react-portal";
 import { atom, getDefaultStore } from "jotai";
@@ -160,13 +166,20 @@ export function ScanReveal({
   const { rows } = gridRef.current;
   const done = phase === "done";
 
-  let clipPath: string | undefined;
+  let maskStyle: CSSProperties | undefined;
   if (phase === "hidden" || activeRow < 0) {
-    clipPath = "inset(-50px -50px 100% -50px)";
+    maskStyle = {
+      WebkitMaskImage: "linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1))",
+      maskImage: "linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1))",
+    };
   } else if (done) {
-    clipPath = undefined;
+    maskStyle = undefined;
   } else {
-    clipPath = `inset(-50px -50px ${100 - (activeRow / rows) * 100}% -50px)`;
+    const pct = (activeRow / rows) * 100;
+    maskStyle = {
+      WebkitMaskImage: `linear-gradient(to bottom, black ${pct}%, rgba(0,0,0,0.1) ${pct}%)`,
+      maskImage: `linear-gradient(to bottom, black ${pct}%, rgba(0,0,0,0.1) ${pct}%)`,
+    };
   }
 
   const showBar = phase === "animating" && activeRow >= 0;
@@ -183,7 +196,7 @@ export function ScanReveal({
           overflow: "hidden",
         }}
       />
-      <Slot ref={childRef} style={{ clipPath }}>
+      <Slot ref={childRef} style={maskStyle}>
         {children}
       </Slot>
       {showBar && rect && (
