@@ -11,7 +11,7 @@ import {
 import { SoundProvider, SoundToggle } from '~/components/sound-provider'
 import appCss from '~/styles/app.css?url'
 
-const DESIGN_ROUTES = Array.from({ length: 47 }, (_, i) => `/${i + 1}`)
+const DESIGN_ROUTES = Array.from({ length: 47 }, (_, i) => `/designs/${i + 1}`)
 
 function useArrowKeyNavigation() {
   const router = useRouter()
@@ -25,9 +25,9 @@ function useArrowKeyNavigation() {
       const currentPath = matches[matches.length - 1]?.fullPath ?? '/'
       const currentIndex = DESIGN_ROUTES.indexOf(currentPath)
 
-      if (currentPath === '/') {
+      if (currentPath === '/designs' || currentPath === '/designs/') {
         if (e.key === 'ArrowRight') {
-          router.navigate({ to: '/1' as '/' })
+          router.navigate({ to: '/designs/1' as '/' })
         }
         return
       }
@@ -36,7 +36,7 @@ function useArrowKeyNavigation() {
 
       if (e.key === 'ArrowLeft') {
         if (currentIndex === 0) {
-          router.navigate({ to: '/' })
+          router.navigate({ to: '/designs' as '/' })
         } else {
           router.navigate({ to: DESIGN_ROUTES[currentIndex - 1] as '/' })
         }
@@ -57,11 +57,11 @@ export const Route = createRootRoute({
     meta: [
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'Dimitar Dulev — Senior Fullstack Dev' },
+      { title: 'Dimitar Dulev — Fullstack Dev & Tinkerer' },
       {
         name: 'description',
         content:
-          'Personal site of Dimitar Dulev. Senior fullstack developer, tinkerer, builder.',
+          'Personal site of Dimitar Dulev. Fullstack developer & tinkerer.',
       },
     ],
     links: [

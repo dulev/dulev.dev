@@ -9,982 +9,666 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './app/__root'
-import { Route as R9RouteImport } from './app/9'
-import { Route as R8RouteImport } from './app/8'
-import { Route as R7RouteImport } from './app/7'
-import { Route as R6RouteImport } from './app/6'
-import { Route as R5RouteImport } from './app/5'
-import { Route as R47RouteImport } from './app/47'
-import { Route as R46RouteImport } from './app/46'
-import { Route as R45RouteImport } from './app/45'
-import { Route as R44RouteImport } from './app/44'
-import { Route as R43RouteImport } from './app/43'
-import { Route as R42RouteImport } from './app/42'
-import { Route as R41RouteImport } from './app/41'
-import { Route as R40RouteImport } from './app/40'
-import { Route as R4RouteImport } from './app/4'
-import { Route as R39RouteImport } from './app/39'
-import { Route as R38RouteImport } from './app/38'
-import { Route as R37RouteImport } from './app/37'
-import { Route as R36RouteImport } from './app/36'
-import { Route as R35RouteImport } from './app/35'
-import { Route as R34RouteImport } from './app/34'
-import { Route as R33RouteImport } from './app/33'
-import { Route as R32RouteImport } from './app/32'
-import { Route as R31RouteImport } from './app/31'
-import { Route as R30RouteImport } from './app/30'
-import { Route as R3RouteImport } from './app/3'
-import { Route as R29RouteImport } from './app/29'
-import { Route as R28RouteImport } from './app/28'
-import { Route as R27RouteImport } from './app/27'
-import { Route as R26RouteImport } from './app/26'
-import { Route as R25RouteImport } from './app/25'
-import { Route as R24RouteImport } from './app/24'
-import { Route as R23RouteImport } from './app/23'
-import { Route as R22RouteImport } from './app/22'
-import { Route as R21RouteImport } from './app/21'
-import { Route as R20RouteImport } from './app/20'
-import { Route as R2RouteImport } from './app/2'
-import { Route as R19RouteImport } from './app/19'
-import { Route as R18RouteImport } from './app/18'
-import { Route as R17RouteImport } from './app/17'
-import { Route as R16RouteImport } from './app/16'
-import { Route as R15RouteImport } from './app/15'
-import { Route as R14RouteImport } from './app/14'
-import { Route as R13RouteImport } from './app/13'
-import { Route as R12RouteImport } from './app/12'
-import { Route as R11RouteImport } from './app/11'
-import { Route as R10RouteImport } from './app/10'
-import { Route as R1RouteImport } from './app/1'
 import { Route as IndexRouteImport } from './app/index'
+import { Route as DesignsIndexRouteImport } from './app/designs/index'
+import { Route as Designs9RouteImport } from './app/designs/9'
+import { Route as Designs8RouteImport } from './app/designs/8'
+import { Route as Designs7RouteImport } from './app/designs/7'
+import { Route as Designs6RouteImport } from './app/designs/6'
+import { Route as Designs5RouteImport } from './app/designs/5'
+import { Route as Designs47RouteImport } from './app/designs/47'
+import { Route as Designs46RouteImport } from './app/designs/46'
+import { Route as Designs45RouteImport } from './app/designs/45'
+import { Route as Designs44RouteImport } from './app/designs/44'
+import { Route as Designs43RouteImport } from './app/designs/43'
+import { Route as Designs42RouteImport } from './app/designs/42'
+import { Route as Designs41RouteImport } from './app/designs/41'
+import { Route as Designs40RouteImport } from './app/designs/40'
+import { Route as Designs4RouteImport } from './app/designs/4'
+import { Route as Designs39RouteImport } from './app/designs/39'
+import { Route as Designs38RouteImport } from './app/designs/38'
+import { Route as Designs37RouteImport } from './app/designs/37'
+import { Route as Designs36RouteImport } from './app/designs/36'
+import { Route as Designs35RouteImport } from './app/designs/35'
+import { Route as Designs34RouteImport } from './app/designs/34'
+import { Route as Designs33RouteImport } from './app/designs/33'
+import { Route as Designs32RouteImport } from './app/designs/32'
+import { Route as Designs31RouteImport } from './app/designs/31'
+import { Route as Designs30RouteImport } from './app/designs/30'
+import { Route as Designs3RouteImport } from './app/designs/3'
+import { Route as Designs29RouteImport } from './app/designs/29'
+import { Route as Designs28RouteImport } from './app/designs/28'
+import { Route as Designs27RouteImport } from './app/designs/27'
+import { Route as Designs26RouteImport } from './app/designs/26'
+import { Route as Designs25RouteImport } from './app/designs/25'
+import { Route as Designs24RouteImport } from './app/designs/24'
+import { Route as Designs23RouteImport } from './app/designs/23'
+import { Route as Designs22RouteImport } from './app/designs/22'
+import { Route as Designs21RouteImport } from './app/designs/21'
+import { Route as Designs20RouteImport } from './app/designs/20'
+import { Route as Designs2RouteImport } from './app/designs/2'
+import { Route as Designs19RouteImport } from './app/designs/19'
+import { Route as Designs18RouteImport } from './app/designs/18'
+import { Route as Designs17RouteImport } from './app/designs/17'
+import { Route as Designs16RouteImport } from './app/designs/16'
+import { Route as Designs15RouteImport } from './app/designs/15'
+import { Route as Designs14RouteImport } from './app/designs/14'
+import { Route as Designs13RouteImport } from './app/designs/13'
+import { Route as Designs12RouteImport } from './app/designs/12'
+import { Route as Designs11RouteImport } from './app/designs/11'
+import { Route as Designs10RouteImport } from './app/designs/10'
+import { Route as Designs1RouteImport } from './app/designs/1'
 
-const R9Route = R9RouteImport.update({
-  id: '/9',
-  path: '/9',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R8Route = R8RouteImport.update({
-  id: '/8',
-  path: '/8',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R7Route = R7RouteImport.update({
-  id: '/7',
-  path: '/7',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R6Route = R6RouteImport.update({
-  id: '/6',
-  path: '/6',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R5Route = R5RouteImport.update({
-  id: '/5',
-  path: '/5',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R47Route = R47RouteImport.update({
-  id: '/47',
-  path: '/47',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R46Route = R46RouteImport.update({
-  id: '/46',
-  path: '/46',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R45Route = R45RouteImport.update({
-  id: '/45',
-  path: '/45',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R44Route = R44RouteImport.update({
-  id: '/44',
-  path: '/44',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R43Route = R43RouteImport.update({
-  id: '/43',
-  path: '/43',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R42Route = R42RouteImport.update({
-  id: '/42',
-  path: '/42',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R41Route = R41RouteImport.update({
-  id: '/41',
-  path: '/41',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R40Route = R40RouteImport.update({
-  id: '/40',
-  path: '/40',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R4Route = R4RouteImport.update({
-  id: '/4',
-  path: '/4',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R39Route = R39RouteImport.update({
-  id: '/39',
-  path: '/39',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R38Route = R38RouteImport.update({
-  id: '/38',
-  path: '/38',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R37Route = R37RouteImport.update({
-  id: '/37',
-  path: '/37',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R36Route = R36RouteImport.update({
-  id: '/36',
-  path: '/36',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R35Route = R35RouteImport.update({
-  id: '/35',
-  path: '/35',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R34Route = R34RouteImport.update({
-  id: '/34',
-  path: '/34',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R33Route = R33RouteImport.update({
-  id: '/33',
-  path: '/33',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R32Route = R32RouteImport.update({
-  id: '/32',
-  path: '/32',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R31Route = R31RouteImport.update({
-  id: '/31',
-  path: '/31',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R30Route = R30RouteImport.update({
-  id: '/30',
-  path: '/30',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R3Route = R3RouteImport.update({
-  id: '/3',
-  path: '/3',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R29Route = R29RouteImport.update({
-  id: '/29',
-  path: '/29',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R28Route = R28RouteImport.update({
-  id: '/28',
-  path: '/28',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R27Route = R27RouteImport.update({
-  id: '/27',
-  path: '/27',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R26Route = R26RouteImport.update({
-  id: '/26',
-  path: '/26',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R25Route = R25RouteImport.update({
-  id: '/25',
-  path: '/25',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R24Route = R24RouteImport.update({
-  id: '/24',
-  path: '/24',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R23Route = R23RouteImport.update({
-  id: '/23',
-  path: '/23',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R22Route = R22RouteImport.update({
-  id: '/22',
-  path: '/22',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R21Route = R21RouteImport.update({
-  id: '/21',
-  path: '/21',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R20Route = R20RouteImport.update({
-  id: '/20',
-  path: '/20',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R2Route = R2RouteImport.update({
-  id: '/2',
-  path: '/2',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R19Route = R19RouteImport.update({
-  id: '/19',
-  path: '/19',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R18Route = R18RouteImport.update({
-  id: '/18',
-  path: '/18',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R17Route = R17RouteImport.update({
-  id: '/17',
-  path: '/17',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R16Route = R16RouteImport.update({
-  id: '/16',
-  path: '/16',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R15Route = R15RouteImport.update({
-  id: '/15',
-  path: '/15',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R14Route = R14RouteImport.update({
-  id: '/14',
-  path: '/14',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R13Route = R13RouteImport.update({
-  id: '/13',
-  path: '/13',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R12Route = R12RouteImport.update({
-  id: '/12',
-  path: '/12',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R11Route = R11RouteImport.update({
-  id: '/11',
-  path: '/11',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R10Route = R10RouteImport.update({
-  id: '/10',
-  path: '/10',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const R1Route = R1RouteImport.update({
-  id: '/1',
-  path: '/1',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DesignsIndexRoute = DesignsIndexRouteImport.update({
+  id: '/designs/',
+  path: '/designs/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs9Route = Designs9RouteImport.update({
+  id: '/designs/9',
+  path: '/designs/9',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs8Route = Designs8RouteImport.update({
+  id: '/designs/8',
+  path: '/designs/8',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs7Route = Designs7RouteImport.update({
+  id: '/designs/7',
+  path: '/designs/7',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs6Route = Designs6RouteImport.update({
+  id: '/designs/6',
+  path: '/designs/6',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs5Route = Designs5RouteImport.update({
+  id: '/designs/5',
+  path: '/designs/5',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs47Route = Designs47RouteImport.update({
+  id: '/designs/47',
+  path: '/designs/47',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs46Route = Designs46RouteImport.update({
+  id: '/designs/46',
+  path: '/designs/46',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs45Route = Designs45RouteImport.update({
+  id: '/designs/45',
+  path: '/designs/45',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs44Route = Designs44RouteImport.update({
+  id: '/designs/44',
+  path: '/designs/44',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs43Route = Designs43RouteImport.update({
+  id: '/designs/43',
+  path: '/designs/43',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs42Route = Designs42RouteImport.update({
+  id: '/designs/42',
+  path: '/designs/42',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs41Route = Designs41RouteImport.update({
+  id: '/designs/41',
+  path: '/designs/41',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs40Route = Designs40RouteImport.update({
+  id: '/designs/40',
+  path: '/designs/40',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs4Route = Designs4RouteImport.update({
+  id: '/designs/4',
+  path: '/designs/4',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs39Route = Designs39RouteImport.update({
+  id: '/designs/39',
+  path: '/designs/39',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs38Route = Designs38RouteImport.update({
+  id: '/designs/38',
+  path: '/designs/38',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs37Route = Designs37RouteImport.update({
+  id: '/designs/37',
+  path: '/designs/37',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs36Route = Designs36RouteImport.update({
+  id: '/designs/36',
+  path: '/designs/36',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs35Route = Designs35RouteImport.update({
+  id: '/designs/35',
+  path: '/designs/35',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs34Route = Designs34RouteImport.update({
+  id: '/designs/34',
+  path: '/designs/34',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs33Route = Designs33RouteImport.update({
+  id: '/designs/33',
+  path: '/designs/33',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs32Route = Designs32RouteImport.update({
+  id: '/designs/32',
+  path: '/designs/32',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs31Route = Designs31RouteImport.update({
+  id: '/designs/31',
+  path: '/designs/31',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs30Route = Designs30RouteImport.update({
+  id: '/designs/30',
+  path: '/designs/30',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs3Route = Designs3RouteImport.update({
+  id: '/designs/3',
+  path: '/designs/3',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs29Route = Designs29RouteImport.update({
+  id: '/designs/29',
+  path: '/designs/29',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs28Route = Designs28RouteImport.update({
+  id: '/designs/28',
+  path: '/designs/28',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs27Route = Designs27RouteImport.update({
+  id: '/designs/27',
+  path: '/designs/27',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs26Route = Designs26RouteImport.update({
+  id: '/designs/26',
+  path: '/designs/26',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs25Route = Designs25RouteImport.update({
+  id: '/designs/25',
+  path: '/designs/25',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs24Route = Designs24RouteImport.update({
+  id: '/designs/24',
+  path: '/designs/24',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs23Route = Designs23RouteImport.update({
+  id: '/designs/23',
+  path: '/designs/23',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs22Route = Designs22RouteImport.update({
+  id: '/designs/22',
+  path: '/designs/22',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs21Route = Designs21RouteImport.update({
+  id: '/designs/21',
+  path: '/designs/21',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs20Route = Designs20RouteImport.update({
+  id: '/designs/20',
+  path: '/designs/20',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs2Route = Designs2RouteImport.update({
+  id: '/designs/2',
+  path: '/designs/2',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs19Route = Designs19RouteImport.update({
+  id: '/designs/19',
+  path: '/designs/19',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs18Route = Designs18RouteImport.update({
+  id: '/designs/18',
+  path: '/designs/18',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs17Route = Designs17RouteImport.update({
+  id: '/designs/17',
+  path: '/designs/17',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs16Route = Designs16RouteImport.update({
+  id: '/designs/16',
+  path: '/designs/16',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs15Route = Designs15RouteImport.update({
+  id: '/designs/15',
+  path: '/designs/15',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs14Route = Designs14RouteImport.update({
+  id: '/designs/14',
+  path: '/designs/14',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs13Route = Designs13RouteImport.update({
+  id: '/designs/13',
+  path: '/designs/13',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs12Route = Designs12RouteImport.update({
+  id: '/designs/12',
+  path: '/designs/12',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs11Route = Designs11RouteImport.update({
+  id: '/designs/11',
+  path: '/designs/11',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs10Route = Designs10RouteImport.update({
+  id: '/designs/10',
+  path: '/designs/10',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Designs1Route = Designs1RouteImport.update({
+  id: '/designs/1',
+  path: '/designs/1',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/1': typeof R1Route
-  '/10': typeof R10Route
-  '/11': typeof R11Route
-  '/12': typeof R12Route
-  '/13': typeof R13Route
-  '/14': typeof R14Route
-  '/15': typeof R15Route
-  '/16': typeof R16Route
-  '/17': typeof R17Route
-  '/18': typeof R18Route
-  '/19': typeof R19Route
-  '/2': typeof R2Route
-  '/20': typeof R20Route
-  '/21': typeof R21Route
-  '/22': typeof R22Route
-  '/23': typeof R23Route
-  '/24': typeof R24Route
-  '/25': typeof R25Route
-  '/26': typeof R26Route
-  '/27': typeof R27Route
-  '/28': typeof R28Route
-  '/29': typeof R29Route
-  '/3': typeof R3Route
-  '/30': typeof R30Route
-  '/31': typeof R31Route
-  '/32': typeof R32Route
-  '/33': typeof R33Route
-  '/34': typeof R34Route
-  '/35': typeof R35Route
-  '/36': typeof R36Route
-  '/37': typeof R37Route
-  '/38': typeof R38Route
-  '/39': typeof R39Route
-  '/4': typeof R4Route
-  '/40': typeof R40Route
-  '/41': typeof R41Route
-  '/42': typeof R42Route
-  '/43': typeof R43Route
-  '/44': typeof R44Route
-  '/45': typeof R45Route
-  '/46': typeof R46Route
-  '/47': typeof R47Route
-  '/5': typeof R5Route
-  '/6': typeof R6Route
-  '/7': typeof R7Route
-  '/8': typeof R8Route
-  '/9': typeof R9Route
+  '/designs/1': typeof Designs1Route
+  '/designs/10': typeof Designs10Route
+  '/designs/11': typeof Designs11Route
+  '/designs/12': typeof Designs12Route
+  '/designs/13': typeof Designs13Route
+  '/designs/14': typeof Designs14Route
+  '/designs/15': typeof Designs15Route
+  '/designs/16': typeof Designs16Route
+  '/designs/17': typeof Designs17Route
+  '/designs/18': typeof Designs18Route
+  '/designs/19': typeof Designs19Route
+  '/designs/2': typeof Designs2Route
+  '/designs/20': typeof Designs20Route
+  '/designs/21': typeof Designs21Route
+  '/designs/22': typeof Designs22Route
+  '/designs/23': typeof Designs23Route
+  '/designs/24': typeof Designs24Route
+  '/designs/25': typeof Designs25Route
+  '/designs/26': typeof Designs26Route
+  '/designs/27': typeof Designs27Route
+  '/designs/28': typeof Designs28Route
+  '/designs/29': typeof Designs29Route
+  '/designs/3': typeof Designs3Route
+  '/designs/30': typeof Designs30Route
+  '/designs/31': typeof Designs31Route
+  '/designs/32': typeof Designs32Route
+  '/designs/33': typeof Designs33Route
+  '/designs/34': typeof Designs34Route
+  '/designs/35': typeof Designs35Route
+  '/designs/36': typeof Designs36Route
+  '/designs/37': typeof Designs37Route
+  '/designs/38': typeof Designs38Route
+  '/designs/39': typeof Designs39Route
+  '/designs/4': typeof Designs4Route
+  '/designs/40': typeof Designs40Route
+  '/designs/41': typeof Designs41Route
+  '/designs/42': typeof Designs42Route
+  '/designs/43': typeof Designs43Route
+  '/designs/44': typeof Designs44Route
+  '/designs/45': typeof Designs45Route
+  '/designs/46': typeof Designs46Route
+  '/designs/47': typeof Designs47Route
+  '/designs/5': typeof Designs5Route
+  '/designs/6': typeof Designs6Route
+  '/designs/7': typeof Designs7Route
+  '/designs/8': typeof Designs8Route
+  '/designs/9': typeof Designs9Route
+  '/designs/': typeof DesignsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/1': typeof R1Route
-  '/10': typeof R10Route
-  '/11': typeof R11Route
-  '/12': typeof R12Route
-  '/13': typeof R13Route
-  '/14': typeof R14Route
-  '/15': typeof R15Route
-  '/16': typeof R16Route
-  '/17': typeof R17Route
-  '/18': typeof R18Route
-  '/19': typeof R19Route
-  '/2': typeof R2Route
-  '/20': typeof R20Route
-  '/21': typeof R21Route
-  '/22': typeof R22Route
-  '/23': typeof R23Route
-  '/24': typeof R24Route
-  '/25': typeof R25Route
-  '/26': typeof R26Route
-  '/27': typeof R27Route
-  '/28': typeof R28Route
-  '/29': typeof R29Route
-  '/3': typeof R3Route
-  '/30': typeof R30Route
-  '/31': typeof R31Route
-  '/32': typeof R32Route
-  '/33': typeof R33Route
-  '/34': typeof R34Route
-  '/35': typeof R35Route
-  '/36': typeof R36Route
-  '/37': typeof R37Route
-  '/38': typeof R38Route
-  '/39': typeof R39Route
-  '/4': typeof R4Route
-  '/40': typeof R40Route
-  '/41': typeof R41Route
-  '/42': typeof R42Route
-  '/43': typeof R43Route
-  '/44': typeof R44Route
-  '/45': typeof R45Route
-  '/46': typeof R46Route
-  '/47': typeof R47Route
-  '/5': typeof R5Route
-  '/6': typeof R6Route
-  '/7': typeof R7Route
-  '/8': typeof R8Route
-  '/9': typeof R9Route
+  '/designs/1': typeof Designs1Route
+  '/designs/10': typeof Designs10Route
+  '/designs/11': typeof Designs11Route
+  '/designs/12': typeof Designs12Route
+  '/designs/13': typeof Designs13Route
+  '/designs/14': typeof Designs14Route
+  '/designs/15': typeof Designs15Route
+  '/designs/16': typeof Designs16Route
+  '/designs/17': typeof Designs17Route
+  '/designs/18': typeof Designs18Route
+  '/designs/19': typeof Designs19Route
+  '/designs/2': typeof Designs2Route
+  '/designs/20': typeof Designs20Route
+  '/designs/21': typeof Designs21Route
+  '/designs/22': typeof Designs22Route
+  '/designs/23': typeof Designs23Route
+  '/designs/24': typeof Designs24Route
+  '/designs/25': typeof Designs25Route
+  '/designs/26': typeof Designs26Route
+  '/designs/27': typeof Designs27Route
+  '/designs/28': typeof Designs28Route
+  '/designs/29': typeof Designs29Route
+  '/designs/3': typeof Designs3Route
+  '/designs/30': typeof Designs30Route
+  '/designs/31': typeof Designs31Route
+  '/designs/32': typeof Designs32Route
+  '/designs/33': typeof Designs33Route
+  '/designs/34': typeof Designs34Route
+  '/designs/35': typeof Designs35Route
+  '/designs/36': typeof Designs36Route
+  '/designs/37': typeof Designs37Route
+  '/designs/38': typeof Designs38Route
+  '/designs/39': typeof Designs39Route
+  '/designs/4': typeof Designs4Route
+  '/designs/40': typeof Designs40Route
+  '/designs/41': typeof Designs41Route
+  '/designs/42': typeof Designs42Route
+  '/designs/43': typeof Designs43Route
+  '/designs/44': typeof Designs44Route
+  '/designs/45': typeof Designs45Route
+  '/designs/46': typeof Designs46Route
+  '/designs/47': typeof Designs47Route
+  '/designs/5': typeof Designs5Route
+  '/designs/6': typeof Designs6Route
+  '/designs/7': typeof Designs7Route
+  '/designs/8': typeof Designs8Route
+  '/designs/9': typeof Designs9Route
+  '/designs': typeof DesignsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/1': typeof R1Route
-  '/10': typeof R10Route
-  '/11': typeof R11Route
-  '/12': typeof R12Route
-  '/13': typeof R13Route
-  '/14': typeof R14Route
-  '/15': typeof R15Route
-  '/16': typeof R16Route
-  '/17': typeof R17Route
-  '/18': typeof R18Route
-  '/19': typeof R19Route
-  '/2': typeof R2Route
-  '/20': typeof R20Route
-  '/21': typeof R21Route
-  '/22': typeof R22Route
-  '/23': typeof R23Route
-  '/24': typeof R24Route
-  '/25': typeof R25Route
-  '/26': typeof R26Route
-  '/27': typeof R27Route
-  '/28': typeof R28Route
-  '/29': typeof R29Route
-  '/3': typeof R3Route
-  '/30': typeof R30Route
-  '/31': typeof R31Route
-  '/32': typeof R32Route
-  '/33': typeof R33Route
-  '/34': typeof R34Route
-  '/35': typeof R35Route
-  '/36': typeof R36Route
-  '/37': typeof R37Route
-  '/38': typeof R38Route
-  '/39': typeof R39Route
-  '/4': typeof R4Route
-  '/40': typeof R40Route
-  '/41': typeof R41Route
-  '/42': typeof R42Route
-  '/43': typeof R43Route
-  '/44': typeof R44Route
-  '/45': typeof R45Route
-  '/46': typeof R46Route
-  '/47': typeof R47Route
-  '/5': typeof R5Route
-  '/6': typeof R6Route
-  '/7': typeof R7Route
-  '/8': typeof R8Route
-  '/9': typeof R9Route
+  '/designs/1': typeof Designs1Route
+  '/designs/10': typeof Designs10Route
+  '/designs/11': typeof Designs11Route
+  '/designs/12': typeof Designs12Route
+  '/designs/13': typeof Designs13Route
+  '/designs/14': typeof Designs14Route
+  '/designs/15': typeof Designs15Route
+  '/designs/16': typeof Designs16Route
+  '/designs/17': typeof Designs17Route
+  '/designs/18': typeof Designs18Route
+  '/designs/19': typeof Designs19Route
+  '/designs/2': typeof Designs2Route
+  '/designs/20': typeof Designs20Route
+  '/designs/21': typeof Designs21Route
+  '/designs/22': typeof Designs22Route
+  '/designs/23': typeof Designs23Route
+  '/designs/24': typeof Designs24Route
+  '/designs/25': typeof Designs25Route
+  '/designs/26': typeof Designs26Route
+  '/designs/27': typeof Designs27Route
+  '/designs/28': typeof Designs28Route
+  '/designs/29': typeof Designs29Route
+  '/designs/3': typeof Designs3Route
+  '/designs/30': typeof Designs30Route
+  '/designs/31': typeof Designs31Route
+  '/designs/32': typeof Designs32Route
+  '/designs/33': typeof Designs33Route
+  '/designs/34': typeof Designs34Route
+  '/designs/35': typeof Designs35Route
+  '/designs/36': typeof Designs36Route
+  '/designs/37': typeof Designs37Route
+  '/designs/38': typeof Designs38Route
+  '/designs/39': typeof Designs39Route
+  '/designs/4': typeof Designs4Route
+  '/designs/40': typeof Designs40Route
+  '/designs/41': typeof Designs41Route
+  '/designs/42': typeof Designs42Route
+  '/designs/43': typeof Designs43Route
+  '/designs/44': typeof Designs44Route
+  '/designs/45': typeof Designs45Route
+  '/designs/46': typeof Designs46Route
+  '/designs/47': typeof Designs47Route
+  '/designs/5': typeof Designs5Route
+  '/designs/6': typeof Designs6Route
+  '/designs/7': typeof Designs7Route
+  '/designs/8': typeof Designs8Route
+  '/designs/9': typeof Designs9Route
+  '/designs/': typeof DesignsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/1'
-    | '/10'
-    | '/11'
-    | '/12'
-    | '/13'
-    | '/14'
-    | '/15'
-    | '/16'
-    | '/17'
-    | '/18'
-    | '/19'
-    | '/2'
-    | '/20'
-    | '/21'
-    | '/22'
-    | '/23'
-    | '/24'
-    | '/25'
-    | '/26'
-    | '/27'
-    | '/28'
-    | '/29'
-    | '/3'
-    | '/30'
-    | '/31'
-    | '/32'
-    | '/33'
-    | '/34'
-    | '/35'
-    | '/36'
-    | '/37'
-    | '/38'
-    | '/39'
-    | '/4'
-    | '/40'
-    | '/41'
-    | '/42'
-    | '/43'
-    | '/44'
-    | '/45'
-    | '/46'
-    | '/47'
-    | '/5'
-    | '/6'
-    | '/7'
-    | '/8'
-    | '/9'
+    | '/designs/1'
+    | '/designs/10'
+    | '/designs/11'
+    | '/designs/12'
+    | '/designs/13'
+    | '/designs/14'
+    | '/designs/15'
+    | '/designs/16'
+    | '/designs/17'
+    | '/designs/18'
+    | '/designs/19'
+    | '/designs/2'
+    | '/designs/20'
+    | '/designs/21'
+    | '/designs/22'
+    | '/designs/23'
+    | '/designs/24'
+    | '/designs/25'
+    | '/designs/26'
+    | '/designs/27'
+    | '/designs/28'
+    | '/designs/29'
+    | '/designs/3'
+    | '/designs/30'
+    | '/designs/31'
+    | '/designs/32'
+    | '/designs/33'
+    | '/designs/34'
+    | '/designs/35'
+    | '/designs/36'
+    | '/designs/37'
+    | '/designs/38'
+    | '/designs/39'
+    | '/designs/4'
+    | '/designs/40'
+    | '/designs/41'
+    | '/designs/42'
+    | '/designs/43'
+    | '/designs/44'
+    | '/designs/45'
+    | '/designs/46'
+    | '/designs/47'
+    | '/designs/5'
+    | '/designs/6'
+    | '/designs/7'
+    | '/designs/8'
+    | '/designs/9'
+    | '/designs/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/1'
-    | '/10'
-    | '/11'
-    | '/12'
-    | '/13'
-    | '/14'
-    | '/15'
-    | '/16'
-    | '/17'
-    | '/18'
-    | '/19'
-    | '/2'
-    | '/20'
-    | '/21'
-    | '/22'
-    | '/23'
-    | '/24'
-    | '/25'
-    | '/26'
-    | '/27'
-    | '/28'
-    | '/29'
-    | '/3'
-    | '/30'
-    | '/31'
-    | '/32'
-    | '/33'
-    | '/34'
-    | '/35'
-    | '/36'
-    | '/37'
-    | '/38'
-    | '/39'
-    | '/4'
-    | '/40'
-    | '/41'
-    | '/42'
-    | '/43'
-    | '/44'
-    | '/45'
-    | '/46'
-    | '/47'
-    | '/5'
-    | '/6'
-    | '/7'
-    | '/8'
-    | '/9'
+    | '/designs/1'
+    | '/designs/10'
+    | '/designs/11'
+    | '/designs/12'
+    | '/designs/13'
+    | '/designs/14'
+    | '/designs/15'
+    | '/designs/16'
+    | '/designs/17'
+    | '/designs/18'
+    | '/designs/19'
+    | '/designs/2'
+    | '/designs/20'
+    | '/designs/21'
+    | '/designs/22'
+    | '/designs/23'
+    | '/designs/24'
+    | '/designs/25'
+    | '/designs/26'
+    | '/designs/27'
+    | '/designs/28'
+    | '/designs/29'
+    | '/designs/3'
+    | '/designs/30'
+    | '/designs/31'
+    | '/designs/32'
+    | '/designs/33'
+    | '/designs/34'
+    | '/designs/35'
+    | '/designs/36'
+    | '/designs/37'
+    | '/designs/38'
+    | '/designs/39'
+    | '/designs/4'
+    | '/designs/40'
+    | '/designs/41'
+    | '/designs/42'
+    | '/designs/43'
+    | '/designs/44'
+    | '/designs/45'
+    | '/designs/46'
+    | '/designs/47'
+    | '/designs/5'
+    | '/designs/6'
+    | '/designs/7'
+    | '/designs/8'
+    | '/designs/9'
+    | '/designs'
   id:
     | '__root__'
     | '/'
-    | '/1'
-    | '/10'
-    | '/11'
-    | '/12'
-    | '/13'
-    | '/14'
-    | '/15'
-    | '/16'
-    | '/17'
-    | '/18'
-    | '/19'
-    | '/2'
-    | '/20'
-    | '/21'
-    | '/22'
-    | '/23'
-    | '/24'
-    | '/25'
-    | '/26'
-    | '/27'
-    | '/28'
-    | '/29'
-    | '/3'
-    | '/30'
-    | '/31'
-    | '/32'
-    | '/33'
-    | '/34'
-    | '/35'
-    | '/36'
-    | '/37'
-    | '/38'
-    | '/39'
-    | '/4'
-    | '/40'
-    | '/41'
-    | '/42'
-    | '/43'
-    | '/44'
-    | '/45'
-    | '/46'
-    | '/47'
-    | '/5'
-    | '/6'
-    | '/7'
-    | '/8'
-    | '/9'
+    | '/designs/1'
+    | '/designs/10'
+    | '/designs/11'
+    | '/designs/12'
+    | '/designs/13'
+    | '/designs/14'
+    | '/designs/15'
+    | '/designs/16'
+    | '/designs/17'
+    | '/designs/18'
+    | '/designs/19'
+    | '/designs/2'
+    | '/designs/20'
+    | '/designs/21'
+    | '/designs/22'
+    | '/designs/23'
+    | '/designs/24'
+    | '/designs/25'
+    | '/designs/26'
+    | '/designs/27'
+    | '/designs/28'
+    | '/designs/29'
+    | '/designs/3'
+    | '/designs/30'
+    | '/designs/31'
+    | '/designs/32'
+    | '/designs/33'
+    | '/designs/34'
+    | '/designs/35'
+    | '/designs/36'
+    | '/designs/37'
+    | '/designs/38'
+    | '/designs/39'
+    | '/designs/4'
+    | '/designs/40'
+    | '/designs/41'
+    | '/designs/42'
+    | '/designs/43'
+    | '/designs/44'
+    | '/designs/45'
+    | '/designs/46'
+    | '/designs/47'
+    | '/designs/5'
+    | '/designs/6'
+    | '/designs/7'
+    | '/designs/8'
+    | '/designs/9'
+    | '/designs/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  R1Route: typeof R1Route
-  R10Route: typeof R10Route
-  R11Route: typeof R11Route
-  R12Route: typeof R12Route
-  R13Route: typeof R13Route
-  R14Route: typeof R14Route
-  R15Route: typeof R15Route
-  R16Route: typeof R16Route
-  R17Route: typeof R17Route
-  R18Route: typeof R18Route
-  R19Route: typeof R19Route
-  R2Route: typeof R2Route
-  R20Route: typeof R20Route
-  R21Route: typeof R21Route
-  R22Route: typeof R22Route
-  R23Route: typeof R23Route
-  R24Route: typeof R24Route
-  R25Route: typeof R25Route
-  R26Route: typeof R26Route
-  R27Route: typeof R27Route
-  R28Route: typeof R28Route
-  R29Route: typeof R29Route
-  R3Route: typeof R3Route
-  R30Route: typeof R30Route
-  R31Route: typeof R31Route
-  R32Route: typeof R32Route
-  R33Route: typeof R33Route
-  R34Route: typeof R34Route
-  R35Route: typeof R35Route
-  R36Route: typeof R36Route
-  R37Route: typeof R37Route
-  R38Route: typeof R38Route
-  R39Route: typeof R39Route
-  R4Route: typeof R4Route
-  R40Route: typeof R40Route
-  R41Route: typeof R41Route
-  R42Route: typeof R42Route
-  R43Route: typeof R43Route
-  R44Route: typeof R44Route
-  R45Route: typeof R45Route
-  R46Route: typeof R46Route
-  R47Route: typeof R47Route
-  R5Route: typeof R5Route
-  R6Route: typeof R6Route
-  R7Route: typeof R7Route
-  R8Route: typeof R8Route
-  R9Route: typeof R9Route
+  Designs1Route: typeof Designs1Route
+  Designs10Route: typeof Designs10Route
+  Designs11Route: typeof Designs11Route
+  Designs12Route: typeof Designs12Route
+  Designs13Route: typeof Designs13Route
+  Designs14Route: typeof Designs14Route
+  Designs15Route: typeof Designs15Route
+  Designs16Route: typeof Designs16Route
+  Designs17Route: typeof Designs17Route
+  Designs18Route: typeof Designs18Route
+  Designs19Route: typeof Designs19Route
+  Designs2Route: typeof Designs2Route
+  Designs20Route: typeof Designs20Route
+  Designs21Route: typeof Designs21Route
+  Designs22Route: typeof Designs22Route
+  Designs23Route: typeof Designs23Route
+  Designs24Route: typeof Designs24Route
+  Designs25Route: typeof Designs25Route
+  Designs26Route: typeof Designs26Route
+  Designs27Route: typeof Designs27Route
+  Designs28Route: typeof Designs28Route
+  Designs29Route: typeof Designs29Route
+  Designs3Route: typeof Designs3Route
+  Designs30Route: typeof Designs30Route
+  Designs31Route: typeof Designs31Route
+  Designs32Route: typeof Designs32Route
+  Designs33Route: typeof Designs33Route
+  Designs34Route: typeof Designs34Route
+  Designs35Route: typeof Designs35Route
+  Designs36Route: typeof Designs36Route
+  Designs37Route: typeof Designs37Route
+  Designs38Route: typeof Designs38Route
+  Designs39Route: typeof Designs39Route
+  Designs4Route: typeof Designs4Route
+  Designs40Route: typeof Designs40Route
+  Designs41Route: typeof Designs41Route
+  Designs42Route: typeof Designs42Route
+  Designs43Route: typeof Designs43Route
+  Designs44Route: typeof Designs44Route
+  Designs45Route: typeof Designs45Route
+  Designs46Route: typeof Designs46Route
+  Designs47Route: typeof Designs47Route
+  Designs5Route: typeof Designs5Route
+  Designs6Route: typeof Designs6Route
+  Designs7Route: typeof Designs7Route
+  Designs8Route: typeof Designs8Route
+  Designs9Route: typeof Designs9Route
+  DesignsIndexRoute: typeof DesignsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/9': {
-      id: '/9'
-      path: '/9'
-      fullPath: '/9'
-      preLoaderRoute: typeof R9RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/8': {
-      id: '/8'
-      path: '/8'
-      fullPath: '/8'
-      preLoaderRoute: typeof R8RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/7': {
-      id: '/7'
-      path: '/7'
-      fullPath: '/7'
-      preLoaderRoute: typeof R7RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/6': {
-      id: '/6'
-      path: '/6'
-      fullPath: '/6'
-      preLoaderRoute: typeof R6RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/5': {
-      id: '/5'
-      path: '/5'
-      fullPath: '/5'
-      preLoaderRoute: typeof R5RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/47': {
-      id: '/47'
-      path: '/47'
-      fullPath: '/47'
-      preLoaderRoute: typeof R47RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/46': {
-      id: '/46'
-      path: '/46'
-      fullPath: '/46'
-      preLoaderRoute: typeof R46RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/45': {
-      id: '/45'
-      path: '/45'
-      fullPath: '/45'
-      preLoaderRoute: typeof R45RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/44': {
-      id: '/44'
-      path: '/44'
-      fullPath: '/44'
-      preLoaderRoute: typeof R44RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/43': {
-      id: '/43'
-      path: '/43'
-      fullPath: '/43'
-      preLoaderRoute: typeof R43RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/42': {
-      id: '/42'
-      path: '/42'
-      fullPath: '/42'
-      preLoaderRoute: typeof R42RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/41': {
-      id: '/41'
-      path: '/41'
-      fullPath: '/41'
-      preLoaderRoute: typeof R41RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/40': {
-      id: '/40'
-      path: '/40'
-      fullPath: '/40'
-      preLoaderRoute: typeof R40RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/4': {
-      id: '/4'
-      path: '/4'
-      fullPath: '/4'
-      preLoaderRoute: typeof R4RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/39': {
-      id: '/39'
-      path: '/39'
-      fullPath: '/39'
-      preLoaderRoute: typeof R39RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/38': {
-      id: '/38'
-      path: '/38'
-      fullPath: '/38'
-      preLoaderRoute: typeof R38RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/37': {
-      id: '/37'
-      path: '/37'
-      fullPath: '/37'
-      preLoaderRoute: typeof R37RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/36': {
-      id: '/36'
-      path: '/36'
-      fullPath: '/36'
-      preLoaderRoute: typeof R36RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/35': {
-      id: '/35'
-      path: '/35'
-      fullPath: '/35'
-      preLoaderRoute: typeof R35RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/34': {
-      id: '/34'
-      path: '/34'
-      fullPath: '/34'
-      preLoaderRoute: typeof R34RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/33': {
-      id: '/33'
-      path: '/33'
-      fullPath: '/33'
-      preLoaderRoute: typeof R33RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/32': {
-      id: '/32'
-      path: '/32'
-      fullPath: '/32'
-      preLoaderRoute: typeof R32RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/31': {
-      id: '/31'
-      path: '/31'
-      fullPath: '/31'
-      preLoaderRoute: typeof R31RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/30': {
-      id: '/30'
-      path: '/30'
-      fullPath: '/30'
-      preLoaderRoute: typeof R30RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/3': {
-      id: '/3'
-      path: '/3'
-      fullPath: '/3'
-      preLoaderRoute: typeof R3RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/29': {
-      id: '/29'
-      path: '/29'
-      fullPath: '/29'
-      preLoaderRoute: typeof R29RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/28': {
-      id: '/28'
-      path: '/28'
-      fullPath: '/28'
-      preLoaderRoute: typeof R28RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/27': {
-      id: '/27'
-      path: '/27'
-      fullPath: '/27'
-      preLoaderRoute: typeof R27RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/26': {
-      id: '/26'
-      path: '/26'
-      fullPath: '/26'
-      preLoaderRoute: typeof R26RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/25': {
-      id: '/25'
-      path: '/25'
-      fullPath: '/25'
-      preLoaderRoute: typeof R25RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/24': {
-      id: '/24'
-      path: '/24'
-      fullPath: '/24'
-      preLoaderRoute: typeof R24RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/23': {
-      id: '/23'
-      path: '/23'
-      fullPath: '/23'
-      preLoaderRoute: typeof R23RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/22': {
-      id: '/22'
-      path: '/22'
-      fullPath: '/22'
-      preLoaderRoute: typeof R22RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/21': {
-      id: '/21'
-      path: '/21'
-      fullPath: '/21'
-      preLoaderRoute: typeof R21RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/20': {
-      id: '/20'
-      path: '/20'
-      fullPath: '/20'
-      preLoaderRoute: typeof R20RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/2': {
-      id: '/2'
-      path: '/2'
-      fullPath: '/2'
-      preLoaderRoute: typeof R2RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/19': {
-      id: '/19'
-      path: '/19'
-      fullPath: '/19'
-      preLoaderRoute: typeof R19RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/18': {
-      id: '/18'
-      path: '/18'
-      fullPath: '/18'
-      preLoaderRoute: typeof R18RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/17': {
-      id: '/17'
-      path: '/17'
-      fullPath: '/17'
-      preLoaderRoute: typeof R17RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/16': {
-      id: '/16'
-      path: '/16'
-      fullPath: '/16'
-      preLoaderRoute: typeof R16RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/15': {
-      id: '/15'
-      path: '/15'
-      fullPath: '/15'
-      preLoaderRoute: typeof R15RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/14': {
-      id: '/14'
-      path: '/14'
-      fullPath: '/14'
-      preLoaderRoute: typeof R14RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/13': {
-      id: '/13'
-      path: '/13'
-      fullPath: '/13'
-      preLoaderRoute: typeof R13RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/12': {
-      id: '/12'
-      path: '/12'
-      fullPath: '/12'
-      preLoaderRoute: typeof R12RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/11': {
-      id: '/11'
-      path: '/11'
-      fullPath: '/11'
-      preLoaderRoute: typeof R11RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/10': {
-      id: '/10'
-      path: '/10'
-      fullPath: '/10'
-      preLoaderRoute: typeof R10RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/1': {
-      id: '/1'
-      path: '/1'
-      fullPath: '/1'
-      preLoaderRoute: typeof R1RouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -992,58 +676,395 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/designs/': {
+      id: '/designs/'
+      path: '/designs'
+      fullPath: '/designs/'
+      preLoaderRoute: typeof DesignsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/9': {
+      id: '/designs/9'
+      path: '/designs/9'
+      fullPath: '/designs/9'
+      preLoaderRoute: typeof Designs9RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/8': {
+      id: '/designs/8'
+      path: '/designs/8'
+      fullPath: '/designs/8'
+      preLoaderRoute: typeof Designs8RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/7': {
+      id: '/designs/7'
+      path: '/designs/7'
+      fullPath: '/designs/7'
+      preLoaderRoute: typeof Designs7RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/6': {
+      id: '/designs/6'
+      path: '/designs/6'
+      fullPath: '/designs/6'
+      preLoaderRoute: typeof Designs6RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/5': {
+      id: '/designs/5'
+      path: '/designs/5'
+      fullPath: '/designs/5'
+      preLoaderRoute: typeof Designs5RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/47': {
+      id: '/designs/47'
+      path: '/designs/47'
+      fullPath: '/designs/47'
+      preLoaderRoute: typeof Designs47RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/46': {
+      id: '/designs/46'
+      path: '/designs/46'
+      fullPath: '/designs/46'
+      preLoaderRoute: typeof Designs46RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/45': {
+      id: '/designs/45'
+      path: '/designs/45'
+      fullPath: '/designs/45'
+      preLoaderRoute: typeof Designs45RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/44': {
+      id: '/designs/44'
+      path: '/designs/44'
+      fullPath: '/designs/44'
+      preLoaderRoute: typeof Designs44RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/43': {
+      id: '/designs/43'
+      path: '/designs/43'
+      fullPath: '/designs/43'
+      preLoaderRoute: typeof Designs43RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/42': {
+      id: '/designs/42'
+      path: '/designs/42'
+      fullPath: '/designs/42'
+      preLoaderRoute: typeof Designs42RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/41': {
+      id: '/designs/41'
+      path: '/designs/41'
+      fullPath: '/designs/41'
+      preLoaderRoute: typeof Designs41RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/40': {
+      id: '/designs/40'
+      path: '/designs/40'
+      fullPath: '/designs/40'
+      preLoaderRoute: typeof Designs40RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/4': {
+      id: '/designs/4'
+      path: '/designs/4'
+      fullPath: '/designs/4'
+      preLoaderRoute: typeof Designs4RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/39': {
+      id: '/designs/39'
+      path: '/designs/39'
+      fullPath: '/designs/39'
+      preLoaderRoute: typeof Designs39RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/38': {
+      id: '/designs/38'
+      path: '/designs/38'
+      fullPath: '/designs/38'
+      preLoaderRoute: typeof Designs38RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/37': {
+      id: '/designs/37'
+      path: '/designs/37'
+      fullPath: '/designs/37'
+      preLoaderRoute: typeof Designs37RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/36': {
+      id: '/designs/36'
+      path: '/designs/36'
+      fullPath: '/designs/36'
+      preLoaderRoute: typeof Designs36RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/35': {
+      id: '/designs/35'
+      path: '/designs/35'
+      fullPath: '/designs/35'
+      preLoaderRoute: typeof Designs35RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/34': {
+      id: '/designs/34'
+      path: '/designs/34'
+      fullPath: '/designs/34'
+      preLoaderRoute: typeof Designs34RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/33': {
+      id: '/designs/33'
+      path: '/designs/33'
+      fullPath: '/designs/33'
+      preLoaderRoute: typeof Designs33RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/32': {
+      id: '/designs/32'
+      path: '/designs/32'
+      fullPath: '/designs/32'
+      preLoaderRoute: typeof Designs32RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/31': {
+      id: '/designs/31'
+      path: '/designs/31'
+      fullPath: '/designs/31'
+      preLoaderRoute: typeof Designs31RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/30': {
+      id: '/designs/30'
+      path: '/designs/30'
+      fullPath: '/designs/30'
+      preLoaderRoute: typeof Designs30RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/3': {
+      id: '/designs/3'
+      path: '/designs/3'
+      fullPath: '/designs/3'
+      preLoaderRoute: typeof Designs3RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/29': {
+      id: '/designs/29'
+      path: '/designs/29'
+      fullPath: '/designs/29'
+      preLoaderRoute: typeof Designs29RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/28': {
+      id: '/designs/28'
+      path: '/designs/28'
+      fullPath: '/designs/28'
+      preLoaderRoute: typeof Designs28RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/27': {
+      id: '/designs/27'
+      path: '/designs/27'
+      fullPath: '/designs/27'
+      preLoaderRoute: typeof Designs27RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/26': {
+      id: '/designs/26'
+      path: '/designs/26'
+      fullPath: '/designs/26'
+      preLoaderRoute: typeof Designs26RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/25': {
+      id: '/designs/25'
+      path: '/designs/25'
+      fullPath: '/designs/25'
+      preLoaderRoute: typeof Designs25RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/24': {
+      id: '/designs/24'
+      path: '/designs/24'
+      fullPath: '/designs/24'
+      preLoaderRoute: typeof Designs24RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/23': {
+      id: '/designs/23'
+      path: '/designs/23'
+      fullPath: '/designs/23'
+      preLoaderRoute: typeof Designs23RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/22': {
+      id: '/designs/22'
+      path: '/designs/22'
+      fullPath: '/designs/22'
+      preLoaderRoute: typeof Designs22RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/21': {
+      id: '/designs/21'
+      path: '/designs/21'
+      fullPath: '/designs/21'
+      preLoaderRoute: typeof Designs21RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/20': {
+      id: '/designs/20'
+      path: '/designs/20'
+      fullPath: '/designs/20'
+      preLoaderRoute: typeof Designs20RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/2': {
+      id: '/designs/2'
+      path: '/designs/2'
+      fullPath: '/designs/2'
+      preLoaderRoute: typeof Designs2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/19': {
+      id: '/designs/19'
+      path: '/designs/19'
+      fullPath: '/designs/19'
+      preLoaderRoute: typeof Designs19RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/18': {
+      id: '/designs/18'
+      path: '/designs/18'
+      fullPath: '/designs/18'
+      preLoaderRoute: typeof Designs18RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/17': {
+      id: '/designs/17'
+      path: '/designs/17'
+      fullPath: '/designs/17'
+      preLoaderRoute: typeof Designs17RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/16': {
+      id: '/designs/16'
+      path: '/designs/16'
+      fullPath: '/designs/16'
+      preLoaderRoute: typeof Designs16RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/15': {
+      id: '/designs/15'
+      path: '/designs/15'
+      fullPath: '/designs/15'
+      preLoaderRoute: typeof Designs15RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/14': {
+      id: '/designs/14'
+      path: '/designs/14'
+      fullPath: '/designs/14'
+      preLoaderRoute: typeof Designs14RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/13': {
+      id: '/designs/13'
+      path: '/designs/13'
+      fullPath: '/designs/13'
+      preLoaderRoute: typeof Designs13RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/12': {
+      id: '/designs/12'
+      path: '/designs/12'
+      fullPath: '/designs/12'
+      preLoaderRoute: typeof Designs12RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/11': {
+      id: '/designs/11'
+      path: '/designs/11'
+      fullPath: '/designs/11'
+      preLoaderRoute: typeof Designs11RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/10': {
+      id: '/designs/10'
+      path: '/designs/10'
+      fullPath: '/designs/10'
+      preLoaderRoute: typeof Designs10RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs/1': {
+      id: '/designs/1'
+      path: '/designs/1'
+      fullPath: '/designs/1'
+      preLoaderRoute: typeof Designs1RouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  R1Route: R1Route,
-  R10Route: R10Route,
-  R11Route: R11Route,
-  R12Route: R12Route,
-  R13Route: R13Route,
-  R14Route: R14Route,
-  R15Route: R15Route,
-  R16Route: R16Route,
-  R17Route: R17Route,
-  R18Route: R18Route,
-  R19Route: R19Route,
-  R2Route: R2Route,
-  R20Route: R20Route,
-  R21Route: R21Route,
-  R22Route: R22Route,
-  R23Route: R23Route,
-  R24Route: R24Route,
-  R25Route: R25Route,
-  R26Route: R26Route,
-  R27Route: R27Route,
-  R28Route: R28Route,
-  R29Route: R29Route,
-  R3Route: R3Route,
-  R30Route: R30Route,
-  R31Route: R31Route,
-  R32Route: R32Route,
-  R33Route: R33Route,
-  R34Route: R34Route,
-  R35Route: R35Route,
-  R36Route: R36Route,
-  R37Route: R37Route,
-  R38Route: R38Route,
-  R39Route: R39Route,
-  R4Route: R4Route,
-  R40Route: R40Route,
-  R41Route: R41Route,
-  R42Route: R42Route,
-  R43Route: R43Route,
-  R44Route: R44Route,
-  R45Route: R45Route,
-  R46Route: R46Route,
-  R47Route: R47Route,
-  R5Route: R5Route,
-  R6Route: R6Route,
-  R7Route: R7Route,
-  R8Route: R8Route,
-  R9Route: R9Route,
+  Designs1Route: Designs1Route,
+  Designs10Route: Designs10Route,
+  Designs11Route: Designs11Route,
+  Designs12Route: Designs12Route,
+  Designs13Route: Designs13Route,
+  Designs14Route: Designs14Route,
+  Designs15Route: Designs15Route,
+  Designs16Route: Designs16Route,
+  Designs17Route: Designs17Route,
+  Designs18Route: Designs18Route,
+  Designs19Route: Designs19Route,
+  Designs2Route: Designs2Route,
+  Designs20Route: Designs20Route,
+  Designs21Route: Designs21Route,
+  Designs22Route: Designs22Route,
+  Designs23Route: Designs23Route,
+  Designs24Route: Designs24Route,
+  Designs25Route: Designs25Route,
+  Designs26Route: Designs26Route,
+  Designs27Route: Designs27Route,
+  Designs28Route: Designs28Route,
+  Designs29Route: Designs29Route,
+  Designs3Route: Designs3Route,
+  Designs30Route: Designs30Route,
+  Designs31Route: Designs31Route,
+  Designs32Route: Designs32Route,
+  Designs33Route: Designs33Route,
+  Designs34Route: Designs34Route,
+  Designs35Route: Designs35Route,
+  Designs36Route: Designs36Route,
+  Designs37Route: Designs37Route,
+  Designs38Route: Designs38Route,
+  Designs39Route: Designs39Route,
+  Designs4Route: Designs4Route,
+  Designs40Route: Designs40Route,
+  Designs41Route: Designs41Route,
+  Designs42Route: Designs42Route,
+  Designs43Route: Designs43Route,
+  Designs44Route: Designs44Route,
+  Designs45Route: Designs45Route,
+  Designs46Route: Designs46Route,
+  Designs47Route: Designs47Route,
+  Designs5Route: Designs5Route,
+  Designs6Route: Designs6Route,
+  Designs7Route: Designs7Route,
+  Designs8Route: Designs8Route,
+  Designs9Route: Designs9Route,
+  DesignsIndexRoute: DesignsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
