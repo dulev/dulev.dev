@@ -6,54 +6,35 @@ import {
   HeadContent,
   Scripts,
   useRouter,
-  useMatches,
 } from "@tanstack/react-router";
 import { SoundProvider, SoundToggle } from "~/components/sound-provider";
 import appCss from "~/styles/app.css?url";
 
-const DESIGN_ROUTES = Array.from({ length: 47 }, (_, i) => `/designs/${i + 1}`);
+const MAIN_ROUTE = "/";
+const INSPO_ROUTE = "/designs/12";
 
-function useArrowKeyNavigation() {
+function useInspoToggle() {
   const router = useRouter();
-  const matches = useMatches();
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
-      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      if (e.key !== "i") return;
       if (
         e.target instanceof HTMLInputElement ||
         e.target instanceof HTMLTextAreaElement
       )
         return;
 
-      const currentPath = matches[matches.length - 1]?.fullPath ?? "/";
-      const currentIndex = DESIGN_ROUTES.indexOf(currentPath);
-
-      if (currentPath === "/designs" || currentPath === "/designs/") {
-        if (e.key === "ArrowRight") {
-          router.navigate({ to: "/designs/1" as "/" });
-        }
-        return;
-      }
-
-      if (currentIndex === -1) return;
-
-      if (e.key === "ArrowLeft") {
-        if (currentIndex === 0) {
-          router.navigate({ to: "/designs" as "/" });
-        } else {
-          router.navigate({ to: DESIGN_ROUTES[currentIndex - 1] as "/" });
-        }
-      } else if (e.key === "ArrowRight") {
-        if (currentIndex < DESIGN_ROUTES.length - 1) {
-          router.navigate({ to: DESIGN_ROUTES[currentIndex + 1] as "/" });
-        }
+      if (window.location.pathname === INSPO_ROUTE) {
+        router.navigate({ to: MAIN_ROUTE as "/" });
+      } else {
+        router.navigate({ to: INSPO_ROUTE as "/" });
       }
     }
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [router, matches]);
+  }, [router]);
 }
 
 export const Route = createRootRoute({
@@ -85,7 +66,7 @@ export const Route = createRootRoute({
 });
 
 function RootComponent() {
-  useArrowKeyNavigation();
+  useInspoToggle();
 
   return (
     <RootDocument>
