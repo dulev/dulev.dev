@@ -5,7 +5,7 @@ export const siteContent = {
     bio: "7+ years professional experience building software. I like shipping side projects, breaking things, and learning by doing.",
     links: {
       github: 'https://github.com/dulev',
-      linkedin: 'https://linkedin.com/in/dulev',
+      linkedin: 'https://www.linkedin.com/in/dimitar-dulev-470566b0/',
       uses: '/uses',
     },
   },

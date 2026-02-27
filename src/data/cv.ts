@@ -5,7 +5,7 @@ export const cvData = {
     email: 'hello@dulev.dev',
     phone: '+359-REDACTED-NUMBER',
     github: 'https://github.com/dulev',
-    linkedin: 'https://linkedin.com/in/dulev',
+    linkedin: 'https://www.linkedin.com/in/dimitar-dulev-470566b0/',
     website: 'https://dulev.dev',
   },
   summary:

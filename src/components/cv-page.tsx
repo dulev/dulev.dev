@@ -199,7 +199,7 @@ export function CvPage() {
               </a>
               <span className="text-muted-light max-sm:hidden">|</span>
               <a href={cvData.contact.linkedin} target="_blank" rel="noopener noreferrer" className={CONTACT_LINK_CLASS}>
-                linkedin.com/in/dulev
+                linkedin.com/in/dimitar-dulev-470566b0
               </a>
             </div>
           </header>
