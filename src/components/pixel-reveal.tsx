@@ -1,118 +1,171 @@
-import {
-  useEffect,
-  useState,
-  useRef,
-  useCallback,
-  type ReactNode,
-} from 'react'
-import { Slot } from '@radix-ui/react-slot'
+import { useEffect, useState, useRef, type ReactNode } from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { Portal } from "@radix-ui/react-portal";
+import { atom, getDefaultStore } from "jotai";
 
 // Constants
-export const PIXEL_COLS = 14
-export const PIXEL_ROWS = 7
-export const PIXEL_TOTAL = PIXEL_COLS * PIXEL_ROWS
-export const PIXEL_MS = 4 // ms per pixel — 98 * 4 ≈ 400ms total
-export const PIXEL_REVEAL_S = (PIXEL_TOTAL * PIXEL_MS) / 1000
-export const ITEM_STAGGER = 0.05 // seconds between items in a section
-export const SECTION_PAUSE = 0.15
+export const PIXEL_SIZE = 20;
+const ROW_MS = 30;
+const STAGGER_MS = 80;
+const SCAN_BAR_PX = 3;
 
-// Hook
-export function useRevealQueue() {
-  const [slot, setSlot] = useState(0)
-  const advancedRef = useRef(new Set<number>())
+// Jotai scheduler — tracks last scheduled start time
+const revealQueueAtom = atom({ lastStart: 0 });
+const store = getDefaultStore();
 
-  const advance = useCallback(
-    (fromSlot: number, itemCount: number, stagger: number = ITEM_STAGGER) => {
-      if (advancedRef.current.has(fromSlot)) return
-      advancedRef.current.add(fromSlot)
-      const totalMs =
-        ((itemCount - 1) * stagger + PIXEL_REVEAL_S + SECTION_PAUSE) * 1000
-      setTimeout(() => {
-        setSlot((prev) => Math.max(prev, fromSlot + 1))
-      }, totalMs)
-    },
-    [],
-  )
-
-  return { slot, advance }
+function scheduleReveal(): number {
+  const now = performance.now();
+  const { lastStart } = store.get(revealQueueAtom);
+  const nextStart = Math.max(now, lastStart + STAGGER_MS);
+  store.set(revealQueueAtom, { lastStart: nextStart });
+  return nextStart - now;
 }
 
-// Component
-export function PixelReveal({
-  revealed,
-  delay = 0,
-  children,
-}: {
-  revealed: boolean
-  delay?: number
-  children: ReactNode
-}) {
-  const [activeIdx, setActiveIdx] = useState(-1)
+// Shared IntersectionObserver (singleton, fires once per element)
+type ObserverCallback = () => void;
+const callbacks = new Map<Element, ObserverCallback>();
+let sharedObserver: IntersectionObserver | null = null;
+
+function getObserver(): IntersectionObserver | null {
+  if (typeof IntersectionObserver === "undefined") return null;
+  if (!sharedObserver) {
+    sharedObserver = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const cb = callbacks.get(entry.target);
+            if (cb) {
+              sharedObserver!.unobserve(entry.target);
+              callbacks.delete(entry.target);
+              cb();
+            }
+          }
+        }
+      },
+      { threshold: 0.05 },
+    );
+  }
+  return sharedObserver;
+}
+
+function observe(el: Element, callback: ObserverCallback) {
+  const observer = getObserver();
+  if (!observer) {
+    callback();
+    return;
+  }
+  callbacks.set(el, callback);
+  observer.observe(el);
+}
+
+function unobserve(el: Element) {
+  callbacks.delete(el);
+  getObserver()?.unobserve(el);
+}
+
+// Component — just wrap children, no props needed
+export function PixelReveal({ children }: { children: ReactNode }) {
+  const childRef = useRef<HTMLElement>(null);
+  const sentinelRef = useRef<HTMLSpanElement>(null);
+  const [activeRow, setActiveRow] = useState(-1);
+  const [phase, setPhase] = useState<"hidden" | "animating" | "done">("hidden");
+  const gridRef = useRef({ rows: 1 });
 
   useEffect(() => {
-    if (!revealed) return
+    const sentinel = sentinelRef.current;
+    const child = childRef.current;
+    if (!sentinel || !child) return;
 
-    let rafId: number
-    let startTime: number | null = null
+    if (typeof IntersectionObserver === "undefined") {
+      setPhase("done");
+      return;
+    }
 
-    const delayTimer = setTimeout(() => {
-      const tick = (ts: number) => {
-        if (startTime === null) startTime = ts
-        const elapsed = ts - startTime
-        const idx = Math.min(Math.floor(elapsed / PIXEL_MS), PIXEL_TOTAL)
-        setActiveIdx(idx)
-        if (idx < PIXEL_TOTAL) {
-          rafId = requestAnimationFrame(tick)
-        }
-      }
-      rafId = requestAnimationFrame(tick)
-    }, delay)
+    let delayTimer: ReturnType<typeof setTimeout>;
+    let rafId: number;
+
+    // Observe the sentinel (no clip-path) instead of the clipped child,
+    // because clip-path causes IntersectionObserver to report zero intersection.
+    observe(sentinel, () => {
+      const delay = scheduleReveal();
+
+      const { height } = child.getBoundingClientRect();
+      const rows = Math.max(1, Math.ceil(height / PIXEL_SIZE));
+      gridRef.current = { rows };
+
+      delayTimer = setTimeout(() => {
+        setPhase("animating");
+        let startTime: number | null = null;
+
+        const tick = (ts: number) => {
+          if (startTime === null) startTime = ts;
+          const elapsed = ts - startTime;
+          const { rows } = gridRef.current;
+          const row = Math.min(Math.floor(elapsed / ROW_MS), rows);
+          setActiveRow(row);
+          if (row < rows) {
+            rafId = requestAnimationFrame(tick);
+          } else {
+            setPhase("done");
+          }
+        };
+        rafId = requestAnimationFrame(tick);
+      }, delay);
+    });
 
     return () => {
-      clearTimeout(delayTimer)
-      cancelAnimationFrame(rafId)
-    }
-  }, [revealed, delay])
+      unobserve(sentinel);
+      clearTimeout(delayTimer);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
 
-  const done = activeIdx >= PIXEL_TOTAL
+  const { rows } = gridRef.current;
+  const done = phase === "done";
 
-  // Clip-path polygon traces the L-shaped scan boundary
-  let clipPath: string | undefined
-  let edgeBandClipPath: string | undefined
-  const BAND = 4 // percent — edge band width
-
-  if (!revealed || activeIdx < 0) {
-    clipPath = 'inset(0 100% 0 0)'
+  let clipPath: string | undefined;
+  if (phase === "hidden" || activeRow < 0) {
+    clipPath = "inset(-50px -50px 100% -50px)";
   } else if (done) {
-    clipPath = undefined
+    clipPath = undefined;
   } else {
-    const row = Math.floor(activeIdx / PIXEL_COLS)
-    const col = activeIdx % PIXEL_COLS
-    const rT = (row / PIXEL_ROWS) * 100
-    const rB = ((row + 1) / PIXEL_ROWS) * 100
-    const cR = ((col + 1) / PIXEL_COLS) * 100
-    clipPath = `polygon(0% 0%,100% 0%,100% ${rT}%,${cR}% ${rT}%,${cR}% ${rB}%,0% ${rB}%)`
-
-    // L-shaped band tracing the scan boundary edge
-    const bT = Math.min(rT + BAND, 100)
-    const bB = Math.min(rB + BAND, 100)
-    const bR = Math.min(cR + BAND, 100)
-    edgeBandClipPath = `polygon(100% ${rT}%,100% ${bT}%,${bR}% ${bT}%,${bR}% ${bB}%,0% ${bB}%,0% ${rB}%,${cR}% ${rB}%,${cR}% ${rT}%)`
+    clipPath = `inset(-50px -50px ${100 - (activeRow / rows) * 100}% -50px)`;
   }
 
-  const showEdge = !done && activeIdx >= 0 && revealed
+  const showBar = phase === "animating" && activeRow >= 0;
+  const rect = childRef.current?.getBoundingClientRect();
 
   return (
-    <div className="relative isolate">
-      <Slot style={{ clipPath }}>
+    <>
+      <span
+        ref={sentinelRef}
+        style={{
+          position: "absolute",
+          width: 0,
+          height: 0,
+          overflow: "hidden",
+        }}
+      />
+      <Slot ref={childRef} style={{ clipPath }}>
         {children}
       </Slot>
-      {showEdge && (
-        <div
-          className="absolute inset-0 bg-orange pointer-events-none z-10"
-          style={{ clipPath: edgeBandClipPath }}
-        />
+      {showBar && rect && (
+        <Portal>
+          <div
+            style={{
+              position: "fixed",
+              left: rect.left,
+              width: rect.width,
+              top: rect.top + (activeRow / rows) * rect.height,
+              height: SCAN_BAR_PX,
+              backgroundColor: "#FF6B00",
+              boxShadow: "0 0 8px #FF6B00",
+              pointerEvents: "none",
+              zIndex: 9999,
+            }}
+          />
+        </Portal>
       )}
-    </div>
-  )
+    </>
+  );
 }

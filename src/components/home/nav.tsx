@@ -2,11 +2,11 @@ import { Link } from '@tanstack/react-router'
 import { PixelReveal } from '~/components/pixel-reveal'
 import { siteContent } from '~/data/content'
 
-export function Nav({ revealed }: { revealed: boolean }) {
+export function Nav() {
   const { intro } = siteContent
 
   return (
-    <PixelReveal revealed={revealed}>
+    <PixelReveal>
       <nav className="flex items-center justify-between pt-9 pb-4.5 mb-4.5 max-sm:flex-col max-sm:gap-3 max-sm:items-start">
         <Link
           to="/"

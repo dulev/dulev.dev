@@ -4,16 +4,12 @@ import type { Project } from '~/data/content'
 export function ProjectCard({
   project,
   index,
-  revealed,
-  delay,
 }: {
   project: Project
   index: number
-  revealed: boolean
-  delay: number
 }) {
   return (
-    <PixelReveal revealed={revealed} delay={delay}>
+    <PixelReveal>
       <div className="bg-card border-[3px] border-text shadow-brutal p-7 pb-6 mb-6 relative transition-none hover:shadow-brutal-hover hover:-translate-x-0.5 hover:-translate-y-0.5 max-sm:px-4.5 max-sm:py-5.5 max-sm:pb-5">
         <span className="absolute top-3 right-4 font-mono font-bold text-[0.72rem] text-orange leading-none pointer-events-none tracking-[0.5px]">
           No.{String(index + 1).padStart(2, '0')}
