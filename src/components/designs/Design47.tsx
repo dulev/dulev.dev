@@ -1,6 +1,13 @@
-import { useEffect, useState, useRef } from 'react'
+import {
+  useEffect,
+  useState,
+  useRef,
+  useCallback,
+  type ReactNode,
+} from 'react'
 import { Link } from '@tanstack/react-router'
-import { motion } from 'motion/react'
+import { useInView } from 'motion/react'
+import { Slot } from '@radix-ui/react-slot'
 import { siteContent } from '~/data/content'
 
 const interestIcons: Record<string, string> = {
@@ -11,7 +18,94 @@ const interestIcons: Record<string, string> = {
   terminal: '>_',
 }
 
-const steps = (n: number) => (t: number) => Math.floor(t * n) / n
+// Staggered pixel-invert reveal queue
+const PIXEL_COLS = 14
+const PIXEL_ROWS = 7
+const PIXEL_TOTAL = PIXEL_COLS * PIXEL_ROWS
+const PIXEL_MS = 4 // ms per pixel — 98 * 4 ≈ 400ms total
+const PIXEL_REVEAL_S = (PIXEL_TOTAL * PIXEL_MS) / 1000
+const ITEM_STAGGER = 0.05 // seconds between items in a section
+const SECTION_PAUSE = 0.15
+
+function useRevealQueue() {
+  const [slot, setSlot] = useState(0)
+  const advancedRef = useRef(new Set<number>())
+
+  const advance = useCallback(
+    (fromSlot: number, itemCount: number, stagger: number = ITEM_STAGGER) => {
+      if (advancedRef.current.has(fromSlot)) return
+      advancedRef.current.add(fromSlot)
+      const totalMs =
+        ((itemCount - 1) * stagger + PIXEL_REVEAL_S + SECTION_PAUSE) * 1000
+      setTimeout(() => {
+        setSlot((prev) => Math.max(prev, fromSlot + 1))
+      }, totalMs)
+    },
+    [],
+  )
+
+  return { slot, advance }
+}
+
+function PixelReveal({
+  revealed,
+  delay = 0,
+  children,
+}: {
+  revealed: boolean
+  delay?: number
+  children: ReactNode
+}) {
+  const [activeIdx, setActiveIdx] = useState(-1)
+
+  useEffect(() => {
+    if (!revealed) return
+
+    let rafId: number
+    let startTime: number | null = null
+
+    const delayTimer = setTimeout(() => {
+      const tick = (ts: number) => {
+        if (startTime === null) startTime = ts
+        const elapsed = ts - startTime
+        const idx = Math.min(Math.floor(elapsed / PIXEL_MS), PIXEL_TOTAL)
+        setActiveIdx(idx)
+        if (idx < PIXEL_TOTAL) {
+          rafId = requestAnimationFrame(tick)
+        }
+      }
+      rafId = requestAnimationFrame(tick)
+    }, delay)
+
+    return () => {
+      clearTimeout(delayTimer)
+      cancelAnimationFrame(rafId)
+    }
+  }, [revealed, delay])
+
+  const done = activeIdx >= PIXEL_TOTAL
+
+  // Clip-path polygon traces the L-shaped scan boundary
+  let clipPath: string | undefined
+  if (!revealed || activeIdx < 0) {
+    clipPath = 'inset(0 100% 0 0)'
+  } else if (done) {
+    clipPath = undefined
+  } else {
+    const row = Math.floor(activeIdx / PIXEL_COLS)
+    const col = activeIdx % PIXEL_COLS
+    const rowTopPct = (row / PIXEL_ROWS) * 100
+    const rowBotPct = ((row + 1) / PIXEL_ROWS) * 100
+    const colRightPct = ((col + 1) / PIXEL_COLS) * 100
+    clipPath = `polygon(0% 0%,100% 0%,100% ${rowTopPct}%,${colRightPct}% ${rowTopPct}%,${colRightPct}% ${rowBotPct}%,0% ${rowBotPct}%)`
+  }
+
+  return (
+    <Slot style={{ clipPath }}>
+      {children}
+    </Slot>
+  )
+}
 
 export function Design47() {
   useEffect(() => {
@@ -56,6 +150,33 @@ export function Design47() {
   }, [])
 
   const { intro, projects, personal } = siteContent
+
+  // Reveal queue: 0=nav, 1=hero, 2=projects, 3=interests
+  const { slot, advance } = useRevealQueue()
+  const footerRef = useRef<HTMLDivElement>(null)
+
+  const projectsInView = useInView(projectsRef, { once: true, amount: 0.05 })
+  const interestsInView = useInView(interestsRef, { once: true, amount: 0.05 })
+  const footerInView = useInView(footerRef, { once: true, amount: 0.05 })
+
+  const navReady = slot >= 0
+  const heroReady = slot >= 1
+  const projectsReady = projectsInView && slot >= 2
+  const interestsReady = interestsInView && slot >= 3
+
+  useEffect(() => {
+    if (navReady) advance(0, 1)
+  }, [navReady, advance])
+  useEffect(() => {
+    if (heroReady) advance(1, 1)
+  }, [heroReady, advance])
+  useEffect(() => {
+    if (projectsReady) advance(2, projects.length + 1)
+  }, [projectsReady, advance, projects.length])
+  useEffect(() => {
+    if (interestsReady)
+      advance(3, personal.interests.length + 1)
+  }, [interestsReady, advance, personal.interests.length])
 
   return (
     <>
@@ -566,180 +687,174 @@ export function Design47() {
       <div className="d47-root">
         <div className="d47-container">
           {/* ===== NAVIGATION ===== */}
-          <motion.nav
-            className="d47-nav"
-            initial={{ clipPath: 'inset(0 100% 0 0)' }}
-            animate={{ clipPath: 'inset(-50px)' }}
-            transition={{ duration: 0.6, ease: steps(5) }}
-          >
-            <Link to="/" className="d47-nav-brand">
-              dulev.dev
-            </Link>
-            <div className="d47-nav-links">
-              <a
-                href={intro.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="d47-nav-link"
-              >
-                GitHub
-              </a>
-              <a
-                href={intro.links.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="d47-nav-link"
-              >
-                LinkedIn
-              </a>
-              <a href="/uses" className="d47-nav-link">
-                /uses
-              </a>
-            </div>
-          </motion.nav>
-
-          {/* ===== HERO ===== */}
-          <motion.header
-            className="d47-hero"
-            ref={heroRef}
-            initial={{ clipPath: 'inset(0 100% 0 0)' }}
-            animate={{ clipPath: 'inset(-50px)' }}
-            transition={{ duration: 0.6, ease: steps(5), delay: 0.1 }}
-          >
-<h1 className="d47-name">{intro.name}</h1>
-
-            <span className="d47-tagline-text">{intro.tagline}</span>
-
-            <p className="d47-bio">{intro.bio}</p>
-
-            <div className="d47-hero-links">
-              <a
-                href={intro.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="d47-hero-link"
-              >
-                GitHub
-              </a>
-              <a
-                href={intro.links.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="d47-hero-link d47-hero-link--orange"
-              >
-                LinkedIn
-              </a>
-              <a href="/uses" className="d47-hero-link d47-hero-link--outline">
-                /uses
-              </a>
-            </div>
-          </motion.header>
-
-          {/* ===== PROJECTS ===== */}
-          <motion.section
-            ref={projectsRef}
-            initial={{ clipPath: 'inset(0 100% 0 0)' }}
-            whileInView={{ clipPath: 'inset(-50px)' }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: steps(5) }}
-          >
-          <h2 className="d47-section-title">
-            <span className="d47-section-number">SEC.01</span>
-            Projects
-            {activeSection === 'projects' && <span className="d47-cursor" />}
-          </h2>
-
-          {projects.map((project, idx) => (
-            <div key={project.name} className="d47-card">
-              <span className="d47-denom">
-                No.{String(idx + 1).padStart(2, '0')}
-              </span>
-
-              <h3>{project.name}</h3>
-              <p>{project.description}</p>
-
-              <ul className="d47-tech-list">
-                {project.tech.map((t) => (
-                  <li key={t} className="d47-tech-item">
-                    {t}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="d47-card-links">
+          <PixelReveal revealed={navReady}>
+            <nav className="d47-nav">
+              <Link to="/" className="d47-nav-brand">
+                dulev.dev
+              </Link>
+              <div className="d47-nav-links">
                 <a
-                  href={project.url}
+                  href={intro.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="d47-card-link d47-card-link--accent"
+                  className="d47-nav-link"
                 >
-                  Visit
+                  GitHub
                 </a>
                 <a
-                  href={project.cvAnchor}
-                  className="d47-card-link"
+                  href={intro.links.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="d47-nav-link"
                 >
-                  CV Entry
+                  LinkedIn
+                </a>
+                <a href="/uses" className="d47-nav-link">
+                  /uses
                 </a>
               </div>
-            </div>
-          ))}
+            </nav>
+          </PixelReveal>
 
-          </motion.section>
+          {/* ===== HERO ===== */}
+          <PixelReveal revealed={heroReady}>
+            <header className="d47-hero" ref={heroRef}>
+              <h1 className="d47-name">{intro.name}</h1>
+
+              <span className="d47-tagline-text">{intro.tagline}</span>
+
+              <p className="d47-bio">{intro.bio}</p>
+
+              <div className="d47-hero-links">
+                <a
+                  href={intro.links.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="d47-hero-link"
+                >
+                  GitHub
+                </a>
+                <a
+                  href={intro.links.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="d47-hero-link d47-hero-link--orange"
+                >
+                  LinkedIn
+                </a>
+                <a href="/uses" className="d47-hero-link d47-hero-link--outline">
+                  /uses
+                </a>
+              </div>
+            </header>
+          </PixelReveal>
+
+          {/* ===== PROJECTS ===== */}
+          <section ref={projectsRef}>
+            <PixelReveal revealed={projectsReady}>
+              <h2 className="d47-section-title">
+                <span className="d47-section-number">SEC.01</span>
+                Projects
+                {activeSection === 'projects' && <span className="d47-cursor" />}
+              </h2>
+            </PixelReveal>
+
+            {projects.map((project, idx) => (
+              <PixelReveal
+                key={project.name}
+                revealed={projectsReady}
+                delay={(idx + 1) * ITEM_STAGGER * 1000}
+              >
+                <div className="d47-card">
+                  <span className="d47-denom">
+                    No.{String(idx + 1).padStart(2, '0')}
+                  </span>
+
+                  <h3>{project.name}</h3>
+                  <p>{project.description}</p>
+
+                  <ul className="d47-tech-list">
+                    {project.tech.map((t) => (
+                      <li key={t} className="d47-tech-item">
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="d47-card-links">
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="d47-card-link d47-card-link--accent"
+                    >
+                      Visit
+                    </a>
+                    <a
+                      href={project.cvAnchor}
+                      className="d47-card-link"
+                    >
+                      CV Entry
+                    </a>
+                  </div>
+                </div>
+              </PixelReveal>
+            ))}
+          </section>
 
           {/* ===== INTERESTS ===== */}
-          <motion.section
-            ref={interestsRef}
-            initial={{ clipPath: 'inset(0 100% 0 0)' }}
-            whileInView={{ clipPath: 'inset(-50px)' }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: steps(5) }}
-          >
-          <h2 className="d47-section-title">
-            <span className="d47-section-number">SEC.02</span>
-            Interests
-            {activeSection === 'interests' && <span className="d47-cursor" />}
-          </h2>
+          <section ref={interestsRef}>
+            <PixelReveal revealed={interestsReady}>
+              <h2 className="d47-section-title">
+                <span className="d47-section-number">SEC.02</span>
+                Interests
+                {activeSection === 'interests' && <span className="d47-cursor" />}
+              </h2>
+            </PixelReveal>
 
-          <div className="d47-interests-wrap">
-          <div className="d47-interests-grid">
-            {personal.interests.map((interest, idx) => (
-              <div key={interest.label} className="d47-interest">
-                <span className="d47-interest-accent" />
-                <span className="d47-interest-denom">
-                  No.{String(idx + 1).padStart(2, '0')}
-                </span>
-                <span className="d47-interest-icon">
-                  {interestIcons[interest.icon] || '?'}
-                </span>
-                <span className="d47-interest-label">
-                  {interest.label}
-                </span>
+            <div className="d47-interests-wrap">
+              <div className="d47-interests-grid">
+                {personal.interests.map((interest, idx) => (
+                  <PixelReveal
+                    key={interest.label}
+                    revealed={interestsReady}
+                    delay={(idx + 1) * ITEM_STAGGER * 1000}
+                  >
+                    <div className="d47-interest">
+                      <span className="d47-interest-accent" />
+                      <span className="d47-interest-denom">
+                        No.{String(idx + 1).padStart(2, '0')}
+                      </span>
+                      <span className="d47-interest-icon">
+                        {interestIcons[interest.icon] || '?'}
+                      </span>
+                      <span className="d47-interest-label">
+                        {interest.label}
+                      </span>
+                    </div>
+                  </PixelReveal>
+                ))}
               </div>
-            ))}
-          </div>
-          </div>
-          </motion.section>
+            </div>
+          </section>
 
         </div>
 
         {/* ===== FOOTER ===== */}
-        <motion.footer
-          className="d47-footer"
-          initial={{ clipPath: 'inset(0 100% 0 0)' }}
-          whileInView={{ clipPath: 'inset(-50px)' }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: steps(5) }}
-        >
-          <div className="d47-footer-inner">
-            <div className="d47-footer-text">
-              dulev.dev &middot; Sofia, Bulgaria
-            </div>
-            <a href="mailto:dimitar@dulev.dev" className="d47-footer-link">
-              Contact Me
-            </a>
-          </div>
-        </motion.footer>
+        <div ref={footerRef}>
+          <PixelReveal revealed={footerInView}>
+            <footer className="d47-footer">
+              <div className="d47-footer-inner">
+                <div className="d47-footer-text">
+                  dulev.dev &middot; Sofia, Bulgaria
+                </div>
+                <a href="mailto:dimitar@dulev.dev" className="d47-footer-link">
+                  Contact Me
+                </a>
+              </div>
+            </footer>
+          </PixelReveal>
+        </div>
       </div>
     </>
   )

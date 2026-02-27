@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './app/__root'
+import { Route as AnimationsRouteImport } from './app/animations'
 import { Route as IndexRouteImport } from './app/index'
 import { Route as DesignsIndexRouteImport } from './app/designs/index'
 import { Route as Designs9RouteImport } from './app/designs/9'
@@ -59,6 +60,11 @@ import { Route as Designs11RouteImport } from './app/designs/11'
 import { Route as Designs10RouteImport } from './app/designs/10'
 import { Route as Designs1RouteImport } from './app/designs/1'
 
+const AnimationsRoute = AnimationsRouteImport.update({
+  id: '/animations',
+  path: '/animations',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -307,6 +313,7 @@ const Designs1Route = Designs1RouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/animations': typeof AnimationsRoute
   '/designs/1': typeof Designs1Route
   '/designs/10': typeof Designs10Route
   '/designs/11': typeof Designs11Route
@@ -358,6 +365,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/animations': typeof AnimationsRoute
   '/designs/1': typeof Designs1Route
   '/designs/10': typeof Designs10Route
   '/designs/11': typeof Designs11Route
@@ -410,6 +418,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/animations': typeof AnimationsRoute
   '/designs/1': typeof Designs1Route
   '/designs/10': typeof Designs10Route
   '/designs/11': typeof Designs11Route
@@ -463,6 +472,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/animations'
     | '/designs/1'
     | '/designs/10'
     | '/designs/11'
@@ -514,6 +524,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/animations'
     | '/designs/1'
     | '/designs/10'
     | '/designs/11'
@@ -565,6 +576,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/animations'
     | '/designs/1'
     | '/designs/10'
     | '/designs/11'
@@ -617,6 +629,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AnimationsRoute: typeof AnimationsRoute
   Designs1Route: typeof Designs1Route
   Designs10Route: typeof Designs10Route
   Designs11Route: typeof Designs11Route
@@ -669,6 +682,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/animations': {
+      id: '/animations'
+      path: '/animations'
+      fullPath: '/animations'
+      preLoaderRoute: typeof AnimationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -1017,6 +1037,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AnimationsRoute: AnimationsRoute,
   Designs1Route: Designs1Route,
   Designs10Route: Designs10Route,
   Designs11Route: Designs11Route,
