@@ -22,7 +22,7 @@
   position: absolute;
   inset: 0;
   overflow: hidden;
-  background: rgba(0, 20, 5, 0.4);
+  background: rgba(0, 20, 5, 0.18);
   animation: crt-flicker 0.15s infinite;
 }
 
@@ -35,8 +35,8 @@
     to bottom,
     transparent 0px,
     transparent 2px,
-    rgba(0, 0, 0, 0.3) 2px,
-    rgba(0, 0, 0, 0.3) 4px
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
   );
   background-size: 100% 4px;
   animation: crt-scanlines-drift 0.3s linear infinite;
