@@ -4,10 +4,11 @@ import { Portal } from "@radix-ui/react-portal";
 import { atom, getDefaultStore } from "jotai";
 
 // Constants
-export const PIXEL_SIZE = 20;
-const ROW_MS = 30;
+export const CELL_SIZE = 10;
+const ROW_MS = 15;
+const MIN_ROWS = 20; // minimum ~200ms reveal even for tiny elements
 const STAGGER_MS = 80;
-const SCAN_BAR_PX = 3;
+const SCAN_BAR_PX = 4;
 
 // Jotai scheduler — tracks last scheduled start time
 const revealQueueAtom = atom({ lastStart: 0 });
@@ -63,7 +64,7 @@ function unobserve(el: Element) {
   getObserver()?.unobserve(el);
 }
 
-interface PixelRevealProps {
+interface ScanRevealProps {
   children: ReactNode;
   /** When false, the reveal won't start until enabled becomes true. Defaults to true. */
   enabled?: boolean;
@@ -71,7 +72,11 @@ interface PixelRevealProps {
   onComplete?: () => void;
 }
 
-export function PixelReveal({ children, enabled = true, onComplete }: PixelRevealProps) {
+export function ScanReveal({
+  children,
+  enabled = true,
+  onComplete,
+}: ScanRevealProps) {
   const childRef = useRef<HTMLElement>(null);
   const sentinelRef = useRef<HTMLSpanElement>(null);
   const [activeRow, setActiveRow] = useState(-1);
@@ -114,7 +119,7 @@ export function PixelReveal({ children, enabled = true, onComplete }: PixelRevea
       pendingRef.current = false;
 
       const { height } = child.getBoundingClientRect();
-      const rows = Math.max(1, Math.ceil(height / PIXEL_SIZE));
+      const rows = Math.max(MIN_ROWS, Math.ceil(height / CELL_SIZE));
       gridRef.current = { rows };
 
       delayTimer = setTimeout(() => {
@@ -183,6 +188,14 @@ export function PixelReveal({ children, enabled = true, onComplete }: PixelRevea
       </Slot>
       {showBar && rect && (
         <Portal>
+          <style>{`@keyframes scanline-flicker {
+            0%, 100% { opacity: 1; }
+            15% { opacity: 0.4; }
+            30% { opacity: 0.9; }
+            50% { opacity: 0.3; }
+            70% { opacity: 0.85; }
+            85% { opacity: 0.5; }
+          }`}</style>
           <div
             style={{
               position: "fixed",
@@ -192,6 +205,7 @@ export function PixelReveal({ children, enabled = true, onComplete }: PixelRevea
               height: SCAN_BAR_PX,
               backgroundColor: "#FF6B00",
               boxShadow: "0 0 8px #FF6B00",
+              animation: "scanline-flicker 120ms steps(1) infinite",
               pointerEvents: "none",
               zIndex: 9999,
             }}

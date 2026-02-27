@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { PixelReveal } from '~/components/pixel-reveal'
+import { ScanReveal } from '~/components/scan-reveal'
 import { siteContent } from '~/data/content'
 
 export function Nav() {
@@ -7,15 +7,15 @@ export function Nav() {
 
   return (
     <nav className="flex items-center justify-between pt-9 pb-4.5 mb-4.5 max-sm:flex-col max-sm:gap-3 max-sm:items-start">
-      <PixelReveal>
+      <ScanReveal>
         <Link
           to="/"
           className="font-mono font-bold text-[1.15rem] tracking-[1px] text-text no-underline px-2.5 border-[3px] border-text bg-lime shadow-brutal transition-none hover:bg-text hover:text-lime hover:shadow-brutal-hover hover:-translate-x-0.5 hover:-translate-y-0.5"
         >
           dulev.dev
         </Link>
-      </PixelReveal>
-      <PixelReveal>
+      </ScanReveal>
+      <ScanReveal>
         <div className="flex gap-3 items-center">
           <a
             href={intro.links.github}
@@ -40,7 +40,7 @@ export function Nav() {
             /uses
           </a>
         </div>
-      </PixelReveal>
+      </ScanReveal>
     </nav>
   )
 }

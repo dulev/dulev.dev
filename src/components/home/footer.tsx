@@ -1,8 +1,8 @@
-import { PixelReveal } from '~/components/pixel-reveal'
+import { ScanReveal } from '~/components/scan-reveal'
 
 export function Footer() {
   return (
-    <PixelReveal>
+    <ScanReveal>
       <footer className="mt-18 bg-text py-9">
         <div className="max-w-[860px] mx-auto px-8 flex items-center justify-between gap-6 flex-wrap max-sm:flex-col">
           <div className="font-mono text-[0.82rem] text-lime font-medium">
@@ -16,6 +16,6 @@ export function Footer() {
           </a>
         </div>
       </footer>
-    </PixelReveal>
+    </ScanReveal>
   )
 }

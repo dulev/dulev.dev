@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PixelReveal } from "~/components/pixel-reveal";
+import { ScanReveal } from "~/components/scan-reveal";
 import { siteContent } from "~/data/content";
 
 const BOOKMARK_H = 215;
@@ -22,7 +22,7 @@ const photoClip = `polygon(0% 0%, 100% 0%, 100% ${photoTrianglePct}%, 50% 100%, 
 
 function BookmarkPhoto({ enabled }: { enabled: boolean }) {
   return (
-    <PixelReveal enabled={enabled}>
+    <ScanReveal enabled={enabled}>
       <div className="absolute bottom-0 right-12 translate-y-[35%] max-sm:right-4 z-10">
         <div className="relative w-[250px] max-sm:w-[190px]" style={{ height: TOTAL_H }}>
         {/* Shadow layer */}
@@ -54,7 +54,7 @@ function BookmarkPhoto({ enabled }: { enabled: boolean }) {
         </div>
         </div>
       </div>
-    </PixelReveal>
+    </ScanReveal>
   );
 }
 
@@ -64,7 +64,7 @@ export function Hero() {
 
   return (
     <div className="mb-14 relative">
-      <PixelReveal onComplete={() => setHeroDone(true)}>
+      <ScanReveal onComplete={() => setHeroDone(true)}>
         <header className="bg-card border-[3px] border-text shadow-brutal p-9 pb-8 isolate max-sm:px-4.5 max-sm:py-7 max-sm:pb-6">
           <h1 className="font-mono font-bold text-[clamp(2.8rem,7.5vw,4.5rem)] text-text leading-[1.05] m-0 mb-6 -tracking-[1px] relative z-[1] underline decoration-dashed decoration-lime underline-offset-[8px] decoration-[6px]">
             {intro.name}
@@ -103,7 +103,7 @@ export function Hero() {
             </a>
           </div>
         </header>
-      </PixelReveal>
+      </ScanReveal>
       <BookmarkPhoto enabled={heroDone} />
     </div>
   );
