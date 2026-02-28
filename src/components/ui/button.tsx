@@ -3,6 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
 
 import { cn } from "~/lib/utils"
+import { useSound } from "~/lib/sounds"
 
 const SHADOW_SM =
   "shadow-[3px_3px_0_var(--btn-shadow)] hover:shadow-[5px_5px_0_var(--btn-shadow)] active:shadow-[2px_2px_0_var(--btn-shadow)]"
@@ -40,11 +41,15 @@ function Button({
   variant = "default",
   size = "default",
   asChild = false,
+  soundEnabled = true,
+  onClick,
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean
+    soundEnabled?: boolean
   }) {
+  const [playClick] = useSound("tick", { volume: 0.3 })
   const Comp = asChild ? Slot.Root : "button"
 
   return (
@@ -53,6 +58,9 @@ function Button({
       data-variant={variant}
       data-size={size}
       className={cn(buttonVariants({ variant, size, className }))}
+      onMouseDown={soundEnabled ? () => playClick({ playbackRate: 0.7 }) : undefined}
+      onMouseUp={soundEnabled ? () => playClick({ playbackRate: 0.9 }) : undefined}
+      onClick={onClick}
       {...props}
     />
   )

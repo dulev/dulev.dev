@@ -7,7 +7,6 @@ import {
   Scripts,
   useRouterState,
 } from "@tanstack/react-router";
-import { SoundProvider } from "~/components/sound-provider";
 import { TooltipProvider } from "~/components/ui/tooltip";
 import { CrtIntro } from "~/components/crt-intro";
 import { Nav } from "~/components/nav";
@@ -79,9 +78,7 @@ function RootDocument({ children }: { children: ReactNode }) {
       </head>
       <body className="min-h-screen bg-bg neo-grid-bg">
         <TooltipProvider>
-          <SoundProvider>
-            {children}
-          </SoundProvider>
+          {children}
         </TooltipProvider>
         <Scripts />
       </body>
