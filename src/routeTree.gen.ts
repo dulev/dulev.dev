@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UsesRouteImport } from './routes/uses'
 import { Route as MyImageAssetsRouteImport } from './routes/my-image-assets'
+import { Route as LinkedinRouteImport } from './routes/linkedin'
 import { Route as CvRouteImport } from './routes/cv'
 import { Route as AnimationsRouteImport } from './routes/animations'
 import { Route as IndexRouteImport } from './routes/index'
@@ -25,6 +26,11 @@ const UsesRoute = UsesRouteImport.update({
 const MyImageAssetsRoute = MyImageAssetsRouteImport.update({
   id: '/my-image-assets',
   path: '/my-image-assets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LinkedinRoute = LinkedinRouteImport.update({
+  id: '/linkedin',
+  path: '/linkedin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CvRoute = CvRouteImport.update({
@@ -57,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/animations': typeof AnimationsRoute
   '/cv': typeof CvRoute
+  '/linkedin': typeof LinkedinRoute
   '/my-image-assets': typeof MyImageAssetsRoute
   '/uses': typeof UsesRoute
   '/designs/12': typeof Designs12Route
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/animations': typeof AnimationsRoute
   '/cv': typeof CvRoute
+  '/linkedin': typeof LinkedinRoute
   '/my-image-assets': typeof MyImageAssetsRoute
   '/uses': typeof UsesRoute
   '/designs/12': typeof Designs12Route
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/animations': typeof AnimationsRoute
   '/cv': typeof CvRoute
+  '/linkedin': typeof LinkedinRoute
   '/my-image-assets': typeof MyImageAssetsRoute
   '/uses': typeof UsesRoute
   '/designs/12': typeof Designs12Route
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/animations'
     | '/cv'
+    | '/linkedin'
     | '/my-image-assets'
     | '/uses'
     | '/designs/12'
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
     | '/'
     | '/animations'
     | '/cv'
+    | '/linkedin'
     | '/my-image-assets'
     | '/uses'
     | '/designs/12'
@@ -105,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/animations'
     | '/cv'
+    | '/linkedin'
     | '/my-image-assets'
     | '/uses'
     | '/designs/12'
@@ -115,6 +127,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AnimationsRoute: typeof AnimationsRoute
   CvRoute: typeof CvRoute
+  LinkedinRoute: typeof LinkedinRoute
   MyImageAssetsRoute: typeof MyImageAssetsRoute
   UsesRoute: typeof UsesRoute
   Designs12Route: typeof Designs12Route
@@ -135,6 +148,13 @@ declare module '@tanstack/react-router' {
       path: '/my-image-assets'
       fullPath: '/my-image-assets'
       preLoaderRoute: typeof MyImageAssetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/linkedin': {
+      id: '/linkedin'
+      path: '/linkedin'
+      fullPath: '/linkedin'
+      preLoaderRoute: typeof LinkedinRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cv': {
@@ -179,6 +199,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnimationsRoute: AnimationsRoute,
   CvRoute: CvRoute,
+  LinkedinRoute: LinkedinRoute,
   MyImageAssetsRoute: MyImageAssetsRoute,
   UsesRoute: UsesRoute,
   Designs12Route: Designs12Route,

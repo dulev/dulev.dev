@@ -8,6 +8,7 @@ import {
   useRouter,
 } from "@tanstack/react-router";
 import { SoundProvider } from "~/components/sound-provider";
+import { TooltipProvider } from "~/components/ui/tooltip";
 import { CrtIntro } from "~/components/crt-intro";
 import appCss from "~/styles/app.css?url";
 
@@ -88,9 +89,11 @@ function RootDocument({ children }: { children: ReactNode }) {
         <HeadContent />
       </head>
       <body className="min-h-screen">
-        <SoundProvider>
-          {children}
-        </SoundProvider>
+        <TooltipProvider>
+          <SoundProvider>
+            {children}
+          </SoundProvider>
+        </TooltipProvider>
         <Scripts />
       </body>
     </html>

@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { PiArrowLeftFill } from 'react-icons/pi'
 import { cvData } from '~/data/cv'
+import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip'
 import type { Education, Experience, SideProject } from '~/data/cv'
 
 const printCSS = `
@@ -15,28 +16,28 @@ const printCSS = `
     -webkit-print-color-adjust: exact;
   }
 
-  .cv-no-print { display: none !important; }
-  .cv-page { background-image: none !important; background: white !important; }
-  .cv-page main { padding-top: 0 !important; }
-  .cv-header { margin-bottom: 1rem !important; }
-  .cv-summary { margin-bottom: 0.5rem !important; }
+  h2, h3 { break-after: avoid; }
 
-  .cv-card {
-    box-shadow: none !important;
-    padding: 0 !important;
-    margin-bottom: 0.75rem !important;
+  .cv-page { background: white !important; }
+  .cv-page .cv-no-print { display: none; }
+  .cv-page main { padding-top: 0; }
+  .cv-page .cv-header { margin-bottom: 1rem; padding: 0; }
+
+  .cv-page .cv-card {
+    box-shadow: none;
+    padding: 0;
+    margin-bottom: 2rem;
     break-inside: avoid;
   }
 
-  .cv-section-header {
-    margin-top: 1rem !important;
-    margin-bottom: 0.75rem !important;
+  .cv-page section > .cv-card:last-child { margin-bottom: 0; }
+
+  .cv-page .cv-section-header {
+    margin-top: 3rem;
+    margin-bottom: 0.75rem;
   }
 
-  .cv-job:not(:last-child) { margin-bottom: 1rem !important; }
-  .cv-highlights li { margin-bottom: 0 !important; }
-
-  h2, h3 { break-after: avoid; }
+  .cv-page .cv-highlights li { margin-bottom: 0; }
 }
 `
 
@@ -47,6 +48,9 @@ const SLASH_BULLET_CLASS =
   "pl-4 relative before:content-['›'] before:absolute before:left-0 before:font-mono before:text-orange before:font-bold before:text-base"
 
 const CONTACT_LINK_CLASS = 'text-text no-underline hover:text-orange'
+
+const ACTION_BTN_CLASS =
+  'font-mono text-xs font-bold text-text py-1.5 px-4 bg-lime hover:bg-text hover:text-lime cursor-pointer'
 
 function CvSectionHeader({ number, title }: { number: string; title: string }) {
   return (
@@ -65,7 +69,7 @@ function TechPills({ tech }: { tech: readonly string[] }) {
       {tech.map((t) => (
         <li
           key={t}
-          className="font-mono text-[0.7rem] font-medium tracking-wide py-0.5 px-2.5 border-2 border-text bg-lime text-text uppercase"
+          className="font-mono text-[0.7rem] font-medium tracking-wide py-0.5 px-2.5 bg-lime text-text uppercase"
         >
           {t}
         </li>
@@ -77,7 +81,7 @@ function TechPills({ tech }: { tech: readonly string[] }) {
 
 function JobCard({ job }: { job: Experience }) {
   return (
-    <div className={`${CARD_CLASS} cv-job`}>
+    <div className={CARD_CLASS}>
 
       <div className="mb-1">
         <h3 className="font-mono font-bold text-xl text-text uppercase m-0 inline">
@@ -168,13 +172,20 @@ export function CvPage() {
           >
             <PiArrowLeftFill className="inline mr-1" /> dulev.dev
           </Link>
-          <button
-            type="button"
-            onClick={() => window.print()}
-            className="font-mono text-xs font-bold text-text py-1.5 px-4 bg-lime hover:bg-text hover:text-lime cursor-pointer"
-          >
-            Print / Save PDF
-          </button>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <button
+                type="button"
+                onClick={() => window.print()}
+                className={ACTION_BTN_CLASS}
+              >
+                Save as PDF
+              </button>
+            </TooltipTrigger>
+            <TooltipContent>
+              Select "Save as PDF" in print destination
+            </TooltipContent>
+          </Tooltip>
         </nav>
 
         <main className="max-w-[860px] mx-auto px-6 pt-8 pb-20 max-sm:px-4">
@@ -199,17 +210,19 @@ export function CvPage() {
               </a>
               <span className="text-muted-light max-sm:hidden">|</span>
               <a href={cvData.contact.linkedin} target="_blank" rel="noopener noreferrer" className={CONTACT_LINK_CLASS}>
-                linkedin.com/in/dimitar-dulev-470566b0
+                dulev.dev/linkedin
               </a>
             </div>
           </header>
 
-          <CvSectionHeader number="SEC.01" title="Summary" />
-          <div className="cv-summary cv-card bg-card p-7 pb-6 mb-6 max-sm:px-4 max-sm:py-5 max-sm:pb-4">
-            <p className="font-sans text-[0.9rem] text-muted-light leading-relaxed m-0">
-              {cvData.summary}
-            </p>
-          </div>
+          <section>
+            <CvSectionHeader number="SEC.01" title="Summary" />
+            <div className="cv-card bg-card p-7 pb-6 mb-6 max-sm:px-4 max-sm:py-5 max-sm:pb-4">
+              <p className="font-sans text-[0.9rem] text-muted-light leading-relaxed m-0">
+                {cvData.summary}
+              </p>
+            </div>
+          </section>
 
           <section>
             <CvSectionHeader number="SEC.02" title="Experience" />
@@ -253,13 +266,20 @@ export function CvPage() {
           >
             <PiArrowLeftFill className="inline mr-1" /> dulev.dev
           </Link>
-          <button
-            type="button"
-            onClick={() => window.print()}
-            className="font-mono text-xs font-bold text-text py-1.5 px-4 bg-lime hover:bg-text hover:text-lime cursor-pointer"
-          >
-            Print / Save PDF
-          </button>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <button
+                type="button"
+                onClick={() => window.print()}
+                className={ACTION_BTN_CLASS}
+              >
+                Save as PDF
+              </button>
+            </TooltipTrigger>
+            <TooltipContent>
+              Select "Save as PDF" in print destination
+            </TooltipContent>
+          </Tooltip>
         </nav>
       </div>
     </>

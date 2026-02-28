@@ -1,12 +1,20 @@
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE,
+  GITHUB_URL,
+  LINKEDIN_URL,
+  SITE_URL,
+} from '~/lib/links'
+
 export const cvData = {
   name: 'Dimitar Dulev',
   title: 'Senior Full-Stack Engineer',
   contact: {
-    email: 'hello@dulev.dev',
-    phone: '+359-REDACTED-NUMBER',
-    github: 'https://github.com/dulev',
-    linkedin: 'https://www.linkedin.com/in/dimitar-dulev-470566b0/',
-    website: 'https://dulev.dev',
+    email: CONTACT_EMAIL,
+    phone: CONTACT_PHONE,
+    github: GITHUB_URL,
+    linkedin: LINKEDIN_URL,
+    website: SITE_URL,
   },
   summary:
     'Senior Full-Stack Engineer with 7+ years building products at scale. Led frontend and backend development for applications serving millions of users, including checkout flows, search systems, and admin platforms. Strong product sense with focus on UI/UX, workflow automation, and shipping features that matter. Core stack: React, TypeScript, Node.js, PostgreSQL.',
@@ -77,15 +85,6 @@ export const cvData = {
   ],
   sideProjects: [
     {
-      id: 'clipsbee',
-      name: 'Clipsbee',
-      tagline: 'AI Video Creation Platform',
-      period: 'Mar 2024 — Aug 2025',
-      description:
-        'Built a platform enabling users to generate animated videos from text prompts, with a custom text-based video editor. Architected the rendering pipeline: LLM-powered script generation, phonetic transcription, lip-sync animation, and a custom 2D SVG scene renderer. Deployed production rendering with Remotion on AWS Lambda and Trigger.dev for job orchestration.',
-      tech: ['TypeScript', 'React', 'TanStack Router', 'TanStack Query', 'Remotion', 'AWS Lambda', 'Lemon Squeezy', 'OpenAI/Anthropic'],
-    },
-    {
       id: 'stringpal',
       name: 'StringPal',
       tagline: 'Music Practice Platform',
@@ -93,6 +92,15 @@ export const cvData = {
       description:
         'Built a practice platform for guitarists. Features an A-B looper for YouTube videos with real-time pitch shifting and custom illustrations. Includes metronome exercises with community sharing, practice routines with timers, and a rich text editor with AlphaTab guitar notation.',
       tech: ['TanStack Start', 'React', 'PostgreSQL', 'Drizzle ORM', 'Chrome Extension'],
+    },
+    {
+      id: 'clipsbee',
+      name: 'Clipsbee',
+      tagline: 'AI Video Creation Platform',
+      period: 'Mar 2024 — Aug 2025',
+      description:
+        'Built a platform enabling users to generate animated videos from text prompts, with a custom text-based video editor. Architected the rendering pipeline: LLM-powered script generation, phonetic transcription, lip-sync animation, and a custom 2D SVG scene renderer. Deployed production rendering with Remotion on AWS Lambda and Trigger.dev for job orchestration.',
+      tech: ['TypeScript', 'React', 'TanStack Router', 'TanStack Query', 'Remotion', 'AWS Lambda', 'Lemon Squeezy', 'OpenAI/Anthropic'],
     },
   ],
   education: [

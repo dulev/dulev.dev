@@ -1,12 +1,21 @@
+import {
+  CONTACT_EMAIL,
+  GITHUB_URL,
+  LINKEDIN_URL,
+} from '~/lib/links'
+
+export { CONTACT_EMAIL }
+
 export const siteContent = {
   intro: {
     name: 'Dimitar Dulev',
     tagline: 'fullstack dev & tinkerer.',
     bio: "7+ years professional experience building software. I like shipping side projects, breaking things, and learning by doing.",
     links: {
-      github: 'https://github.com/dulev',
-      linkedin: 'https://www.linkedin.com/in/dimitar-dulev-470566b0/',
+      github: GITHUB_URL,
+      linkedin: LINKEDIN_URL,
       uses: '/uses',
+      email: CONTACT_EMAIL,
     },
   },
   projects: [
