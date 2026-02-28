@@ -6,10 +6,12 @@ import {
   HeadContent,
   Scripts,
   useRouter,
+  useRouterState,
 } from "@tanstack/react-router";
 import { SoundProvider } from "~/components/sound-provider";
 import { TooltipProvider } from "~/components/ui/tooltip";
 import { CrtIntro } from "~/components/crt-intro";
+import { Nav } from "~/components/home/nav";
 import appCss from "~/styles/app.css?url";
 
 const MAIN_ROUTE = "/";
@@ -71,12 +73,23 @@ export const Route = createRootRoute({
   component: RootComponent,
 });
 
+const NAV_ROUTES = new Set(["/", "/design-system", "/uses"]);
+
 function RootComponent() {
   useInspoToggle();
+  const pathname = useRouterState({
+    select: (s) => s.location.pathname,
+  });
+  const showNav = NAV_ROUTES.has(pathname);
 
   return (
     <RootDocument>
       <CrtIntro />
+      {showNav && (
+        <div className="max-w-[860px] mx-auto px-8 max-sm:px-4.5">
+          <Nav />
+        </div>
+      )}
       <Outlet />
     </RootDocument>
   );
@@ -88,7 +101,7 @@ function RootDocument({ children }: { children: ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className="min-h-screen">
+      <body className="min-h-screen bg-bg neo-grid-bg">
         <TooltipProvider>
           <SoundProvider>
             {children}

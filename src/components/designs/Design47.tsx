@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
 import { siteContent } from '~/data/content'
-import { Nav } from '~/components/home/nav'
 import { Hero } from '~/components/home/hero'
 import { ProjectsSection } from '~/components/home/projects-section'
 import { InterestsSection } from '~/components/home/interests-section'
@@ -40,7 +39,6 @@ export function Design47() {
   return (
     <div className="font-mono min-h-screen m-0 p-0 bg-bg neo-grid-bg text-text leading-[1.6]">
       <div className="max-w-[860px] mx-auto px-8 max-sm:px-4.5">
-        <Nav />
         <Hero />
         <ProjectsSection
           sectionRef={projectsRef}

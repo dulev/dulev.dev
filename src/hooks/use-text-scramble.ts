@@ -5,6 +5,7 @@ const CHARS = '█▓▒░╔╗╚╝│─┌┐└┘ABCDEFGHIJKLMNOPQRSTUVW
 type TextScramble = {
   display: string
   scramble: () => void
+  pause: () => void
 }
 
 export function useTextScramble(
@@ -14,6 +15,8 @@ export function useTextScramble(
   const [display, setDisplay] = useState(text)
   const timeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([])
   const intervalsRef = useRef<ReturnType<typeof setInterval>[]>([])
+  const pausedRef = useRef(false)
+  const pauseTimerRef = useRef<ReturnType<typeof setTimeout>>()
 
   function clearTimers(): void {
     timeoutsRef.current.forEach(clearTimeout)
@@ -22,7 +25,16 @@ export function useTextScramble(
     intervalsRef.current = []
   }
 
+  const pause = useCallback(() => {
+    pausedRef.current = true
+    clearTimeout(pauseTimerRef.current)
+    pauseTimerRef.current = setTimeout(() => {
+      pausedRef.current = false
+    }, 200)
+  }, [])
+
   const scramble = useCallback(() => {
+    if (pausedRef.current) return
     clearTimers()
 
     const letters = text.split('')
@@ -53,5 +65,5 @@ export function useTextScramble(
 
   useEffect(() => clearTimers, [])
 
-  return { display, scramble }
+  return { display, scramble, pause }
 }

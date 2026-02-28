@@ -1,29 +1,40 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 import {
-  PiArrowLeftFill,
   PiSpeakerHighFill,
   PiGithubLogoFill,
   PiPaperPlaneRightFill,
   PiArrowUpRightFill,
-} from 'react-icons/pi'
-import { Button, buttonIconClass, ButtonExternalLinkIndicator } from '~/components/ui/button'
+  PiArrowLeftFill,
+} from "react-icons/pi";
+import {
+  Button,
+  buttonIconClass,
+  ButtonExternalLinkIndicator,
+} from "~/components/ui/button";
 
-export const Route = createFileRoute('/design-system')({
+export const Route = createFileRoute("/design-system")({
   component: DesignSystemPage,
   head: () => ({
-    meta: [{ title: 'Design System — dulev.dev' }],
+    meta: [{ title: "Design System — dulev.dev" }],
   }),
-})
+});
 
-const VARIANTS = ['default', 'lime', 'orange', 'dark', 'dark-lime', 'dark-orange'] as const
-const SIZES = ['sm', 'default', 'lg', 'icon'] as const
+const VARIANTS = [
+  "default",
+  "lime",
+  "orange",
+  "dark",
+  "dark-lime",
+  "dark-orange",
+] as const;
+const SIZES = ["sm", "default", "lg", "icon"] as const;
 
 function SectionTag({ label }: { label: string }) {
   return (
     <span className="font-mono font-bold text-xs text-orange border-2 border-orange px-2 py-0.5 leading-none uppercase tracking-[1px]">
       {label}
     </span>
-  )
+  );
 }
 
 function SpecimenRow({
@@ -31,40 +42,29 @@ function SpecimenRow({
   dark,
   children,
 }: {
-  label: string
-  dark?: boolean
-  children: React.ReactNode
+  label: string;
+  dark?: boolean;
+  children: React.ReactNode;
 }) {
   return (
     <div
-      className={`p-6 border-b-2 border-dashed ${dark ? 'border-muted bg-text' : 'border-text/20 bg-bg'}`}
+      className={`p-6 border-b-2 border-dashed ${dark ? "border-muted bg-text" : "border-text/20 bg-bg"}`}
     >
-      <div className="font-mono text-[0.7rem] font-bold uppercase tracking-[2px] mb-4 opacity-60"
-        style={dark ? { color: '#C8FF00' } : undefined}
+      <div
+        className="font-mono text-[0.7rem] font-bold uppercase tracking-[2px] mb-4 opacity-60"
+        style={dark ? { color: "#C8FF00" } : undefined}
       >
         {label}
       </div>
       <div className="flex flex-wrap items-center gap-4">{children}</div>
     </div>
-  )
+  );
 }
 
 function DesignSystemPage() {
   return (
     <div className="neo-grid-bg bg-bg min-h-screen">
-      <div className="max-w-[960px] mx-auto px-6 pt-8 pb-20 max-sm:px-4">
-        {/* Nav */}
-        <nav className="flex items-center justify-between mb-12">
-          <Button variant="dark" size="sm" asChild>
-            <Link to="/">
-              <PiArrowLeftFill className={buttonIconClass} /> dulev.dev
-            </Link>
-          </Button>
-          <span className="font-mono text-xs text-muted tracking-[2px] uppercase">
-            Design System
-          </span>
-        </nav>
-
+      <div className="max-w-[860px] mx-auto px-8 pb-20 max-sm:px-4">
         {/* Header */}
         <header className="mb-14">
           <h1 className="font-mono font-bold text-[clamp(2rem,5vw,3.2rem)] text-text leading-[1.1] m-0 mb-4 uppercase">
@@ -94,15 +94,11 @@ function DesignSystemPage() {
               <SpecimenRow
                 key={variant}
                 label={`variant="${variant}"`}
-                dark={variant.startsWith('dark')}
+                dark={variant.startsWith("dark")}
               >
                 {SIZES.map((size) => (
                   <Button key={size} variant={variant} size={size}>
-                    {size === 'icon' ? (
-                      <PiSpeakerHighFill size={18} />
-                    ) : (
-                      size
-                    )}
+                    {size === "icon" ? <PiSpeakerHighFill size={18} /> : size}
                   </Button>
                 ))}
               </SpecimenRow>
@@ -239,31 +235,44 @@ function DesignSystemPage() {
 
           <div className="space-y-6">
             <div>
-              <p className="font-mono text-xs text-muted mb-3 uppercase tracking-wide">Sizes</p>
+              <p className="font-mono text-xs text-muted mb-3 uppercase tracking-wide">
+                Sizes
+              </p>
               <div className="grid grid-cols-3 gap-6">
                 {[
-                  ['shadow-brutal-sm', 'shadow-brutal-sm'],
-                  ['shadow-brutal', 'shadow-brutal'],
-                  ['shadow-brutal-hover', 'shadow-brutal-hover'],
+                  ["shadow-brutal-sm", "shadow-brutal-sm"],
+                  ["shadow-brutal", "shadow-brutal"],
+                  ["shadow-brutal-hover", "shadow-brutal-hover"],
                 ].map(([name, cls]) => (
                   <div key={name} className="flex flex-col items-center gap-3">
-                    <div className={`w-20 h-20 bg-card border-3 border-text ${cls}`} />
-                    <code className="font-mono text-[0.72rem] font-bold text-orange">{name}</code>
+                    <div
+                      className={`w-20 h-20 bg-card border-3 border-text ${cls}`}
+                    />
+                    <code className="font-mono text-[0.72rem] font-bold text-orange">
+                      {name}
+                    </code>
                   </div>
                 ))}
               </div>
             </div>
             <div>
-              <p className="font-mono text-xs text-muted mb-3 uppercase tracking-wide">Colors <span className="text-muted-light">(via --shadow-color)</span></p>
+              <p className="font-mono text-xs text-muted mb-3 uppercase tracking-wide">
+                Colors{" "}
+                <span className="text-muted-light">(via --shadow-color)</span>
+              </p>
               <div className="grid grid-cols-3 gap-6">
                 {[
-                  ['shadow-text', 'shadow-text'],
-                  ['shadow-lime', 'shadow-lime'],
-                  ['shadow-orange', 'shadow-orange'],
+                  ["shadow-text", "shadow-text"],
+                  ["shadow-lime", "shadow-lime"],
+                  ["shadow-orange", "shadow-orange"],
                 ].map(([name, cls]) => (
                   <div key={name} className="flex flex-col items-center gap-3">
-                    <div className={`w-20 h-20 bg-card border-3 border-text shadow-brutal ${cls}`} />
-                    <code className="font-mono text-[0.72rem] font-bold text-orange">{name}</code>
+                    <div
+                      className={`w-20 h-20 bg-card border-3 border-text shadow-brutal ${cls}`}
+                    />
+                    <code className="font-mono text-[0.72rem] font-bold text-orange">
+                      {name}
+                    </code>
                   </div>
                 ))}
               </div>
@@ -272,5 +281,5 @@ function DesignSystemPage() {
         </section>
       </div>
     </div>
-  )
+  );
 }
