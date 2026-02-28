@@ -1,7 +1,15 @@
+import { createFileRoute } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
 import { PiArrowUpRightFill } from 'react-icons/pi'
 
-export function UsesPage() {
+export const Route = createFileRoute('/uses/')({
+  component: UsesPage,
+  head: () => ({
+    meta: [{ title: 'Uses — Dimitar Dulev' }],
+  }),
+})
+
+function UsesPage() {
   return (
     <div>
       <main className="max-w-[860px] mx-auto px-8 pb-20 max-sm:px-4">

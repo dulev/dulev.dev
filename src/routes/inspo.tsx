@@ -1,6 +1,11 @@
 import { useEffect } from 'react'
+import { createFileRoute } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
 import { siteContent } from '~/data/content'
+
+export const Route = createFileRoute('/inspo')({
+  component: Inspo,
+})
 
 const interestEmojis: Record<string, string> = {
   guitar: '🎸',
@@ -10,9 +15,7 @@ const interestEmojis: Record<string, string> = {
   terminal: '💻',
 }
 
-const cardColors = ['#C8FF00', '#FF00FF', '#FF6B00', '#FFFFFF', '#000000']
-
-export function Design12() {
+function Inspo() {
   useEffect(() => {
     const linkEl = document.createElement('link')
     linkEl.rel = 'stylesheet'
@@ -551,7 +554,6 @@ export function Design12() {
                       color: textCycle[i % textCycle.length],
                     }}
                   >
-                    {/* Emoji rendered large, pixel-grid style */}
                     <span
                       className="text-3xl leading-none"
                       style={{ imageRendering: 'pixelated' }}

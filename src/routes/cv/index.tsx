@@ -1,12 +1,20 @@
+import { createFileRoute } from '@tanstack/react-router'
 import { Link } from "@tanstack/react-router";
 import { PiArrowLeftFill } from "react-icons/pi";
-import { cvData } from "~/data/cv";
+import { cvData } from "./-cv";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "~/components/ui/tooltip";
-import type { Education, Experience, SideProject } from "~/data/cv";
+import type { Education, Experience, SideProject } from "./-cv";
+
+export const Route = createFileRoute('/cv/')({
+  component: CvPage,
+  head: () => ({
+    meta: [{ title: 'CV — Dimitar Dulev' }],
+  }),
+})
 
 const printCSS = `
 @media print {
@@ -159,7 +167,7 @@ function EducationItem({ edu }: { edu: Education }) {
   );
 }
 
-export function CvPage() {
+function CvPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: printCSS }} />
@@ -298,5 +306,5 @@ export function CvPage() {
         </nav>
       </div>
     </>
-  );
+  )
 }

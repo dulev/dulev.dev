@@ -1,8 +1,16 @@
+import { createFileRoute } from '@tanstack/react-router'
 import { useRef } from 'react'
 import { Link } from '@tanstack/react-router'
 import { PiArrowLeftFill, PiDownloadSimpleFill } from 'react-icons/pi'
 import { snapdom } from '@zumer/snapdom'
 import PHOTO from '~/assets/photoshoot_dulev.png'
+
+export const Route = createFileRoute('/my-image-assets/')({
+  component: ImageAssetsPage,
+  head: () => ({
+    meta: [{ title: 'Image Assets — Dimitar Dulev' }],
+  }),
+})
 
 // ─── Download helper ────────────────────────────────────────────────────────
 
@@ -274,7 +282,7 @@ function AssetCard({
 
 // ─── Page ────────────────────────────────────────────────────────────────────
 
-export function ImageAssetsPage() {
+function ImageAssetsPage() {
   const liProfileRef = useRef<HTMLDivElement>(null)
   const liBannerRef = useRef<HTMLDivElement>(null)
   const ghProfileRef = useRef<HTMLDivElement>(null)

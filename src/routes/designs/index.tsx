@@ -6,7 +6,7 @@ export const Route = createFileRoute('/designs/')({
 
 const designs = [
   { id: 'main', route: '/', name: 'Main', desc: 'IBM Plex Mono 700 headers + DM Mono UI + Work Sans body' },
-  { id: 'inspo', route: '/designs/12', name: 'Inspo', desc: 'Neobrutalist pixel blocks (Design 12)' },
+  { id: 'inspo', route: '/inspo', name: 'Inspo', desc: 'Neobrutalist pixel blocks (Design 12)' },
 ]
 
 function DesignsPage() {

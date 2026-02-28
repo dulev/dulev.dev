@@ -1,45 +1,17 @@
 /// <reference types="vite/client" />
-import { useEffect, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import {
   Outlet,
   createRootRoute,
   HeadContent,
   Scripts,
-  useRouter,
   useRouterState,
 } from "@tanstack/react-router";
 import { SoundProvider } from "~/components/sound-provider";
 import { TooltipProvider } from "~/components/ui/tooltip";
 import { CrtIntro } from "~/components/crt-intro";
-import { Nav } from "~/components/home/nav";
+import { Nav } from "~/components/nav";
 import appCss from "~/styles/app.css?url";
-
-const MAIN_ROUTE = "/";
-const INSPO_ROUTE = "/designs/12";
-
-function useInspoToggle() {
-  const router = useRouter();
-
-  useEffect(() => {
-    function handleKeyDown(e: KeyboardEvent) {
-      if (e.key !== "i") return;
-      if (
-        e.target instanceof HTMLInputElement ||
-        e.target instanceof HTMLTextAreaElement
-      )
-        return;
-
-      if (window.location.pathname === INSPO_ROUTE) {
-        router.navigate({ to: MAIN_ROUTE as "/" });
-      } else {
-        router.navigate({ to: INSPO_ROUTE as "/" });
-      }
-    }
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [router]);
-}
 
 export const Route = createRootRoute({
   head: () => ({
@@ -81,7 +53,6 @@ export const Route = createRootRoute({
 const NAV_ROUTES = new Set(["/", "/design-system", "/uses"]);
 
 function RootComponent() {
-  useInspoToggle();
   const pathname = useRouterState({
     select: (s) => s.location.pathname,
   });
