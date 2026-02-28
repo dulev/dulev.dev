@@ -125,6 +125,32 @@ function GitHubProfileAsset() {
   )
 }
 
+function FaviconAsset() {
+  return (
+    <div
+      style={{
+        width: 512,
+        height: 512,
+        backgroundColor: '#C8FF00',
+        border: '46px solid #111111',
+        boxSizing: 'border-box',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontFamily: 'IBM Plex Mono, monospace',
+        fontWeight: 700,
+        fontSize: 320,
+        color: '#111111',
+        letterSpacing: '-15px',
+        lineHeight: 1,
+        userSelect: 'none',
+      }}
+    >
+      <span style={{ display: 'block', transform: 'translateX(-10px)' }}>dd</span>
+    </div>
+  )
+}
+
 // ─── Scaled preview wrapper ──────────────────────────────────────────────────
 
 function ScaledPreview({
@@ -252,6 +278,7 @@ export function ImageAssetsPage() {
   const liProfileRef = useRef<HTMLDivElement>(null)
   const liBannerRef = useRef<HTMLDivElement>(null)
   const ghProfileRef = useRef<HTMLDivElement>(null)
+  const faviconRef = useRef<HTMLDivElement>(null)
 
   return (
     <div className="neo-grid-bg bg-bg min-h-screen">
@@ -310,6 +337,18 @@ export function ImageAssetsPage() {
             showCircle
           >
             <GitHubProfileAsset />
+          </AssetCard>
+
+          <AssetCard
+            badge="Favicon"
+            dimensions="512 × 512"
+            filename="favicon.png"
+            assetRef={faviconRef}
+            previewScale={0.35}
+            nativeW={512}
+            nativeH={512}
+          >
+            <FaviconAsset />
           </AssetCard>
         </div>
 
