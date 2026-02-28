@@ -12,7 +12,7 @@ export function Nav() {
   const isHome = useRouterState({ select: (s) => s.location.pathname === '/' })
 
   return (
-    <nav className="flex items-center justify-between pt-9 pb-4.5 mb-4.5 max-sm:flex-col max-sm:gap-3 max-sm:items-start">
+    <nav className="flex items-center justify-between pt-9 pb-4.5 mb-4.5">
       <ScanReveal>
         <Button variant="lime" asChild className="text-[1.15rem] tracking-[1px] font-bold px-2.5">
           <Link to="/" onMouseEnter={scramble} onMouseLeave={pause}>
@@ -35,13 +35,14 @@ export function Nav() {
         </Button>
       </ScanReveal>
       <ScanReveal>
-        <div className="flex gap-3 items-stretch">
+        <div className="flex gap-3 max-sm:gap-2 items-stretch">
           <Button asChild>
             <Link to="/uses">/uses</Link>
           </Button>
           <Button asChild>
-            <a href={`mailto:${CONTACT_EMAIL}`}>
-              <PiPaperPlaneRightFill className={buttonIconClass} />Contact Me
+            <a href={`mailto:${CONTACT_EMAIL}`} aria-label="Contact Me">
+              <PiPaperPlaneRightFill className={`${buttonIconClass} max-sm:mr-0`} />
+              <span className="max-sm:hidden">Contact Me</span>
             </a>
           </Button>
           <SoundToggle />
