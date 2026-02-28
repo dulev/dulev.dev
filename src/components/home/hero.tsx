@@ -25,7 +25,7 @@ const photoTrianglePct =
   ((OVERFLOW + BORDER + (innerH * TRIANGLE_PCT) / 100) / photoWrapperH) * 100;
 const photoClip = `polygon(0% 0%, 100% 0%, 100% ${photoTrianglePct}%, 50% 100%, 0% ${photoTrianglePct}%)`;
 
-const PHOTO_SRC = "/images/photoshoot_dulev.png";
+const PHOTO_SRC = "/images/photoshoot_dulev.webp";
 const PHOTO_ALT = "Photo of Dimitar Dulev";
 
 function BookmarkPhoto({ enabled }: { enabled: boolean }) {
@@ -107,14 +107,22 @@ export function Hero() {
               <Link to="/cv">CV</Link>
             </Button>
             <Button variant="orange" size="lg" asChild className="relative">
-              <a href={intro.links.github} target="_blank" rel="noopener noreferrer">
+              <a
+                href={intro.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <ButtonExternalLinkIndicator />
                 <PiGithubLogoFill className={buttonIconClass} />
                 GitHub
               </a>
             </Button>
             <Button size="lg" asChild className="relative">
-              <a href={intro.links.linkedin} target="_blank" rel="noopener noreferrer">
+              <a
+                href={intro.links.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <ButtonExternalLinkIndicator />
                 <PiLinkedinLogoFill className={buttonIconClass} />
                 LinkedIn
