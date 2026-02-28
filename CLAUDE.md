@@ -5,8 +5,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-bun --bun vite dev          # Start dev server on port 3000
-bun --bun vite build        # Production build (output: .output/)
+pnpm dev                       # Start dev server on port 3000
+pnpm build                     # Production build (output: .output/)
 node .output/server/index.mjs  # Run production server
 ```
 
@@ -16,7 +16,7 @@ No test framework is configured.
 
 Personal portfolio site built with **React 19 + TypeScript + TanStack Start + Nitro**, deployed on Vercel.
 
-**Stack:** TanStack Router (file-based routing) · Vite 7 · Tailwind CSS v4 · Motion.dev · Bun
+**Stack:** TanStack Router (file-based routing) · Vite 7 · Tailwind CSS v4 · Motion.dev · pnpm
 
 **Key paths:**
 - `src/routes/` — File-based routes; `routeTree.gen.ts` is auto-generated (do not edit)
@@ -43,4 +43,4 @@ Personal portfolio site built with **React 19 + TypeScript + TanStack Start + Ni
   - Icon after text → external links (e.g. `GitHub <PiArrowUpRightFill />`)
   - Icon only → toggles/controls (sound, theme)
   - Icon above text → vertical card labels (interest stamps)
-- **Package manager:** Bun (note: global CLAUDE.md says prefer pnpm, but this project uses Bun per lockfile)
+- **Package manager:** pnpm
