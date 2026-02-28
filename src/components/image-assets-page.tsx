@@ -2,8 +2,7 @@ import { useRef } from 'react'
 import { Link } from '@tanstack/react-router'
 import { PiArrowLeftFill, PiDownloadSimpleFill } from 'react-icons/pi'
 import { snapdom } from '@zumer/snapdom'
-
-const PHOTO = '/images/photoshoot_dulev.png'
+import PHOTO from '~/assets/photoshoot_dulev.png'
 
 // ─── Download helper ────────────────────────────────────────────────────────
 

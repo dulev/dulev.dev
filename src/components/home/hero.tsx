@@ -8,6 +8,7 @@ import {
   ButtonExternalLinkIndicator,
 } from "~/components/ui/button";
 import { siteContent } from "~/data/content";
+import PHOTO_SRC from "~/assets/photoshoot_dulev.webp";
 
 // Bookmark geometry
 const BOOKMARK_H = 215;
@@ -25,7 +26,6 @@ const photoTrianglePct =
   ((OVERFLOW + BORDER + (innerH * TRIANGLE_PCT) / 100) / photoWrapperH) * 100;
 const photoClip = `polygon(0% 0%, 100% 0%, 100% ${photoTrianglePct}%, 50% 100%, 0% ${photoTrianglePct}%)`;
 
-const PHOTO_SRC = "/images/photoshoot_dulev.webp";
 const PHOTO_ALT = "Photo of Dimitar Dulev";
 
 function BookmarkPhoto({ enabled }: { enabled: boolean }) {
