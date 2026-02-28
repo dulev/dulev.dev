@@ -4,8 +4,6 @@ import {
   LINKEDIN_URL,
 } from '~/lib/links'
 
-export { CONTACT_EMAIL }
-
 export const siteContent = {
   intro: {
     name: 'Dimitar Dulev',
@@ -31,7 +29,7 @@ export const siteContent = {
         'Chrome Extension',
       ],
       url: 'https://stringpal.com',
-      cvAnchor: '/cv#stringpal',
+      cvAnchor: 'stringpal',
     },
     {
       name: 'Clipsbee',
@@ -45,7 +43,7 @@ export const siteContent = {
         'ElevenLabs',
       ],
       url: 'https://clipsbee.com',
-      cvAnchor: '/cv#clipsbee',
+      cvAnchor: 'clipsbee',
     },
   ],
   personal: {

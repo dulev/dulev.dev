@@ -45,6 +45,11 @@
   }
 }
 
+/* Shadow color utilities */
+.shadow-text { --shadow-color: #111111; }
+.shadow-lime { --shadow-color: #C8FF00; }
+.shadow-orange { --shadow-color: #FF6B00; }
+
 /* Dashed divider */
 .neo-divider {
   border: none;

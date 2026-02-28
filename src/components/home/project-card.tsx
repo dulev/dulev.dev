@@ -1,4 +1,6 @@
+import { Link } from '@tanstack/react-router'
 import { ScanReveal } from '~/components/scan-reveal'
+import { Button, ButtonExternalLinkIndicator } from '~/components/ui/button'
 import type { Project } from '~/data/content'
 
 export function ProjectCard({
@@ -10,7 +12,7 @@ export function ProjectCard({
 }) {
   return (
     <ScanReveal>
-      <div className="bg-card border-[3px] border-text shadow-brutal p-7 pb-6 mb-6 relative transition-none hover:shadow-brutal-hover hover:-translate-x-0.5 hover:-translate-y-0.5 max-sm:px-4.5 max-sm:py-5.5 max-sm:pb-5">
+      <div className="bg-card border-[3px] border-text shadow-brutal p-7 pb-6 mb-6 relative max-sm:px-4.5 max-sm:py-5.5 max-sm:pb-5">
         <span className="absolute top-3 right-4 font-mono font-bold text-[0.72rem] text-orange leading-none pointer-events-none tracking-[0.5px]">
           No.{String(index + 1).padStart(2, '0')}
         </span>
@@ -34,20 +36,15 @@ export function ProjectCard({
         </ul>
 
         <div className="flex gap-2.5 justify-end">
-          <a
-            href={project.cvAnchor}
-            className="font-mono text-[0.78rem] font-medium text-text no-underline py-1.5 px-3.5 border-2 border-text bg-card shadow-brutal-sm transition-none hover:shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5"
-          >
-            CV Entry
-          </a>
-          <a
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-[0.78rem] font-bold text-text no-underline py-1.5 px-3.5 border-2 border-text bg-orange shadow-brutal-sm transition-none hover:shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5"
-          >
-            Visit
-          </a>
+          <Button size="sm" asChild>
+            <Link to="/cv" hash={project.cvAnchor}>CV Entry</Link>
+          </Button>
+          <Button variant="orange" size="sm" asChild className="relative font-bold">
+            <a href={project.url} target="_blank" rel="noopener noreferrer">
+              <ButtonExternalLinkIndicator />
+              Visit
+            </a>
+          </Button>
         </div>
       </div>
     </ScanReveal>

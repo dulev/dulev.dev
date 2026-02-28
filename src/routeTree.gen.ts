@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as UsesRouteImport } from './routes/uses'
 import { Route as MyImageAssetsRouteImport } from './routes/my-image-assets'
 import { Route as LinkedinRouteImport } from './routes/linkedin'
+import { Route as DesignSystemRouteImport } from './routes/design-system'
 import { Route as CvRouteImport } from './routes/cv'
 import { Route as AnimationsRouteImport } from './routes/animations'
 import { Route as IndexRouteImport } from './routes/index'
@@ -31,6 +32,11 @@ const MyImageAssetsRoute = MyImageAssetsRouteImport.update({
 const LinkedinRoute = LinkedinRouteImport.update({
   id: '/linkedin',
   path: '/linkedin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignSystemRoute = DesignSystemRouteImport.update({
+  id: '/design-system',
+  path: '/design-system',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CvRoute = CvRouteImport.update({
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/animations': typeof AnimationsRoute
   '/cv': typeof CvRoute
+  '/design-system': typeof DesignSystemRoute
   '/linkedin': typeof LinkedinRoute
   '/my-image-assets': typeof MyImageAssetsRoute
   '/uses': typeof UsesRoute
@@ -73,6 +80,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/animations': typeof AnimationsRoute
   '/cv': typeof CvRoute
+  '/design-system': typeof DesignSystemRoute
   '/linkedin': typeof LinkedinRoute
   '/my-image-assets': typeof MyImageAssetsRoute
   '/uses': typeof UsesRoute
@@ -84,6 +92,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/animations': typeof AnimationsRoute
   '/cv': typeof CvRoute
+  '/design-system': typeof DesignSystemRoute
   '/linkedin': typeof LinkedinRoute
   '/my-image-assets': typeof MyImageAssetsRoute
   '/uses': typeof UsesRoute
@@ -96,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/animations'
     | '/cv'
+    | '/design-system'
     | '/linkedin'
     | '/my-image-assets'
     | '/uses'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/animations'
     | '/cv'
+    | '/design-system'
     | '/linkedin'
     | '/my-image-assets'
     | '/uses'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/'
     | '/animations'
     | '/cv'
+    | '/design-system'
     | '/linkedin'
     | '/my-image-assets'
     | '/uses'
@@ -127,6 +139,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AnimationsRoute: typeof AnimationsRoute
   CvRoute: typeof CvRoute
+  DesignSystemRoute: typeof DesignSystemRoute
   LinkedinRoute: typeof LinkedinRoute
   MyImageAssetsRoute: typeof MyImageAssetsRoute
   UsesRoute: typeof UsesRoute
@@ -155,6 +168,13 @@ declare module '@tanstack/react-router' {
       path: '/linkedin'
       fullPath: '/linkedin'
       preLoaderRoute: typeof LinkedinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/design-system': {
+      id: '/design-system'
+      path: '/design-system'
+      fullPath: '/design-system'
+      preLoaderRoute: typeof DesignSystemRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cv': {
@@ -199,6 +219,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnimationsRoute: AnimationsRoute,
   CvRoute: CvRoute,
+  DesignSystemRoute: DesignSystemRoute,
   LinkedinRoute: LinkedinRoute,
   MyImageAssetsRoute: MyImageAssetsRoute,
   UsesRoute: UsesRoute,

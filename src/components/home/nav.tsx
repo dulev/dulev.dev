@@ -1,47 +1,33 @@
 import { Link } from '@tanstack/react-router'
+import { PiPaperPlaneRightFill } from 'react-icons/pi'
 import { ScanReveal } from '~/components/scan-reveal'
 import { SoundToggle } from '~/components/sound-provider'
-import { siteContent } from '~/data/content'
+import { Button, buttonIconClass } from '~/components/ui/button'
+import { CONTACT_EMAIL } from '~/lib/links'
+import { useTextScramble } from '~/hooks/use-text-scramble'
 
 export function Nav() {
-  const { intro } = siteContent
+  const { display, scramble } = useTextScramble('dulev.dev')
 
   return (
     <nav className="flex items-center justify-between pt-9 pb-4.5 mb-4.5 max-sm:flex-col max-sm:gap-3 max-sm:items-start">
       <ScanReveal>
-        <Link
-          to="/"
-          className="font-mono font-bold text-[1.15rem] tracking-[1px] text-text no-underline px-2.5 border-[3px] border-text bg-lime shadow-brutal transition-none hover:bg-text hover:text-lime hover:shadow-brutal-hover hover:-translate-x-0.5 hover:-translate-y-0.5"
-        >
-          dulev.dev
-        </Link>
+        <Button variant="lime" asChild className="text-[1.15rem] tracking-[1px] font-bold px-2.5">
+          <Link to="/" onMouseEnter={scramble}>
+            {display}
+          </Link>
+        </Button>
       </ScanReveal>
       <ScanReveal>
-        <div className="flex gap-3 items-center">
-          <a
-            href={intro.links.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative font-mono text-[0.8rem] font-medium text-text no-underline py-1 px-3.5 border-[3px] border-text bg-card shadow-brutal transition-none hover:shadow-brutal-hover hover:-translate-x-0.5 hover:-translate-y-0.5"
-          >
-            <span className="absolute top-1 right-1 w-[6px] h-[6px] bg-text" style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }} />
-            GitHub
-          </a>
-          <a
-            href={intro.links.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative font-mono text-[0.8rem] font-medium text-text no-underline py-1 px-3.5 border-[3px] border-text bg-card shadow-brutal transition-none hover:shadow-brutal-hover hover:-translate-x-0.5 hover:-translate-y-0.5"
-          >
-            <span className="absolute top-1 right-1 w-[6px] h-[6px] bg-text" style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }} />
-            LinkedIn
-          </a>
-          <a
-            href="/uses"
-            className="font-mono text-[0.8rem] font-medium text-text no-underline py-1 px-3.5 border-[3px] border-text bg-card shadow-brutal transition-none hover:shadow-brutal-hover hover:-translate-x-0.5 hover:-translate-y-0.5"
-          >
-            /uses
-          </a>
+        <div className="flex gap-3 items-stretch">
+          <Button asChild>
+            <Link to="/uses">/uses</Link>
+          </Button>
+          <Button asChild>
+            <a href={`mailto:${CONTACT_EMAIL}`}>
+              <PiPaperPlaneRightFill className={buttonIconClass} />Contact Me
+            </a>
+          </Button>
           <SoundToggle />
         </div>
       </ScanReveal>

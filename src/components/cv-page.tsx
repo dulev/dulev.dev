@@ -1,8 +1,12 @@
-import { Link } from '@tanstack/react-router'
-import { PiArrowLeftFill } from 'react-icons/pi'
-import { cvData } from '~/data/cv'
-import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip'
-import type { Education, Experience, SideProject } from '~/data/cv'
+import { Link } from "@tanstack/react-router";
+import { PiArrowLeftFill } from "react-icons/pi";
+import { cvData } from "~/data/cv";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "~/components/ui/tooltip";
+import type { Education, Experience, SideProject } from "~/data/cv";
 
 const printCSS = `
 @media print {
@@ -39,28 +43,28 @@ const printCSS = `
 
   .cv-page .cv-highlights li { margin-bottom: 0; }
 }
-`
+`;
 
 const CARD_CLASS =
-  'cv-card bg-card p-7 pb-6 mb-6 relative max-sm:px-4 max-sm:py-5 max-sm:pb-4'
+  "cv-card bg-card p-7 pb-6 mb-6 relative max-sm:px-4 max-sm:py-5 max-sm:pb-4";
 
 const SLASH_BULLET_CLASS =
-  "pl-4 relative before:content-['›'] before:absolute before:left-0 before:font-mono before:text-orange before:font-bold before:text-base"
+  "pl-4 relative before:content-['›'] before:absolute before:left-0 before:font-mono before:text-orange before:font-bold before:text-base";
 
-const CONTACT_LINK_CLASS = 'text-text no-underline hover:text-orange'
+const CONTACT_LINK_CLASS = "text-text no-underline hover:text-orange";
 
 const ACTION_BTN_CLASS =
-  'font-mono text-xs font-bold text-text py-1.5 px-4 bg-lime hover:bg-text hover:text-lime cursor-pointer'
+  "font-mono text-xs font-bold text-card py-1.5 px-4 bg-text hover:opacity-80 cursor-pointer";
 
 function CvSectionHeader({ number, title }: { number: string; title: string }) {
   return (
     <h2 className="cv-section-header font-mono font-bold text-[clamp(1.4rem,3.5vw,1.8rem)] text-text uppercase mt-8 mb-5 inline-flex items-center gap-3">
       <span className="font-mono font-bold text-xs text-orange border-2 border-orange px-2 py-0.5 leading-none">
-        {number.replace('SEC.', '')}
+        {number.replace("SEC.", "")}
       </span>
       {title}
     </h2>
-  )
+  );
 }
 
 function TechPills({ tech }: { tech: readonly string[] }) {
@@ -75,14 +79,12 @@ function TechPills({ tech }: { tech: readonly string[] }) {
         </li>
       ))}
     </ul>
-  )
+  );
 }
-
 
 function JobCard({ job }: { job: Experience }) {
   return (
     <div className={CARD_CLASS}>
-
       <div className="mb-1">
         <h3 className="font-mono font-bold text-xl text-text uppercase m-0 inline">
           {job.company}
@@ -120,13 +122,12 @@ function JobCard({ job }: { job: Experience }) {
 
       <TechPills tech={job.tech} />
     </div>
-  )
+  );
 }
 
 function SideProjectCard({ project }: { project: SideProject }) {
   return (
     <div id={project.id} className={`${CARD_CLASS} scroll-mt-8`}>
-
       <h3 className="font-mono font-bold text-xl text-text uppercase m-0 mb-0.5">
         {project.name}
       </h3>
@@ -143,21 +144,19 @@ function SideProjectCard({ project }: { project: SideProject }) {
 
       <TechPills tech={project.tech} />
     </div>
-  )
+  );
 }
 
 function EducationItem({ edu }: { edu: Education }) {
   return (
-    <li className={`font-sans text-[0.9rem] text-text leading-relaxed ${SLASH_BULLET_CLASS}`}>
+    <li
+      className={`font-sans text-[0.9rem] text-text leading-relaxed ${SLASH_BULLET_CLASS}`}
+    >
       <span className="font-medium">{edu.title}</span>
-      {edu.detail && (
-        <span className="text-muted"> — {edu.detail}</span>
-      )}
-      {edu.period && (
-        <span className="text-muted ml-1">({edu.period})</span>
-      )}
+      {edu.detail && <span className="text-muted"> — {edu.detail}</span>}
+      {edu.period && <span className="text-muted ml-1">({edu.period})</span>}
     </li>
-  )
+  );
 }
 
 export function CvPage() {
@@ -168,7 +167,7 @@ export function CvPage() {
         <nav className="cv-no-print max-w-[860px] mx-auto px-6 pt-8 flex items-center justify-between max-sm:px-4">
           <Link
             to="/"
-            className="font-mono text-xs font-bold text-card no-underline py-1.5 px-3 bg-text hover:opacity-70 inline-block"
+            className="font-mono text-xs font-bold text-text no-underline py-1.5 px-3 bg-lime hover:bg-text hover:text-lime inline-block"
           >
             <PiArrowLeftFill className="inline mr-1" /> dulev.dev
           </Link>
@@ -197,19 +196,35 @@ export function CvPage() {
               {cvData.title}
             </p>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-xs text-muted">
-              <a href={`mailto:${cvData.contact.email}`} className={CONTACT_LINK_CLASS}>
+              <a
+                href={`mailto:${cvData.contact.email}`}
+                className={CONTACT_LINK_CLASS}
+              >
                 {cvData.contact.email}
               </a>
               <span className="text-muted-light max-sm:hidden">|</span>
-              <a href={`tel:${cvData.contact.phone.replace(/-/g, '')}`} className={CONTACT_LINK_CLASS}>
+              <a
+                href={`tel:${cvData.contact.phone.replace(/-/g, "")}`}
+                className={CONTACT_LINK_CLASS}
+              >
                 {cvData.contact.phone}
               </a>
               <span className="text-muted-light max-sm:hidden">|</span>
-              <a href={cvData.contact.github} target="_blank" rel="noopener noreferrer" className={CONTACT_LINK_CLASS}>
+              <a
+                href={cvData.contact.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={CONTACT_LINK_CLASS}
+              >
                 github.com/dulev
               </a>
               <span className="text-muted-light max-sm:hidden">|</span>
-              <a href={cvData.contact.linkedin} target="_blank" rel="noopener noreferrer" className={CONTACT_LINK_CLASS}>
+              <a
+                href={cvData.contact.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={CONTACT_LINK_CLASS}
+              >
                 dulev.dev/linkedin
               </a>
             </div>
@@ -262,7 +277,7 @@ export function CvPage() {
         <nav className="cv-no-print max-w-[860px] mx-auto px-6 pb-10 flex items-center justify-between max-sm:px-4">
           <Link
             to="/"
-            className="font-mono text-xs font-bold text-card no-underline py-1.5 px-3 bg-text hover:opacity-70 inline-block"
+            className="font-mono text-xs font-bold text-text no-underline py-1.5 px-3 bg-lime hover:bg-text hover:text-lime inline-block"
           >
             <PiArrowLeftFill className="inline mr-1" /> dulev.dev
           </Link>
@@ -283,5 +298,5 @@ export function CvPage() {
         </nav>
       </div>
     </>
-  )
+  );
 }

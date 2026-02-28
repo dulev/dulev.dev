@@ -480,7 +480,8 @@ export function Design12() {
                           VISIT {'>>'}
                         </a>
                         <Link
-                          to={project.cvAnchor}
+                          to="/cv"
+                          hash={project.cvAnchor}
                           className="pp-pixel-font text-xs font-bold opacity-60 hover:opacity-100"
                         >
                           CV ENTRY {'>>'}

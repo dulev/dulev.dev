@@ -1,5 +1,8 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
+import { PiGithubLogoFill, PiLinkedinLogoFill } from "react-icons/pi";
 import { ScanReveal } from "~/components/scan-reveal";
+import { Button, buttonIconClass, ButtonExternalLinkIndicator } from "~/components/ui/button";
 import { siteContent } from "~/data/content";
 
 const BOOKMARK_H = 215;
@@ -83,28 +86,21 @@ export function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-3 max-sm:gap-2">
-            <a
-              href={intro.links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-[0.82rem] font-medium text-text no-underline py-2 px-5 border-[3px] border-text bg-lime shadow-brutal transition-none hover:shadow-brutal-hover hover:-translate-x-0.5 hover:-translate-y-0.5"
-            >
-              GitHub
-            </a>
-            <a
-              href={intro.links.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-[0.82rem] font-medium text-text no-underline py-2 px-5 border-[3px] border-text bg-orange shadow-brutal transition-none hover:shadow-brutal-hover hover:-translate-x-0.5 hover:-translate-y-0.5"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="/uses"
-              className="font-mono text-[0.82rem] font-medium text-text no-underline py-2 px-5 border-[3px] border-text bg-card shadow-brutal transition-none hover:shadow-brutal-hover hover:-translate-x-0.5 hover:-translate-y-0.5"
-            >
-              /uses
-            </a>
+            <Button variant="lime" size="lg" asChild>
+              <Link to="/cv">CV</Link>
+            </Button>
+            <Button variant="orange" size="lg" asChild className="relative">
+              <a href={intro.links.github} target="_blank" rel="noopener noreferrer">
+                <ButtonExternalLinkIndicator />
+                <PiGithubLogoFill className={buttonIconClass} />GitHub
+              </a>
+            </Button>
+            <Button size="lg" asChild className="relative">
+              <a href={intro.links.linkedin} target="_blank" rel="noopener noreferrer">
+                <ButtonExternalLinkIndicator />
+                <PiLinkedinLogoFill className={buttonIconClass} />LinkedIn
+              </a>
+            </Button>
           </div>
         </header>
       </ScanReveal>

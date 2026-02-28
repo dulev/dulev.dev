@@ -6,6 +6,7 @@ import {
   type ReactNode,
 } from 'react'
 import { PiSpeakerSlashFill, PiSpeakerHighFill } from 'react-icons/pi'
+import { Button } from '~/components/ui/button'
 
 type SoundContextType = {
   muted: boolean
@@ -55,9 +56,10 @@ export function useSound() {
 export function SoundToggle() {
   const { muted, toggleMute } = useSound()
   return (
-    <button
+    <Button
+      size="icon"
       onClick={toggleMute}
-      className="font-mono text-[0.8rem] font-medium text-text py-1 px-2.5 border-[3px] border-text bg-card shadow-brutal transition-none hover:shadow-brutal-hover hover:-translate-x-0.5 hover:-translate-y-0.5 cursor-pointer"
+      className="self-stretch"
       aria-label={muted ? 'Unmute sounds' : 'Mute sounds'}
     >
       {muted ? (
@@ -65,6 +67,6 @@ export function SoundToggle() {
       ) : (
         <PiSpeakerHighFill size={18} />
       )}
-    </button>
+    </Button>
   )
 }
