@@ -82,7 +82,7 @@ export function Hero() {
   const [heroDone, setHeroDone] = useState(false);
 
   return (
-    <div className="max-sm:mb-10 mb-28 relative">
+    <div className="max-sm:mb-10 mb-16 relative">
       <ScanReveal onComplete={() => setHeroDone(true)}>
         <header className="bg-card border-3 border-text shadow-brutal p-9 pb-8 isolate max-sm:px-4.5 max-sm:py-7 max-sm:pb-6">
           <div className="max-md:flex max-md:justify-between max-md:gap-4 sm:gap-8 max-md:items-start">
