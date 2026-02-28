@@ -5,26 +5,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@theme {
-  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
-
-  --color-bg: #FAFAF8;
-  --color-text: #111111;
-  --color-lime: #C8FF00;
-  --color-orange: #FF6B00;
-  --color-card: #FFFFFF;
-  --color-muted: #444;
-  --color-muted-light: #555;
-
-  --border-width-3: 3px;
-
-  --shadow-brutal: 4px 4px 0 #111;
-  --shadow-brutal-hover: 6px 6px 0 #111;
-  --shadow-brutal-sm: 3px 3px 0 #111;
-  --shadow-brutal-lime: 3px 3px 0 #C8FF00;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -35,6 +15,23 @@ body {
 }
 
 @theme inline {
+  /* Neo-brutalist tokens */
+  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --color-bg: #FAFAF8;
+  --color-text: #111111;
+  --color-lime: #C8FF00;
+  --color-orange: #FF6B00;
+  --color-card: #FFFFFF;
+  --color-muted: #444;
+  --color-muted-light: #555;
+  --border-width-3: 3px;
+  --shadow-brutal: 4px 4px 0 #111;
+  --shadow-brutal-hover: 6px 6px 0 #111;
+  --shadow-brutal-sm: 3px 3px 0 #111;
+  --shadow-brutal-lime: 3px 3px 0 #C8FF00;
+
+  /* shadcn/ui tokens */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -44,7 +41,6 @@ body {
   --radius-4xl: calc(var(--radius) + 16px);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
@@ -52,7 +48,6 @@ body {
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
