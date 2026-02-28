@@ -3,7 +3,6 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Hero } from './-home/hero'
 import { ProjectsSection } from './-home/projects-section'
 import { InterestsSection } from './-home/interests-section'
-import { Footer } from './-home/footer'
 
 export const Route = createFileRoute('/')({
   component: Design47,
@@ -53,7 +52,6 @@ function Design47() {
           activeSection={activeSection}
         />
       </div>
-      <Footer />
     </div>
   )
 }

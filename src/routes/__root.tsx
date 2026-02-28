@@ -1,5 +1,4 @@
 /// <reference types="vite/client" />
-import { type ReactNode } from "react";
 import {
   Outlet,
   createRootRoute,
@@ -10,6 +9,7 @@ import {
 import { TooltipProvider } from "~/components/ui/tooltip";
 import { CrtIntro } from "~/components/crt-intro";
 import { Nav } from "~/components/nav";
+import { Footer } from "~/components/footer";
 import appCss from "~/styles/app.css?url";
 
 export const Route = createRootRoute({
@@ -27,9 +27,23 @@ export const Route = createRootRoute({
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", sizes: "any" },
-      { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },
-      { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
-      { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "16x16",
+        href: "/favicon-16x16.png",
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "32x32",
+        href: "/favicon-32x32.png",
+      },
+      {
+        rel: "apple-touch-icon",
+        sizes: "180x180",
+        href: "/apple-touch-icon.png",
+      },
       { rel: "manifest", href: "/site.webmanifest" },
       {
         rel: "preconnect",
@@ -58,27 +72,22 @@ function RootComponent() {
   const showNav = NAV_ROUTES.has(pathname);
 
   return (
-    <RootDocument>
-      <CrtIntro />
-      {showNav && (
-        <div className="max-w-[860px] mx-auto px-8 max-sm:px-4.5">
-          <Nav />
-        </div>
-      )}
-      <Outlet />
-    </RootDocument>
-  );
-}
-
-function RootDocument({ children }: { children: ReactNode }) {
-  return (
     <html lang="en">
       <head>
         <HeadContent />
       </head>
-      <body className="min-h-screen bg-bg neo-grid-bg">
+      <body className="flex min-h-screen flex-col bg-bg neo-grid-bg">
         <TooltipProvider>
-          {children}
+          <CrtIntro />
+          {showNav && (
+            <header className="w-full max-w-[860px] mx-auto px-8 max-sm:px-4.5">
+              <Nav />
+            </header>
+          )}
+          <main className="flex-1">
+            <Outlet />
+          </main>
+          {showNav && <Footer />}
         </TooltipProvider>
         <Scripts />
       </body>
