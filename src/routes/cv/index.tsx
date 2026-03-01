@@ -219,13 +219,6 @@ function CvPage() {
               </a>
               <span className="text-muted-light max-sm:hidden">|</span>
               <a
-                href={`tel:${cvData.contact.phone.replace(/-/g, "")}`}
-                className={CONTACT_LINK_CLASS}
-              >
-                {cvData.contact.phone}
-              </a>
-              <span className="text-muted-light max-sm:hidden">|</span>
-              <a
                 href={cvData.contact.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
