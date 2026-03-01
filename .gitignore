@@ -1,8 +1,36 @@
-.DS_Store
-node_modules
+# Dependencies
+node_modules/
+
+# Build output
 dist
 .output
-*.local
-.vite
-.claude
+.nitro
+
+# Env files
+.env*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Vite
+.vite/
+vite.config.ts.timestamp-*
+
+# TypeScript
+*.tsbuildinfo
+
+# Vercel
 .vercel
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+*.local
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json

@@ -4,11 +4,14 @@ import {
   SITE_URL,
 } from '~/lib/links'
 
+const contactPhone = import.meta.env.VITE_CONTACT_PHONE as string | undefined
+
 export const cvData = {
   name: 'Dimitar Dulev',
   title: 'Senior Full-Stack Engineer',
   contact: {
     email: CONTACT_EMAIL,
+    phone: contactPhone,
     linkedin: LINKEDIN_URL,
     website: SITE_URL,
   },
