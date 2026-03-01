@@ -6,7 +6,7 @@ import { CONTACT_EMAIL } from '~/lib/links'
 export function Footer() {
   return (
     <ScanReveal>
-      <footer className="mt-18 bg-text py-9">
+      <footer className="bg-text py-9">
         <div className="max-w-[860px] mx-auto px-8 flex items-center justify-between gap-6 flex-wrap max-sm:flex-col">
           <div className="font-mono text-[0.82rem] text-lime font-medium">
             dulev.dev &middot; Sofia, Bulgaria

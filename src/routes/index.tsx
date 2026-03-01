@@ -41,7 +41,7 @@ function Design47() {
 
   return (
     <div className="font-mono min-h-screen m-0 p-0 bg-bg neo-grid-bg text-text leading-[1.6]">
-      <div className="max-w-[860px] mx-auto px-8 max-sm:px-4.5">
+      <div className="max-w-[860px] mx-auto px-8 pb-18 max-sm:px-4.5">
         <Hero />
         <ProjectsSection
           sectionRef={projectsRef}
