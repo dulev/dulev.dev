@@ -1,7 +1,6 @@
 import {
   CONTACT_EMAIL,
   CONTACT_PHONE,
-  GITHUB_URL,
   LINKEDIN_URL,
   SITE_URL,
 } from '~/lib/links'
@@ -12,7 +11,6 @@ export const cvData = {
   contact: {
     email: CONTACT_EMAIL,
     phone: CONTACT_PHONE,
-    github: GITHUB_URL,
     linkedin: LINKEDIN_URL,
     website: SITE_URL,
   },

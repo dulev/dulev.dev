@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { PiGithubLogoFill, PiLinkedinLogoFill } from "react-icons/pi";
+import { PiLinkedinLogoFill } from "react-icons/pi";
 import { ScanReveal } from "~/components/scan-reveal";
 import {
   Button,
@@ -91,7 +91,7 @@ export function Hero() {
                 {intro.name}
               </h1>
 
-              <span className="font-mono font-bold text-[1.15rem] uppercase tracking-[2px] text-orange leading-[1.4] block mt-5 mb-7">
+              <span className="font-mono font-bold text-[1.15rem] lowercase tracking-[2px] text-orange leading-[1.4] block mt-5 mb-7">
                 {intro.tagline}
               </span>
             </div>
@@ -106,16 +106,8 @@ export function Hero() {
             <Button variant="lime" size="lg" asChild>
               <Link to="/cv">CV</Link>
             </Button>
-            <Button variant="orange" size="lg" asChild className="relative">
-              <a
-                href={intro.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <ButtonExternalLinkIndicator />
-                <PiGithubLogoFill className={buttonIconClass} />
-                GitHub
-              </a>
+            <Button variant="orange" size="lg" asChild>
+              <Link to="/uses">/uses</Link>
             </Button>
             <Button size="lg" asChild className="relative">
               <a

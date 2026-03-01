@@ -226,15 +226,6 @@ function CvPage() {
               </a>
               <span className="text-muted-light max-sm:hidden">|</span>
               <a
-                href={cvData.contact.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={CONTACT_LINK_CLASS}
-              >
-                github.com/dulev
-              </a>
-              <span className="text-muted-light max-sm:hidden">|</span>
-              <a
                 href={cvData.contact.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
