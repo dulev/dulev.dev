@@ -31,7 +31,7 @@ const PHOTO_ALT = "Photo of Dimitar Dulev";
 function BookmarkPhoto({ enabled }: { enabled: boolean }) {
   return (
     <ScanReveal enabled={enabled}>
-      <div className="max-md:hidden absolute bottom-0 right-12 translate-y-[35%] z-10">
+      <div className="max-md:hidden absolute bottom-0 right-12 translate-y-[33%] z-10">
         <div className="relative w-[250px]" style={{ height: TOTAL_H }}>
           {/* Shadow */}
           <div

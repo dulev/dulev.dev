@@ -30,7 +30,7 @@ const printCSS = `
 
   h2, h3 { break-after: avoid; }
 
-  .cv-page { background: white !important; }
+  body, .cv-page { background: white !important; background-image: none !important; }
   .cv-page .cv-no-print { display: none; }
   .cv-page main { padding-top: 0; }
   .cv-page .cv-header { margin-bottom: 1rem; padding: 0; }
@@ -93,15 +93,20 @@ function TechPills({ tech }: { tech: readonly string[] }) {
 function JobCard({ job }: { job: Experience }) {
   return (
     <div className={CARD_CLASS}>
-      <div className="mb-1">
-        <h3 className="font-mono font-bold text-xl text-text uppercase m-0 inline">
-          {job.company}
-        </h3>
-        {job.subtitle && (
-          <span className="font-sans text-sm text-muted ml-2">
-            ({job.subtitle})
-          </span>
-        )}
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 mb-1">
+        <div>
+          <h3 className="font-mono font-bold text-xl text-text uppercase m-0 inline">
+            {job.company}
+          </h3>
+          {job.subtitle && (
+            <span className="font-sans text-sm text-muted ml-2">
+              ({job.subtitle})
+            </span>
+          )}
+        </div>
+        <span className="font-mono text-xs text-muted">
+          {job.period}
+        </span>
       </div>
 
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 mb-3">
@@ -109,7 +114,7 @@ function JobCard({ job }: { job: Experience }) {
           {job.role}
         </p>
         <span className="font-mono text-xs text-muted">
-          {job.location} · {job.period}
+          {job.location}
         </span>
       </div>
 
@@ -136,15 +141,17 @@ function JobCard({ job }: { job: Experience }) {
 function SideProjectCard({ project }: { project: SideProject }) {
   return (
     <div id={project.id} className={`${CARD_CLASS} scroll-mt-8`}>
-      <h3 className="font-mono font-bold text-xl text-text uppercase m-0 mb-0.5">
-        {project.name}
-      </h3>
-      <p className="font-mono text-sm text-orange font-medium m-0 mb-1">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 mb-0.5">
+        <h3 className="font-mono font-bold text-xl text-text uppercase m-0">
+          {project.name}
+        </h3>
+        <span className="font-mono text-xs text-muted">
+          {project.period}
+        </span>
+      </div>
+      <p className="font-mono text-sm text-orange font-medium m-0 mb-3">
         {project.tagline}
       </p>
-      <span className="font-mono text-xs text-muted block mb-3">
-        {project.period}
-      </span>
 
       <p className="font-sans text-[0.9rem] text-muted-light leading-relaxed m-0 mb-4">
         {project.description}
@@ -171,7 +178,7 @@ function CvPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: printCSS }} />
-      <div className="cv-page neo-grid-bg bg-bg min-h-screen">
+      <div className="cv-page neo-grid-bg bg-bg min-h-screen relative">
         <nav className="cv-no-print max-w-[860px] mx-auto px-6 pt-8 flex items-center justify-between max-sm:px-4">
           <Link
             to="/"
@@ -275,9 +282,16 @@ function CvPage() {
           <section>
             <CvSectionHeader number="SEC.05" title="Personal" />
             <div className="cv-card bg-card p-7 pb-6 mb-6 max-sm:px-4 max-sm:py-5 max-sm:pb-4">
-              <p className="font-sans text-[0.9rem] text-muted-light leading-relaxed m-0">
-                {cvData.personal}
-              </p>
+              <ul className="space-y-1.5 pl-0 list-none m-0">
+                {cvData.personal.map((item, i) => (
+                  <li
+                    key={i}
+                    className={`font-sans text-[0.9rem] text-muted-light leading-relaxed ${SLASH_BULLET_CLASS}`}
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
           </section>
         </main>

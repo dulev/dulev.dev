@@ -1,28 +1,28 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { useRef } from 'react'
-import { Link } from '@tanstack/react-router'
-import { PiArrowLeftFill, PiDownloadSimpleFill } from 'react-icons/pi'
-import { snapdom } from '@zumer/snapdom'
-import PHOTO from '~/assets/photoshoot_dulev.png'
+import { createFileRoute } from "@tanstack/react-router";
+import { useRef } from "react";
+import { Link } from "@tanstack/react-router";
+import { PiArrowLeftFill, PiDownloadSimpleFill } from "react-icons/pi";
+import { snapdom } from "@zumer/snapdom";
+import PHOTO from "~/assets/photoshoot_dulev.png";
 
-export const Route = createFileRoute('/my-image-assets/')({
+export const Route = createFileRoute("/my-image-assets/")({
   component: ImageAssetsPage,
   head: () => ({
-    meta: [{ title: 'Image Assets — Dimitar Dulev' }],
+    meta: [{ title: "Image Assets — Dimitar Dulev" }],
   }),
-})
+});
 
 // ─── Download helper ────────────────────────────────────────────────────────
 
 async function downloadAsset(ref: HTMLElement, filename: string) {
-  const result = await snapdom(ref, { dpr: 1 })
-  const blob = await result.toBlob({ type: 'png' })
-  const url = URL.createObjectURL(blob)
-  const a = document.createElement('a')
-  a.href = url
-  a.download = filename
-  a.click()
-  URL.revokeObjectURL(url)
+  const result = await snapdom(ref, { dpr: 1 });
+  const blob = await result.toBlob({ type: "png" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
 }
 
 // ─── Asset components (rendered at native resolution) ───────────────────────
@@ -30,15 +30,26 @@ async function downloadAsset(ref: HTMLElement, filename: string) {
 function LinkedInProfileAsset() {
   return (
     <div
-      style={{ width: 640, height: 640, position: 'relative', overflow: 'hidden' }}
+      style={{
+        width: 640,
+        height: 640,
+        position: "relative",
+        overflow: "hidden",
+      }}
     >
       <img
         src={PHOTO}
         alt="Dimitar Dulev"
-        style={{ width: 640, height: 640, objectFit: 'cover', objectPosition: 'top', display: 'block' }}
+        style={{
+          width: 640,
+          height: 640,
+          objectFit: "cover",
+          objectPosition: "top",
+          display: "block",
+        }}
       />
     </div>
-  )
+  );
 }
 
 function LinkedInBannerAsset() {
@@ -48,42 +59,42 @@ function LinkedInBannerAsset() {
       style={{
         width: 1584,
         height: 396,
-        backgroundColor: '#FAFAF8',
-        position: 'relative',
-        overflow: 'hidden',
-        display: 'flex',
-        alignItems: 'center',
-        padding: '0 80px',
-        fontFamily: 'IBM Plex Mono, monospace',
+        backgroundColor: "#FAFAF8",
+        position: "relative",
+        overflow: "hidden",
+        display: "flex",
+        alignItems: "center",
+        padding: "0 80px",
+        fontFamily: "IBM Plex Mono, monospace",
       }}
     >
       {/* Lime accent strip */}
       <div
         style={{
-          position: 'absolute',
+          position: "absolute",
           left: 0,
           top: 0,
           bottom: 0,
           width: 16,
-          background: '#C8FF00',
+          background: "#C8FF00",
         }}
       />
 
       {/* dulev.dev logo — top right */}
       <div
         style={{
-          position: 'absolute',
+          position: "absolute",
           top: 32,
           right: 48,
-          fontFamily: 'IBM Plex Mono, monospace',
+          fontFamily: "IBM Plex Mono, monospace",
           fontWeight: 700,
           fontSize: 30,
-          letterSpacing: '1px',
-          color: '#111111',
-          background: '#C8FF00',
-          border: '3px solid #111111',
-          boxShadow: '4px 4px 0 #111111',
-          padding: '6px 14px',
+          letterSpacing: "1px",
+          color: "#111111",
+          background: "#C8FF00",
+          border: "3px solid #111111",
+          boxShadow: "4px 4px 0 #111111",
+          padding: "6px 14px",
           lineHeight: 1.2,
         }}
       >
@@ -91,14 +102,21 @@ function LinkedInBannerAsset() {
       </div>
 
       {/* Text content — centered in banner */}
-      <div style={{ position: 'absolute', zIndex: 1, left: '50%', transform: 'translateX(-50%)' }}>
+      <div
+        style={{
+          position: "absolute",
+          zIndex: 1,
+          left: "50%",
+          transform: "translateX(-50%)",
+        }}
+      >
         <div
           style={{
             fontSize: 96,
             fontWeight: 700,
-            color: '#111111',
+            color: "#111111",
             lineHeight: 1,
-            letterSpacing: '-2px',
+            letterSpacing: "-2px",
             marginBottom: 16,
           }}
         >
@@ -108,29 +126,40 @@ function LinkedInBannerAsset() {
           style={{
             fontSize: 36,
             fontWeight: 400,
-            color: '#FF6B00',
-            letterSpacing: '1px',
+            color: "#FF6B00",
+            letterSpacing: "1px",
           }}
         >
           fullstack dev &amp; tinkerer.
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 function GitHubProfileAsset() {
   return (
     <div
-      style={{ width: 500, height: 500, position: 'relative', overflow: 'hidden' }}
+      style={{
+        width: 500,
+        height: 500,
+        position: "relative",
+        overflow: "hidden",
+      }}
     >
       <img
         src={PHOTO}
         alt="Dimitar Dulev"
-        style={{ width: 500, height: 500, objectFit: 'cover', objectPosition: 'top', display: 'block' }}
+        style={{
+          width: 500,
+          height: 500,
+          objectFit: "cover",
+          objectPosition: "top",
+          display: "block",
+        }}
       />
     </div>
-  )
+  );
 }
 
 function FaviconAsset() {
@@ -139,24 +168,26 @@ function FaviconAsset() {
       style={{
         width: 512,
         height: 512,
-        backgroundColor: '#C8FF00',
-        border: '46px solid #111111',
-        boxSizing: 'border-box',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontFamily: 'IBM Plex Mono, monospace',
+        backgroundColor: "#C8FF00",
+        border: "46px solid #111111",
+        boxSizing: "border-box",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontFamily: "IBM Plex Mono, monospace",
         fontWeight: 700,
         fontSize: 320,
-        color: '#111111',
-        letterSpacing: '-15px',
+        color: "#111111",
+        letterSpacing: "-15px",
         lineHeight: 1,
-        userSelect: 'none',
+        userSelect: "none",
       }}
     >
-      <span style={{ display: 'block', transform: 'translateX(-10px)' }}>dd</span>
+      <span style={{ display: "block", transform: "translateX(-10px)" }}>
+        dd
+      </span>
     </div>
-  )
+  );
 }
 
 // ─── Scaled preview wrapper ──────────────────────────────────────────────────
@@ -168,26 +199,26 @@ function ScaledPreview({
   children,
   showCircle = false,
 }: {
-  nativeW: number
-  nativeH: number
-  scale: number
-  children: React.ReactNode
-  showCircle?: boolean
+  nativeW: number;
+  nativeH: number;
+  scale: number;
+  children: React.ReactNode;
+  showCircle?: boolean;
 }) {
   return (
     <div
       style={{
         width: nativeW * scale,
         height: nativeH * scale,
-        overflow: 'hidden',
-        position: 'relative',
+        overflow: "hidden",
+        position: "relative",
         flexShrink: 0,
       }}
     >
       <div
         style={{
           transform: `scale(${scale})`,
-          transformOrigin: 'top left',
+          transformOrigin: "top left",
           width: nativeW,
           height: nativeH,
         }}
@@ -197,16 +228,16 @@ function ScaledPreview({
       {showCircle && (
         <div
           style={{
-            position: 'absolute',
+            position: "absolute",
             inset: 0,
-            borderRadius: '50%',
-            boxShadow: '0 0 0 2000px rgba(250,250,248,0.85)',
-            pointerEvents: 'none',
+            borderRadius: "50%",
+            boxShadow: "0 0 0 2000px rgba(250,250,248,0.85)",
+            pointerEvents: "none",
           }}
         />
       )}
     </div>
-  )
+  );
 }
 
 // ─── Asset Card ──────────────────────────────────────────────────────────────
@@ -222,15 +253,15 @@ function AssetCard({
   showCircle = false,
   children,
 }: {
-  badge: string
-  dimensions: string
-  filename: string
-  assetRef: React.RefObject<HTMLDivElement | null>
-  previewScale: number
-  nativeW: number
-  nativeH: number
-  showCircle?: boolean
-  children: React.ReactNode
+  badge: string;
+  dimensions: string;
+  filename: string;
+  assetRef: React.RefObject<HTMLDivElement | null>;
+  previewScale: number;
+  nativeW: number;
+  nativeH: number;
+  showCircle?: boolean;
+  children: React.ReactNode;
 }) {
   return (
     <div className="bg-card border-3 border-text shadow-brutal flex flex-col">
@@ -263,11 +294,9 @@ function AssetCard({
           onClick={() => {
             if (assetRef.current) {
               // assetRef → ScaledPreview outer (overflow:hidden) → transform div → actual asset div
-              const assetEl = assetRef.current
-                .firstElementChild   // ScaledPreview outer (scaled dimensions)
-                ?.firstElementChild  // transform div (native dimensions, scale() applied)
-                ?.firstElementChild as HTMLElement | null  // actual asset div (no transform)
-              if (assetEl) downloadAsset(assetEl, filename)
+              const assetEl = assetRef.current.firstElementChild // ScaledPreview outer (scaled dimensions)
+                ?.firstElementChild?.firstElementChild as HTMLElement | null; // transform div (native dimensions, scale() applied) // actual asset div (no transform)
+              if (assetEl) downloadAsset(assetEl, filename);
             }
           }}
           className="font-mono text-xs font-bold uppercase tracking-wider py-2 px-4 bg-text text-card hover:bg-orange cursor-pointer flex items-center gap-2"
@@ -277,16 +306,16 @@ function AssetCard({
         </button>
       </div>
     </div>
-  )
+  );
 }
 
 // ─── Page ────────────────────────────────────────────────────────────────────
 
 function ImageAssetsPage() {
-  const liProfileRef = useRef<HTMLDivElement>(null)
-  const liBannerRef = useRef<HTMLDivElement>(null)
-  const ghProfileRef = useRef<HTMLDivElement>(null)
-  const faviconRef = useRef<HTMLDivElement>(null)
+  const liProfileRef = useRef<HTMLDivElement>(null);
+  const liBannerRef = useRef<HTMLDivElement>(null);
+  const ghProfileRef = useRef<HTMLDivElement>(null);
+  const faviconRef = useRef<HTMLDivElement>(null);
 
   return (
     <div className="neo-grid-bg bg-bg min-h-screen">
@@ -306,7 +335,7 @@ function ImageAssetsPage() {
             Image Assets
           </h1>
           <p className="font-sans text-[0.95rem] text-muted-light leading-relaxed m-0">
-            Social media assets generated from React components using{' '}
+            Social media assets generated from React components using{" "}
             <a
               href="https://github.com/zumerlab/snapdom"
               target="_blank"
@@ -314,8 +343,8 @@ function ImageAssetsPage() {
               className="text-orange font-medium no-underline hover:underline"
             >
               snapDOM
-            </a>
-            {' '}— captures DOM nodes as pixel-perfect PNGs at native resolution.
+            </a>{" "}
+            — captures DOM nodes as pixel-perfect PNGs at native resolution.
           </p>
         </header>
 
@@ -373,5 +402,5 @@ function ImageAssetsPage() {
         </AssetCard>
       </main>
     </div>
-  )
+  );
 }

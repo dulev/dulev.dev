@@ -17,35 +17,36 @@ export const cvData = {
     website: SITE_URL,
   },
   summary:
-    'Senior Full-Stack Engineer with 7+ years building products at scale. Led frontend and backend development for applications serving millions of users, including checkout flows, search systems, and admin platforms. Strong product sense with focus on UI/UX, workflow automation, and shipping features that matter. Core stack: React, TypeScript, Node.js, PostgreSQL.',
+    'Senior Full-Stack Engineer with 7+ years building products at scale. Led frontend development and made core contributions to backend systems for applications serving millions of users, including checkout flows, search systems, and admin platforms. Strong product sense with focus on UI/UX, workflow automation, and shipping features that matter. Core stack: React, TypeScript, Node.js, PostgreSQL.',
   experience: [
     {
       company: 'The NOLD',
       subtitle: null,
-      role: 'Senior Full-Stack Engineer',
+      role: 'Frontend Lead · Full-Stack Engineer',
       location: 'Sofia',
       period: 'Oct 2023 — Jun 2025',
       description:
         'Led frontend development for a second-hand fashion P2P marketplace, collaborating closely with product on UI/UX decisions while also contributing to the Node.js API and admin backoffice.',
       highlights: [
         'Implemented the majority of frontend flows in the app, owning core user-facing features end-to-end.',
-        'Fully migrated the marketplace codebase from JavaScript to TypeScript, improving type safety and developer confidence.',
+        'Migrated the codebase from JavaScript to TypeScript with end-to-end Zod validation, dramatically reducing bug rates and improving developer confidence.',
         'Moved state management from Redux to React Query, enabling faster feature development across the team.',
-        'Redesigned checkout flow from multi-step wizard to single-page experience with Stripe integration and guest checkout.',
+        'Redesigned checkout into a streamlined single-page flow with Stripe integration and guest checkout, reducing drop-off points and improving conversion.',
         'Built the backoffice from scratch using Next.js and shadcn/ui, prioritizing great DX and team dev velocity.',
+        'Took ownership of UI/UX design, delivering rapid clickable prototypes that replaced a costly external design contractor — cutting iteration cycles from weeks to days.',
       ],
       tech: ['React', 'TypeScript', 'Next.js', 'Node.js', 'shadcn/ui', 'tRPC', 'Prisma', 'PostgreSQL', 'AWS', 'Stripe'],
     },
     {
       company: 'WOOM Health',
       subtitle: 'acquired by Apricity',
-      role: 'Senior Full-Stack Engineer',
+      role: 'Senior Frontend Engineer · Full-Stack',
       location: 'Sofia · Madrid',
       period: 'Mar 2021 — Jul 2023',
       description:
-        'Core engineer on a fertility tracking hybrid app with 2 million users and 200k+ community threads. Worked across the Ionic/Capacitor frontend, Node.js community microservice, and internal backoffice.',
+        'Senior frontend engineer on a fertility tracking hybrid app with 2 million users and 200k+ community threads. Owned the dev-design collaboration. Worked closely with the designer to improve the design system and raise UX standards across the app. Worked across the Ionic/Capacitor frontend, Node.js community microservice, and internal backoffice.',
       highlights: [
-        'Led redesign of major app sections (News feed, Community, Calendar, My Fertility) with focus on UX improvements.',
+        'Led redesign of major app sections (News feed, Community, Calendar, My Fertility), measurably increasing community engagement.',
         'Replaced Redux with React Query + Jotai, simplifying state management and improving team velocity.',
         'Developed community forum microservice from scratch (Node.js/Koa/MongoDB/InversifyJS) with thread subscriptions, voting, and nested replies.',
         'Architected CI/CD pipeline with GitHub Actions for automated testing and app store deployment.',
@@ -90,7 +91,7 @@ export const cvData = {
       tagline: 'Music Practice Platform',
       period: 'Oct 2025 — Present',
       description:
-        'Built a practice platform for guitarists. Features an A-B looper for YouTube videos with real-time pitch shifting and custom illustrations. Includes metronome exercises with community sharing, practice routines with timers, and a rich text editor with AlphaTab guitar notation.',
+        'Built a practice platform for guitarists. Features an A-B looper for YouTube videos with real-time pitch shifting and custom illustrations. Includes metronome exercises with community sharing, practice routines with timers, and a rich text editor with AlphaTab guitar notation. Chrome extension has 150 weekly active users.',
       tech: ['TanStack Start', 'React', 'PostgreSQL', 'Drizzle ORM', 'Chrome Extension'],
     },
     {
@@ -120,8 +121,11 @@ export const cvData = {
       period: null,
     },
   ],
-  personal:
-    'Outdoor activities — running and hiking. Geeking out about the JavaScript ecosystem, DX, and automations. Love building delightful apps.',
+  personal: [
+    'Outdoor activities — running and hiking.',
+    'Geeking out about the JavaScript ecosystem, DX, and automations.',
+    'Love building delightful apps.',
+  ],
 } as const
 
 export type CvData = typeof cvData
