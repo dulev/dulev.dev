@@ -17,7 +17,7 @@ const sections: UsesSection[] = [
         <li><strong>MacBook Pro 16" M4 Pro</strong> – main machine. Plenty of power for my needs.</li>
         <li><strong>Dell U2723QE 27" 4K</strong> – I just love the one cable setup.</li>
         <li><strong>Logitech Ergo K860</strong> – carpal tunnel forced the switch. Love the clicks of mechanical but my wrists don't.</li>
-        <li><strong>Logitech MX Master 3S</strong> – self explanatory.</li>
+        <li><strong>Logitech MX Master 3S</strong> – of course 😁</li>
         <li><strong>AirPods Pro 3</strong></li>
       </ul>
     ),
@@ -68,7 +68,7 @@ const sections: UsesSection[] = [
         <li><strong>zoxide</strong> – fast <code>cd</code> replacement, aliased to <code>j</code>. If you use the terminal often, you should be using this.</li>
         <li><strong>fzf</strong> – fuzzy finder. Custom <code>fgco</code> function that lists all branches with commit previews and checks out the selected one. Also use it for navigating git worktrees.</li>
         <li><strong>mise</strong> – runtime version manager. Replaces nvm, pyenv, etc.</li>
-        <li><strong>vim</strong> – default editor.</li>
+        <li><strong>vim</strong> – default editor. I've stopped trying to convince people 😆</li>
         <li><strong>1Password CLI</strong> – never store secrets in plain text. Loads them dynamically with Touch ID.</li>
         <li><strong>pnpm</strong></li>
       </ul>

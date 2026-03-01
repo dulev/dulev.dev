@@ -62,13 +62,20 @@
 .crt-bezel {
   position: absolute;
   inset: 0;
-  border: 14px solid #111;
-  border-radius: 32px;
+  border: 8px solid #111;
+  border-radius: 20px;
   box-shadow:
     0 0 0 9999px #000,
     inset 0 0 80px 30px rgba(0, 0, 0, 0.6),
     inset 0 0 10px 4px rgba(0, 0, 0, 0.4);
   pointer-events: none;
+}
+
+@media (min-width: 640px) {
+  .crt-bezel {
+    border-width: 14px;
+    border-radius: 32px;
+  }
 }
 
 /* Rolling bar animation */
