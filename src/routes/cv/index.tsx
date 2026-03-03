@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { PiArrowLeftFill } from "react-icons/pi";
 import { cvData } from "./-cv";
@@ -9,12 +9,12 @@ import {
 } from "~/components/ui/tooltip";
 import type { Education, Experience, SideProject } from "./-cv";
 
-export const Route = createFileRoute('/cv/')({
+export const Route = createFileRoute("/cv/")({
   component: CvPage,
   head: () => ({
-    meta: [{ title: 'CV — Dimitar Dulev' }],
+    meta: [{ title: "CV — Dimitar Dulev" }],
   }),
-})
+});
 
 const printCSS = `
 @media print {
@@ -32,7 +32,7 @@ const printCSS = `
 
   body, .cv-page { background: white !important; background-image: none !important; }
   .cv-page .cv-no-print { display: none; }
-  .cv-page main { padding-top: 0; }
+  .cv-page main { padding-top: 0; padding-bottom: 0; }
   .cv-page .cv-header { margin-bottom: 1rem; padding: 0; }
 
   .cv-page .cv-card {
@@ -46,7 +46,7 @@ const printCSS = `
 
   .cv-page .cv-section-header {
     margin-top: 3rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1.25rem;
   }
 
   .cv-page .cv-highlights li { margin-bottom: 0; }
@@ -104,18 +104,14 @@ function JobCard({ job }: { job: Experience }) {
             </span>
           )}
         </div>
-        <span className="font-mono text-xs text-muted">
-          {job.period}
-        </span>
+        <span className="font-mono text-xs text-muted">{job.period}</span>
       </div>
 
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 mb-3">
         <p className="font-mono text-sm text-orange font-medium m-0">
           {job.role}
         </p>
-        <span className="font-mono text-xs text-muted">
-          {job.location}
-        </span>
+        <span className="font-mono text-xs text-muted">{job.location}</span>
       </div>
 
       <p className="font-sans text-[0.9rem] text-muted-light leading-relaxed m-0 mb-4">
@@ -145,9 +141,7 @@ function SideProjectCard({ project }: { project: SideProject }) {
         <h3 className="font-mono font-bold text-xl text-text uppercase m-0">
           {project.name}
         </h3>
-        <span className="font-mono text-xs text-muted">
-          {project.period}
-        </span>
+        <span className="font-mono text-xs text-muted">{project.period}</span>
       </div>
       <p className="font-mono text-sm text-orange font-medium m-0 mb-3">
         {project.tagline}
@@ -203,7 +197,7 @@ function CvPage() {
         </nav>
 
         <main className="max-w-[860px] mx-auto px-6 pt-8 pb-20 max-sm:px-4">
-          <header className="cv-header mb-8 bg-card p-7 pb-6 max-sm:px-4 max-sm:py-5 max-sm:pb-4">
+          <header className="cv-header mb-5 bg-card p-7 pb-6 max-sm:px-4 max-sm:py-5 max-sm:pb-4">
             <h1 className="font-mono font-bold text-[clamp(2.8rem,7.5vw,4.5rem)] text-text m-0 mb-2 leading-tight">
               {cvData.name}
             </h1>
@@ -315,5 +309,5 @@ function CvPage() {
         </nav>
       </div>
     </>
-  )
+  );
 }

@@ -121,7 +121,7 @@ export const cvData = {
     },
   ],
   personal: [
-    'Outdoor activities — running and hiking.',
+    'Outdoor activities – running, MTB (Vitosha 100), hiking.',
     'Geeking out about the JavaScript ecosystem, DX, and automations.',
     'Love building delightful apps.',
   ],
